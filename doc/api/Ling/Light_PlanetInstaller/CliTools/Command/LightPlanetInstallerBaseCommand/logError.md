@@ -1,0 +1,61 @@
+[Back to the Ling/Light_PlanetInstaller api](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller.md)<br>
+[Back to the Ling\Light_PlanetInstaller\CliTools\Command\LightPlanetInstallerBaseCommand class](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LightPlanetInstallerBaseCommand.md)
+
+
+LightPlanetInstallerBaseCommand::logError
+================
+
+
+
+LightPlanetInstallerBaseCommand::logError — Proxy to the application's logError method.
+
+
+
+
+Description
+================
+
+
+public [LightPlanetInstallerBaseCommand::logError](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LightPlanetInstallerBaseCommand/logError.md)(string $error) : void
+
+
+
+
+Proxy to the application's logError method.
+
+
+
+
+Parameters
+================
+
+
+- error
+
+    
+
+
+Return values
+================
+
+Returns void.
+
+
+
+
+
+
+
+
+Source Code
+===========
+See the source code for method [LightPlanetInstallerBaseCommand::logError](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Command/LightPlanetInstallerBaseCommand.php#L120-L123)
+
+
+See Also
+================
+
+The [LightPlanetInstallerBaseCommand](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LightPlanetInstallerBaseCommand.md) class.
+
+Previous method: [updateApplicationByLpiFile](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LightPlanetInstallerBaseCommand/updateApplicationByLpiFile.md)<br>Next method: [getBashtmlFormat](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LightPlanetInstallerBaseCommand/getBashtmlFormat.md)<br>
+

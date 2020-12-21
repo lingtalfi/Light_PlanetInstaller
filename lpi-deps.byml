@@ -1,0 +1,8 @@
+0.0.1: 
+    - Ling:Bat:1.296+
+    - Ling:CliTools:1.10.8+
+    - Ling:UniverseTools:1.21.10+
+    - Ling:BabyYaml:1.7.5+
+    - Ling:Light:0.69.18+
+    - Ling:Light_Logger:1.11.5+
+    - Ling:LingTalfi:1.23.4+

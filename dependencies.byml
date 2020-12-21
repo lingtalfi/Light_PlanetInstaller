@@ -1,0 +1,15 @@
+dependencies: 
+    Ling: 
+        - Bat
+        - CliTools
+        - UniverseTools
+        - BabyYaml
+        - Light
+        - Light_Logger
+        - DirScanner
+        - LingTalfi
+        - CopyDir
+    
+
+post_install: 
+    map: true

@@ -1,0 +1,11 @@
+planet_installer:
+    instance: Ling\Light_PlanetInstaller\Service\LightPlanetInstallerService
+    methods:
+        setContainer:
+            container: @container()
+        setOptions:
+            options: []
+
+
+
+
