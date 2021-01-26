@@ -4,7 +4,7 @@
 
 The LpiImporterHelper class
 ================
-2020-12-08 --> 2020-12-21
+2020-12-08 --> 2021-01-26
 
 
 
@@ -56,4 +56,4 @@ See the source code of [Ling\Light_PlanetInstaller\Helper\LpiImporterHelper](htt
 
 SeeAlso
 ==============
-Previous class: [LpiHelper](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiHelper.md)<br>Next class: [LpiVersionHelper](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiVersionHelper.md)<br>
+Previous class: [LpiHelper](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiHelper.md)<br>Next class: [LpiPlanetHelper](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiPlanetHelper.md)<br>

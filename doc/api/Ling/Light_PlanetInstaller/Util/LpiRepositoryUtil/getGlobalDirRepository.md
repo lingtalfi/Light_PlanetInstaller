@@ -46,7 +46,7 @@ Returns [LpiRepositoryInterface](https://github.com/lingtalfi/Light_PlanetInstal
 
 Source Code
 ===========
-See the source code for method [LpiRepositoryUtil::getGlobalDirRepository](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/LpiRepositoryUtil.php#L155-L161)
+See the source code for method [LpiRepositoryUtil::getGlobalDirRepository](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/LpiRepositoryUtil.php#L219-L225)
 
 
 See Also
@@ -54,5 +54,5 @@ See Also
 
 The [LpiRepositoryUtil](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Util/LpiRepositoryUtil.md) class.
 
-Previous method: [getAppRepository](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Util/LpiRepositoryUtil/getAppRepository.md)<br>Next method: [getWebRepository](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Util/LpiRepositoryUtil/getWebRepository.md)<br>
+Previous method: [getBuildRepository](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Util/LpiRepositoryUtil/getBuildRepository.md)<br>Next method: [getWebRepository](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Util/LpiRepositoryUtil/getWebRepository.md)<br>
 

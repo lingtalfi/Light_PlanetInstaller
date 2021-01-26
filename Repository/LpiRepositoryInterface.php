@@ -37,6 +37,7 @@ interface LpiRepositoryInterface
      * If the given planet doesn't exist, or something unexpected occurs, an exception will be thrown.
      *
      * The warnings array is filled when the method wants to warn the user of something.
+     * It's an array of strings.
      *
      *
      * @param string $planetDot
@@ -61,4 +62,14 @@ interface LpiRepositoryInterface
      * @return array
      */
     public function getDependencies(string $planetDot, string $realVersion): array;
+
+    /**
+     * Returns the array of dependencies, in the uni style.
+     * Each item is a planetDot name.
+     *
+     * @param string $planetDot
+     * @param string $realVersion
+     * @return array
+     */
+    public function getUniDependencies(string $planetDot, string $realVersion): array;
 }

@@ -53,7 +53,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [OpenConfCommand::doRun](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Command/OpenConfCommand.php#L24-L31)
+See the source code for method [OpenConfCommand::doRun](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Command/OpenConfCommand.php#L25-L32)
 
 
 See Also
@@ -61,5 +61,5 @@ See Also
 
 The [OpenConfCommand](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/OpenConfCommand.md) class.
 
-
+Next method: [getDescription](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/OpenConfCommand/getDescription.md)<br>
 

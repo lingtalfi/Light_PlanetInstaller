@@ -49,7 +49,7 @@ Returns string.
 
 Source Code
 ===========
-See the source code for method [HelpCommand::arg](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Command/HelpCommand.php#L117-L120)
+See the source code for method [HelpCommand::arg](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Command/HelpCommand.php#L118-L122)
 
 
 See Also
@@ -57,5 +57,5 @@ See Also
 
 The [HelpCommand](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/HelpCommand.md) class.
 
-Previous method: [opt](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/HelpCommand/opt.md)<br>
+Previous method: [flag](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/HelpCommand/flag.md)<br>
 

@@ -62,7 +62,7 @@ Exceptions thrown
 
 Source Code
 ===========
-See the source code for method [LpiGithubImporter::getDependencies](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Importer/LpiGithubImporter.php#L118-L124)
+See the source code for method [LpiGithubImporter::getDependencies](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Importer/LpiGithubImporter.php#L150-L156)
 
 
 See Also
@@ -70,5 +70,5 @@ See Also
 
 The [LpiGithubImporter](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Importer/LpiGithubImporter.md) class.
 
-Previous method: [getCurrentVersion](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Importer/LpiGithubImporter/getCurrentVersion.md)<br>Next method: [getAllVersions](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Importer/LpiGithubImporter/getAllVersions.md)<br>
+Previous method: [getCurrentVersion](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Importer/LpiGithubImporter/getCurrentVersion.md)<br>Next method: [getUniDependencies](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Importer/LpiGithubImporter/getUniDependencies.md)<br>
 

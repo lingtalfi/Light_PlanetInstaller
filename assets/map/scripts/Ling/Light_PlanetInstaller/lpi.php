@@ -7,11 +7,8 @@
 use Ling\CliTools\Input\CommandLineInput;
 use Ling\CliTools\Output\Output;
 use Ling\Light_PlanetInstaller\CliTools\Program\LightPlanetInstallerApplication;
-use Ling\Light_PlanetInstaller\Helper\LightPlanetInstallerHelper;
 
 require_once __DIR__ . "/../Light/app.init.inc.php";
-
-
 
 
 

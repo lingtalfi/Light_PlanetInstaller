@@ -98,4 +98,15 @@ class LpiGlobalDirRepository implements LpiRepositoryInterface
         }
     }
 
+    /**
+     * @implementation
+     */
+    public function getUniDependencies(string $planetDot, string $realVersion): array
+    {
+        list($galaxy, $planet) = PlanetTool::extractPlanetDotName($planetDot);
+        $dir = LpiGlobalDirHelper::getPlanetPath($galaxy, $planet, $realVersion);
+        return LpiHelper::uniDependenciesToPlanetDotList(DependencyTool::getDependencyList($dir));
+    }
+
+
 }

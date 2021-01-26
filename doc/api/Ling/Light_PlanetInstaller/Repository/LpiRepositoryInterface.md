@@ -4,7 +4,7 @@
 
 The LpiRepositoryInterface class
 ================
-2020-12-08 --> 2020-12-21
+2020-12-08 --> 2021-01-26
 
 
 
@@ -29,6 +29,7 @@ abstract class <span class="pl-k">LpiRepositoryInterface</span>  {
     - abstract public [getFirstVersionWithMinimumNumber](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Repository/LpiRepositoryInterface/getFirstVersionWithMinimumNumber.md)(string $planetDot, string $realVersion) : string | false
     - abstract public [copy](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Repository/LpiRepositoryInterface/copy.md)(string $planetDot, string $realVersion, string $dstDir, ?array &$warnings = []) : void
     - abstract public [getDependencies](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Repository/LpiRepositoryInterface/getDependencies.md)(string $planetDot, string $realVersion) : array
+    - abstract public [getUniDependencies](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Repository/LpiRepositoryInterface/getUniDependencies.md)(string $planetDot, string $realVersion) : array
 
 }
 
@@ -44,6 +45,7 @@ Methods
 - [LpiRepositoryInterface::getFirstVersionWithMinimumNumber](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Repository/LpiRepositoryInterface/getFirstVersionWithMinimumNumber.md) &ndash; Returns the real version number of the planet that is at least $realVersion, or false if not possible.
 - [LpiRepositoryInterface::copy](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Repository/LpiRepositoryInterface/copy.md) &ndash; Make a copy of the given planet so that the copy's path is $dstDir.
 - [LpiRepositoryInterface::getDependencies](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Repository/LpiRepositoryInterface/getDependencies.md) &ndash; Returns the array of dependencies for the given planet and version.
+- [LpiRepositoryInterface::getUniDependencies](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Repository/LpiRepositoryInterface/getUniDependencies.md) &ndash; Returns the array of dependencies, in the uni style.
 
 
 

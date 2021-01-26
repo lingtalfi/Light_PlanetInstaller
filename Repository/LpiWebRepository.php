@@ -78,4 +78,15 @@ class LpiWebRepository implements LpiRepositoryInterface
     }
 
 
+    /**
+     * @implementation
+     */
+    public function getUniDependencies(string $planetDot, string $realVersion): array
+    {
+        list($galaxy, $planet) = PlanetTool::extractPlanetDotName($planetDot);
+        $importer = LpiImporterHelper::getImporterByGalaxy($galaxy);
+        return $importer->getUniDependencies($galaxy . "/" . $planet);
+    }
+
+
 }

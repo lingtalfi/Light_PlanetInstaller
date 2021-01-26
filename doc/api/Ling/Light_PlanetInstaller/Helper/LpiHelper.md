@@ -4,7 +4,7 @@
 
 The LpiHelper class
 ================
-2020-12-08 --> 2020-12-21
+2020-12-08 --> 2021-01-26
 
 
 
@@ -30,6 +30,7 @@ class <span class="pl-k">LpiHelper</span>  {
     - public static [updateLpiDepsByPlanetDir](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiHelper/updateLpiDepsByPlanetDir.md)(string $planetDir) : void
     - public static [createLpiDepsFileByPlanetDir](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiHelper/createLpiDepsFileByPlanetDir.md)(string $planetDir, ?array $options = []) : void
     - public static [getLpiDepsByLocation](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiHelper/getLpiDepsByLocation.md)(string $location, string $version) : array
+    - public static [uniDependenciesToPlanetDotList](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiHelper/uniDependenciesToPlanetDotList.md)(array $uniDependencies) : array
 
 }
 
@@ -46,6 +47,7 @@ Methods
 - [LpiHelper::updateLpiDepsByPlanetDir](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiHelper/updateLpiDepsByPlanetDir.md) &ndash; Updates the lpi-deps file for the planet which dir is given.
 - [LpiHelper::createLpiDepsFileByPlanetDir](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiHelper/createLpiDepsFileByPlanetDir.md) &ndash; Creates the lpi-deps file for the given planetDir.
 - [LpiHelper::getLpiDepsByLocation](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiHelper/getLpiDepsByLocation.md) &ndash; Returns the dependencies for the given version, found in the lpi-deps.byml file which location is given.
+- [LpiHelper::uniDependenciesToPlanetDotList](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiHelper/uniDependenciesToPlanetDotList.md) &ndash; Creates a list of planetDot names out of the given uni dependencies.
 
 
 

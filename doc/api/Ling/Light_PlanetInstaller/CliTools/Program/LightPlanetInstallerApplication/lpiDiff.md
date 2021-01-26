@@ -58,7 +58,7 @@ Returns array.
 
 Source Code
 ===========
-See the source code for method [LightPlanetInstallerApplication::lpiDiff](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Program/LightPlanetInstallerApplication.php#L321-L394)
+See the source code for method [LightPlanetInstallerApplication::lpiDiff](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Program/LightPlanetInstallerApplication.php#L363-L446)
 
 
 See Also
@@ -66,5 +66,5 @@ See Also
 
 The [LightPlanetInstallerApplication](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Program/LightPlanetInstallerApplication.md) class.
 
-Previous method: [copyToGlobalDir](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Program/LightPlanetInstallerApplication/copyToGlobalDir.md)<br>Next method: [updateApplicationByLpiFile](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Program/LightPlanetInstallerApplication/updateApplicationByLpiFile.md)<br>
+Previous method: [copyToGlobalDir](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Program/LightPlanetInstallerApplication/copyToGlobalDir.md)<br>Next method: [updateApplicationByWishlist](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Program/LightPlanetInstallerApplication/updateApplicationByWishlist.md)<br>
 

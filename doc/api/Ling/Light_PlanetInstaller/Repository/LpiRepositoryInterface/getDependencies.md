@@ -57,7 +57,7 @@ Returns array.
 
 Source Code
 ===========
-See the source code for method [LpiRepositoryInterface::getDependencies](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Repository/LpiRepositoryInterface.php#L63-L63)
+See the source code for method [LpiRepositoryInterface::getDependencies](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Repository/LpiRepositoryInterface.php#L64-L64)
 
 
 See Also
@@ -65,5 +65,5 @@ See Also
 
 The [LpiRepositoryInterface](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Repository/LpiRepositoryInterface.md) class.
 
-Previous method: [copy](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Repository/LpiRepositoryInterface/copy.md)<br>
+Previous method: [copy](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Repository/LpiRepositoryInterface/copy.md)<br>Next method: [getUniDependencies](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Repository/LpiRepositoryInterface/getUniDependencies.md)<br>
 

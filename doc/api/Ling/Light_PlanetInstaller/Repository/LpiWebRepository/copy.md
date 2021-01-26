@@ -26,6 +26,7 @@ Make a copy of the given planet so that the copy's path is $dstDir.
 If the given planet doesn't exist, or something unexpected occurs, an exception will be thrown.
 
 The warnings array is filled when the method wants to warn the user of something.
+It's an array of strings.
 
 
 

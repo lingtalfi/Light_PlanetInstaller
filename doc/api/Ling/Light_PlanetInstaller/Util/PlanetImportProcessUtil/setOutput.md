@@ -49,7 +49,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [PlanetImportProcessUtil::setOutput](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/PlanetImportProcessUtil.php#L135-L138)
+See the source code for method [PlanetImportProcessUtil::setOutput](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/PlanetImportProcessUtil.php#L213-L216)
 
 
 See Also
@@ -57,5 +57,5 @@ See Also
 
 The [PlanetImportProcessUtil](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Util/PlanetImportProcessUtil.md) class.
 
-Previous method: [setContainer](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Util/PlanetImportProcessUtil/setContainer.md)<br>Next method: [setDevMode](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Util/PlanetImportProcessUtil/setDevMode.md)<br>
+Previous method: [setContainer](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Util/PlanetImportProcessUtil/setContainer.md)<br>Next method: [setLogLevels](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Util/PlanetImportProcessUtil/setLogLevels.md)<br>
 

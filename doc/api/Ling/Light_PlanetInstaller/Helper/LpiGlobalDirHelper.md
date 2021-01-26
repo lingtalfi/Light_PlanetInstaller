@@ -4,7 +4,7 @@
 
 The LpiGlobalDirHelper class
 ================
-2020-12-08 --> 2020-12-21
+2020-12-08 --> 2021-01-26
 
 
 
@@ -60,4 +60,4 @@ See the source code of [Ling\Light_PlanetInstaller\Helper\LpiGlobalDirHelper](ht
 
 SeeAlso
 ==============
-Previous class: [LpiConfHelper](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiConfHelper.md)<br>Next class: [LpiHelper](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiHelper.md)<br>
+Previous class: [LpiFormatHelper](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiFormatHelper.md)<br>Next class: [LpiHelper](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiHelper.md)<br>

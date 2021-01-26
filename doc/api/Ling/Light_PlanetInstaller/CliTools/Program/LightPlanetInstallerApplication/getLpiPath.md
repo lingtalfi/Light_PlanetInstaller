@@ -52,7 +52,7 @@ Returns string.
 
 Source Code
 ===========
-See the source code for method [LightPlanetInstallerApplication::getLpiPath](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Program/LightPlanetInstallerApplication.php#L266-L273)
+See the source code for method [LightPlanetInstallerApplication::getLpiPath](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Program/LightPlanetInstallerApplication.php#L287-L294)
 
 
 See Also

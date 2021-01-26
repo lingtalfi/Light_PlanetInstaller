@@ -53,7 +53,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [ImportCommand::doRun](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Command/ImportCommand.php#L22-L57)
+See the source code for method [ImportCommand::doRun](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Command/ImportCommand.php#L39-L81)
 
 
 See Also
@@ -61,5 +61,5 @@ See Also
 
 The [ImportCommand](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/ImportCommand.md) class.
 
-
+Previous method: [__construct](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/ImportCommand/__construct.md)<br>Next method: [getDescription](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/ImportCommand/getDescription.md)<br>
 

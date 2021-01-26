@@ -5,7 +5,7 @@ namespace Ling\Light_PlanetInstaller\Helper;
 
 use Ling\BabyYaml\BabyYamlUtil;
 use Ling\Bat\FileSystemTool;
-use Ling\Light_PlanetInstaller\Exception\LightPlanetInstallerException;
+use Ling\Light_PlanetInstaller\Exception\LpiIncompatibleException;
 use Ling\LingTalfi\Exception\LingTalfiException;
 use Ling\LingTalfi\GranularDependency\GranularDependencyUtil;
 use Ling\UniverseTools\DependencyTool;
@@ -180,7 +180,7 @@ class LpiHelper
     {
         $content = file_get_contents($location);
         if (false === $content) {
-            throw new LightPlanetInstallerException("The lpi-deps.byml file was not found at \"$location\".");
+            throw new LpiIncompatibleException("The lpi-deps.byml file was not found at \"$location\".");
         }
         $deps = BabyYamlUtil::readBabyYamlString($content);
 
@@ -198,8 +198,26 @@ class LpiHelper
             }
             return $ret;
         } else {
-            throw new LightPlanetInstallerException("Version $version not found in the lpi-deps.byml file (at \"$location\").");
+            throw new LpiIncompatibleException("Version $version not found in the lpi-deps.byml file (at \"$location\").");
         }
     }
 
+
+    /**
+     * Creates a list of planetDot names out of the given uni dependencies.
+     *
+     *
+     * @param array $uniDependencies
+     * @return array
+     */
+    public static function uniDependenciesToPlanetDotList(array $uniDependencies): array
+    {
+        $ret = [];
+        foreach ($uniDependencies as $item) {
+            list($galaxyId, $packageImportName) = $item;
+            // assuming for now that all packageImportNames are planet names (i.e. not urls).
+            $ret[] = $galaxyId . "." . $packageImportName;
+        }
+        return $ret;
+    }
 }

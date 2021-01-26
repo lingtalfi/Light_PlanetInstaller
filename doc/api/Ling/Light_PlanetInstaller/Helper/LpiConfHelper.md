@@ -4,7 +4,7 @@
 
 The LpiConfHelper class
 ================
-2020-12-08 --> 2020-12-21
+2020-12-08 --> 2021-01-26
 
 
 
@@ -62,4 +62,4 @@ See the source code of [Ling\Light_PlanetInstaller\Helper\LpiConfHelper](https:/
 
 SeeAlso
 ==============
-Previous class: [LightPlanetInstallerException](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Exception/LightPlanetInstallerException.md)<br>Next class: [LpiGlobalDirHelper](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiGlobalDirHelper.md)<br>
+Previous class: [LpiIncompatibleException](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Exception/LpiIncompatibleException.md)<br>Next class: [LpiFormatHelper](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiFormatHelper.md)<br>

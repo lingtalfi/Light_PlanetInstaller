@@ -4,7 +4,7 @@
 
 The LpiWebRepository class
 ================
-2020-12-08 --> 2020-12-21
+2020-12-08 --> 2021-01-26
 
 
 
@@ -29,6 +29,7 @@ class <span class="pl-k">LpiWebRepository</span> implements [LpiRepositoryInterf
     - public [getFirstVersionWithMinimumNumber](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Repository/LpiWebRepository/getFirstVersionWithMinimumNumber.md)(string $planetDot, string $realVersion) : string | false
     - public [copy](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Repository/LpiWebRepository/copy.md)(string $planetDot, string $realVersion, string $dstDir, ?array &$warnings = []) : void
     - public [getDependencies](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Repository/LpiWebRepository/getDependencies.md)(string $planetDot, string $realVersion) : array
+    - public [getUniDependencies](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Repository/LpiWebRepository/getUniDependencies.md)(string $planetDot, string $realVersion) : array
 
 }
 
@@ -44,6 +45,7 @@ Methods
 - [LpiWebRepository::getFirstVersionWithMinimumNumber](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Repository/LpiWebRepository/getFirstVersionWithMinimumNumber.md) &ndash; Returns the real version number of the planet that is at least $realVersion, or false if not possible.
 - [LpiWebRepository::copy](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Repository/LpiWebRepository/copy.md) &ndash; Make a copy of the given planet so that the copy's path is $dstDir.
 - [LpiWebRepository::getDependencies](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Repository/LpiWebRepository/getDependencies.md) &ndash; Returns the array of dependencies for the given planet and version.
+- [LpiWebRepository::getUniDependencies](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Repository/LpiWebRepository/getUniDependencies.md) &ndash; Returns the array of dependencies, in the uni style.
 
 
 

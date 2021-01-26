@@ -49,7 +49,7 @@ Returns bool.
 
 Source Code
 ===========
-See the source code for method [LpiVersionHelper::isPlus](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Helper/LpiVersionHelper.php#L148-L151)
+See the source code for method [LpiVersionHelper::isPlus](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Helper/LpiVersionHelper.php#L236-L239)
 
 
 See Also
@@ -57,5 +57,5 @@ See Also
 
 The [LpiVersionHelper](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiVersionHelper.md) class.
 
-Previous method: [getFirstMatchingVersionByRepository](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiVersionHelper/getFirstMatchingVersionByRepository.md)<br>Next method: [removePlus](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiVersionHelper/removePlus.md)<br>
+Previous method: [getFirstMatchingVersionByRepository](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiVersionHelper/getFirstMatchingVersionByRepository.md)<br>Next method: [isMinus](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiVersionHelper/isMinus.md)<br>
 

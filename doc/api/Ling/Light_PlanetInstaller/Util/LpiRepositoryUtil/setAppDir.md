@@ -49,7 +49,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [LpiRepositoryUtil::setAppDir](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/LpiRepositoryUtil.php#L63-L66)
+See the source code for method [LpiRepositoryUtil::setAppDir](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/LpiRepositoryUtil.php#L78-L81)
 
 
 See Also
@@ -57,5 +57,5 @@ See Also
 
 The [LpiRepositoryUtil](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Util/LpiRepositoryUtil.md) class.
 
-Previous method: [__construct](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Util/LpiRepositoryUtil/__construct.md)<br>Next method: [getFirstMatchingInfo](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Util/LpiRepositoryUtil/getFirstMatchingInfo.md)<br>
+Previous method: [__construct](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Util/LpiRepositoryUtil/__construct.md)<br>Next method: [setBuildDir](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Util/LpiRepositoryUtil/setBuildDir.md)<br>
 

@@ -4,22 +4,33 @@
 namespace Ling\Light_PlanetInstaller\CliTools\Command;
 
 use Exception;
+use Ling\Bat\CaseTool;
+use Ling\Bat\ClassTool;
 use Ling\CliTools\Command\CommandInterface;
 use Ling\CliTools\Input\InputInterface;
 use Ling\CliTools\Output\OutputInterface;
+use Ling\Light\ServiceContainer\LightServiceContainerAwareInterface;
+use Ling\Light\ServiceContainer\LightServiceContainerInterface;
+use Ling\Light_Cli\CliTools\Program\LightCliCommandInterface;
 use Ling\Light_PlanetInstaller\CliTools\Program\LightPlanetInstallerApplication;
 
 /**
  * The LightPlanetInstallerBaseCommand class.
  */
-abstract class LightPlanetInstallerBaseCommand implements CommandInterface
+abstract class LightPlanetInstallerBaseCommand implements CommandInterface, LightCliCommandInterface, LightServiceContainerAwareInterface
 {
 
     /**
-     * This property holds the KaosApplication instance.
+     * This property holds the LightPlanetInstallerApplication instance.
      * @var LightPlanetInstallerApplication
      */
     protected $application;
+
+    /**
+     * This property holds the container for this instance.
+     * @var LightServiceContainerInterface
+     */
+    protected $container;
 
 
     /**
@@ -28,6 +39,7 @@ abstract class LightPlanetInstallerBaseCommand implements CommandInterface
     public function __construct()
     {
         $this->application = null;
+        $this->container = null;
     }
 
 
@@ -40,6 +52,23 @@ abstract class LightPlanetInstallerBaseCommand implements CommandInterface
     abstract protected function doRun(InputInterface $input, OutputInterface $output);
 
 
+    //--------------------------------------------
+    // LightServiceContainerAwareInterface
+    //--------------------------------------------
+    /**
+     * @implementation
+     */
+    public function setContainer(LightServiceContainerInterface $container)
+    {
+        $this->container = $container;
+    }
+
+
+
+
+    //--------------------------------------------
+    // CommandInterface
+    //--------------------------------------------
     /**
      * @implementation
      */
@@ -51,6 +80,59 @@ abstract class LightPlanetInstallerBaseCommand implements CommandInterface
         } catch (\Exception $e) {
             $this->application->logError($e);
         }
+    }
+
+
+    //--------------------------------------------
+    // LightCliCommandInterface
+    //--------------------------------------------
+    /**
+     * @implementation
+     */
+    public function getName(): string
+    {
+        $className = substr(ClassTool::getShortName($this), 0, -7); // remove the Command suffix
+        return CaseTool::toUnderscoreLow($className);
+    }
+
+    /**
+     * @implementation
+     */
+    public function getDescription(): string
+    {
+        return "some description";
+    }
+
+    /**
+     * @implementation
+     */
+    public function getAliases(): array
+    {
+        return [];
+    }
+
+    /**
+     * @implementation
+     */
+    public function getFlags(): array
+    {
+        return [];
+    }
+
+    /**
+     * @implementation
+     */
+    public function getOptions(): array
+    {
+        return [];
+    }
+
+    /**
+     * @implementation
+     */
+    public function getParameters(): array
+    {
+        return [];
     }
 
 
@@ -66,53 +148,6 @@ abstract class LightPlanetInstallerBaseCommand implements CommandInterface
 
 
     /**
-     * Proxy to the application's hasLpiFile method.
-     * @param array $options
-     * @return bool
-     */
-    public function hasLpiFile(array $options = []): bool
-    {
-        return $this->application->hasLpiFile($options);
-    }
-
-
-    /**
-     * Proxy to the application's createLpiFile method.
-     */
-    public function createLpiFile()
-    {
-        $this->application->createLpiFile();
-    }
-
-    /**
-     * Proxy to the application's getLpiPath method.
-     */
-    public function getLpiPath(): string
-    {
-        return $this->application->getLpiPath();
-    }
-
-
-    /**
-     * Proxy to the application's getUniversePath method.
-     */
-    public function getUniversePath(): string
-    {
-        return $this->application->getUniversePath();
-    }
-
-
-    /**
-     * Proxy to the application's updateApplicationByLpiFile method.
-     *
-     * @param array $options
-     */
-    public function updateApplicationByLpiFile(array $options)
-    {
-        $this->application->updateApplicationByLpiFile($options);
-    }
-
-    /**
      * Proxy to the application's logError method.
      * @param string|Exception $error
      *
@@ -122,20 +157,5 @@ abstract class LightPlanetInstallerBaseCommand implements CommandInterface
         $this->application->logError($error);
     }
 
-
-    /**
-     * Proxy to the application's getBashtmlFormat method.
-     *
-     *
-     * @param $type string
-     * @throws \Exception
-     * @return string
-     *
-     */
-    protected function getBashtmlFormat(string $type): string
-    {
-        return $this->application->getBashtmlFormat($type);
-
-    }
 
 }

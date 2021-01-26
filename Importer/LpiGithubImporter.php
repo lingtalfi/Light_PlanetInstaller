@@ -9,6 +9,7 @@ use Ling\Bat\HttpTool;
 use Ling\Bat\OsTool;
 use Ling\Light_PlanetInstaller\Exception\LightPlanetInstallerException;
 use Ling\Light_PlanetInstaller\Helper\LpiHelper;
+use Ling\UniverseTools\DependencyTool;
 use Ling\UniverseTools\MetaInfoTool;
 use Ling\UniverseTools\PlanetTool;
 
@@ -67,7 +68,34 @@ class LpiGithubImporter extends LpiBaseImporter
 
 
                 if (true === $result) {
-                    $warnings[] = implode(PHP_EOL, $outputLines);
+
+
+                    $ignoreWarning = false;
+
+
+                    $suppressDetachedHeadWarning = true;
+                    if (true === $suppressDetachedHeadWarning) {
+                        // annoying warnings, suppress them from here.
+                        $line0 = $outputLines[0] ?? null;
+                        $line1 = $outputLines[1] ?? null;
+                        $line3 = $outputLines[3] ?? null;
+
+                        if (
+                            0 === strpos($line0, 'Cloning into') &&
+                            0 === strpos($line1, 'Note: checking out') &&
+                            "You are in 'detached HEAD' state. You can look around, make experimental" === $line3
+                        ) {
+                            $ignoreWarning = true;
+                        }
+
+
+                    }
+
+
+                    if (false === $ignoreWarning) {
+                        $warnings[] = implode(PHP_EOL, $outputLines);
+                    }
+
                 } else {
                     // unknown or bad error
                     throw new LightPlanetInstallerException(implode(PHP_EOL, $outputLines));
@@ -109,7 +137,11 @@ class LpiGithubImporter extends LpiBaseImporter
         $account = $this->getConfigValue("account");
         list($galaxy, $planet) = PlanetTool::extractPlanetId($planetIdentifier);
         $rawMetaInfoUrl = "https://raw.githubusercontent.com/$account/$planet/master/meta-info.byml";
-        return MetaInfoTool::getVersionByUrl($rawMetaInfoUrl);
+        $version = MetaInfoTool::getVersionByUrl($rawMetaInfoUrl);
+        if (null === $version) {
+            throw new LightPlanetInstallerException("Version not found for planet $planetIdentifier, are you sure it exists?");
+        }
+        return $version;
     }
 
     /**
@@ -121,6 +153,17 @@ class LpiGithubImporter extends LpiBaseImporter
         list($galaxy, $planet) = PlanetTool::extractPlanetId($planetIdentifier);
         $url = "https://raw.githubusercontent.com/$account/$planet/master/lpi-deps.byml";
         return LpiHelper::getLpiDepsByLocation($url, $version);
+    }
+
+    /**
+     * @implementation
+     */
+    public function getUniDependencies(string $planetIdentifier): array
+    {
+        $account = $this->getConfigValue("account");
+        list($galaxy, $planet) = PlanetTool::extractPlanetId($planetIdentifier);
+        $url = "https://raw.githubusercontent.com/$account/$planet/master/dependencies.byml";
+        return LpiHelper::uniDependenciesToPlanetDotList(DependencyTool::getDependencyListByFile($url));
     }
 
 

@@ -61,5 +61,5 @@ See Also
 
 The [ListCommand](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/ListCommand.md) class.
 
-
+Next method: [getDescription](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/ListCommand/getDescription.md)<br>
 

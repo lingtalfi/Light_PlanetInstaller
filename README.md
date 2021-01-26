@@ -1,10 +1,6 @@
 Light_PlanetInstaller
 ===========
-2020-12-08 -> 2020-12-21
-
-
-
-Work in progress, don't use yet...
+2020-12-08 -> 2021-01-26
 
 
 
@@ -70,6 +66,10 @@ planet_installer:
 History Log
 =============
 
+- 1.0.0 -- 2021-01-26
+
+    - first version
+  
 - 0.0.1 -- 2020-12-08
 
     - initial commit

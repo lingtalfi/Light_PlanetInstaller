@@ -9,9 +9,9 @@ use Ling\Bat\FileSystemTool;
 use Ling\CliTools\Command\CommandInterface;
 use Ling\CliTools\Input\InputInterface;
 use Ling\CliTools\Output\OutputInterface;
-use Ling\CliTools\Program\Application;
 use Ling\CliTools\Util\LoaderUtil;
-use Ling\Light\ServiceContainer\LightServiceContainerInterface;
+use Ling\Light\ServiceContainer\LightServiceContainerAwareInterface;
+use Ling\Light_Cli\CliTools\Program\LightCliBaseApplication;
 use Ling\Light_Logger\LightLoggerService;
 use Ling\Light_PlanetInstaller\CliTools\Command\LightPlanetInstallerBaseCommand;
 use Ling\Light_PlanetInstaller\Exception\LightPlanetInstallerException;
@@ -40,7 +40,7 @@ use Ling\UniverseTools\PlanetTool;
  *
  *
  */
-class LightPlanetInstallerApplication extends Application
+class LightPlanetInstallerApplication extends LightCliBaseApplication
 {
 
 
@@ -58,13 +58,6 @@ class LightPlanetInstallerApplication extends Application
      * @var OutputInterface
      */
     protected $currentOutput;
-
-
-    /**
-     * This property holds the container for this instance.
-     * @var LightServiceContainerInterface
-     */
-    protected $container;
 
 
     /**
@@ -90,7 +83,6 @@ class LightPlanetInstallerApplication extends Application
     {
         parent::__construct();
 
-        $this->container = null;
         $this->currentOutput = null;
         $this->currentDirectory = getcwd();
 
@@ -99,15 +91,32 @@ class LightPlanetInstallerApplication extends Application
 
         $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\HelpCommand", "help");
         $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\ImportCommand", "import");
-        $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\OpenDirCommand", "dir");
+        $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\InstallCommand", "install");
         $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\OpenConfCommand", "conf");
-        $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\OpenMasterCommand", "master");
         $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\ListCommand", "list");
-        $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\InitCommand", "init");
+        $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\BuildCommand", "build");
+        $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\ReImportAppPlanetsCommand", "reimport");
+        $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\RemoveCommand", "remove");
+        $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\UninstallCommand", "uninstall");
 
 
         $this->notFoundPlanets = [];
     }
+
+
+
+    //--------------------------------------------
+    // LightCliBaseApplication
+    //--------------------------------------------
+    /**
+     * @implementation
+     */
+    public function getAppId(): string
+    {
+        return 'lpi';
+    }
+
+
 
 
 
@@ -131,51 +140,6 @@ class LightPlanetInstallerApplication extends Application
     //--------------------------------------------
     //
     //--------------------------------------------
-    /**
-     * Returns the @page(bashtml) format to use for the given element type.
-     *
-     *
-     * @param string $type
-     * @return string
-     * @throws Exception
-     */
-    public function getBashtmlFormat(string $type): string
-    {
-        $tint = 'blue';
-        switch ($type) {
-            case "planet":
-            case "file":
-                return $tint;
-            case "number":
-            case "counterPrefix":
-                return 'b:' . $tint;
-            case "command":
-                return 'b';
-            case "error":
-                return 'error';
-            default:
-                $this->error("Unknown format type $type.");
-                break;
-        }
-    }
-
-
-
-
-    //--------------------------------------------
-    //
-    //--------------------------------------------
-    /**
-     * Sets the container.
-     *
-     * @param LightServiceContainerInterface $container
-     */
-    public function setContainer(LightServiceContainerInterface $container)
-    {
-        $this->container = $container;
-    }
-
-
     /**
      * Returns whether there is a lpi file in the current application.
      * This command assumes that the user is located at the root of the application.
@@ -206,18 +170,76 @@ class LightPlanetInstallerApplication extends Application
 
 
     /**
+     * Adds/replaces the planets of the given list to the lpi file.
+     * The given planet list is an array of planetDotName => versionExpr.
+     *
+     * Sorts the planet alphabetically.
+     *
+     *
+     * @param array $planetList
+     */
+    public function addPlanetListToLpiFile(array $planetList)
+    {
+        $lpiFile = $this->getLpiPath();
+        $arr = [];
+        if (true === file_exists($lpiFile)) {
+            $arr = BabyYamlUtil::readFile($lpiFile);
+            $planetItems = $arr['planets'] ?? [];
+            $planetItems = array_merge($planetItems, $planetList);
+            $arr['planets'] = $planetItems;
+        } else {
+            $arr['planets'] = $planetList;
+        }
+
+
+        // sort the planets
+        $planetItems = $arr['planets'];
+        ksort($planetItems);
+        $arr['planets'] = $planetItems;
+
+        BabyYamlUtil::writeFile($arr, $lpiFile);
+    }
+
+
+    /**
+     * Removes a planet from the lpi file.
+     * @param string $planetDotName
+     */
+    public function removePlanetFromLpiFile(string $planetDotName)
+    {
+        $lpiFile = $this->getLpiPath();
+        if (true === file_exists($lpiFile)) {
+            $arr = BabyYamlUtil::readFile($lpiFile);
+            $planetItems = $arr['planets'] ?? [];
+            if (true === array_key_exists($planetDotName, $planetItems)) {
+                unset($planetItems[$planetDotName]);
+                $arr['planets'] = $planetItems;
+                BabyYamlUtil::writeFile($arr, $lpiFile);
+            }
+        }
+    }
+
+    /**
      * Creates the lpi file for this application if it doesn't exist yet.
-     * If the file already exists, it will do nothing.
+     * If the file already exists, it will do nothing by default.
      *
      * This command assumes that the user is located at the root of the application.
+     *
+     * Available options are:
+     * - skipIfExist: bool=true. If false, the file will be updated if it exists. If true (by default) the file is ignored.
+     *
+     *
+     * @param array $options
      */
-    public function createLpiFile()
+    public function createLpiFile(array $options = [])
     {
+
+        $skipIfExist = $options['skipIfExist'] ?? true;
 
 
         $lpiFile = $this->getLpiPath();
 
-        if (false === file_exists($lpiFile)) {
+        if (false === $skipIfExist || false === file_exists($lpiFile)) {
 
 
             $planetsInfo = $this->getPlanetsInfo();
@@ -238,7 +260,6 @@ class LightPlanetInstallerApplication extends Application
 
                 list($planetPath, $galaxy, $planet, $version) = $planetInfo;
                 $planetItems[$galaxy . "." . $planet] = $version . "+";
-                $this->copyToGlobalDir($planetPath, $galaxy, $planet, $version);
                 $loader->incrementBy(1);
             }
 
@@ -280,6 +301,27 @@ class LightPlanetInstallerApplication extends Application
     public function getUniversePath(): string
     {
         return $this->currentDirectory . "/universe";
+    }
+
+    /**
+     * Returns the currentDirectory of this instance.
+     *
+     * @return string
+     */
+    public function getCurrentDirectory()
+    {
+        return $this->currentDirectory;
+    }
+
+
+    /**
+     * Returns the application directory, which should be the current directory.
+     *
+     * @return string
+     */
+    public function getApplicationDirectory()
+    {
+        return $this->getCurrentDirectory();
     }
 
 
@@ -365,12 +407,22 @@ class LightPlanetInstallerApplication extends Application
                     default:
 
                         if (true === LpiVersionHelper::isPlus($versionExpr)) {
-                            $desiredMinVersion = LpiVersionHelper::removePlus($versionExpr);
+                            $desiredMinVersion = LpiVersionHelper::removeModifierSymbol($versionExpr);
                             if ($desiredMinVersion > $planetCurrentVersion) {
                                 $addToDiff = true;
                             } else {
                                 /**
-                                 * The planet in the current app has already a bigger version number, so it's ok we do nothing
+                                 * The planet in the current app has already a bigger or equal version number, so it's ok we do nothing
+                                 */
+                            }
+
+                        } elseif (true === LpiVersionHelper::isMinus($versionExpr)) {
+                            $desiredMaxVersion = LpiVersionHelper::removeModifierSymbol($versionExpr);
+                            if ($desiredMaxVersion < $planetCurrentVersion) {
+                                $addToDiff = true;
+                            } else {
+                                /**
+                                 * The planet in the current app has already a lower or equal version number, so it's ok we do nothing
                                  */
                             }
 
@@ -395,21 +447,33 @@ class LightPlanetInstallerApplication extends Application
 
 
     /**
-     * Updates the application planets using the lpi file as a reference.
+     * Updates the application planets using the lpi file as a reference, and fills the virtualBin array.
      *
      * Available options are:
      * - mode: string(import|install)=import. Whether to use import or install for each planet.
      * - appDir: string|null = null, the target application directory where to import/install the plugin(s).
      *      If null, the current directory will be used (assuming the user called this command from the target app's root dir).
-     *
+     * - keepBuild: bool=false, whether to remove the build dir after the process is successfully executed.
+     *      Beware that setting this to true can cause problems can interfere with the execution of the script, use
+     *      this only if you know what you are doing.
+     * - useDebug: bool=false. If true, all log levels are displayed to the screen.
+     * - source: mixed. The source to use as the wishlist. Can be either the keyword "lpi", or a string representing the planetDefinition.
+     *      The planetDefinition is: $planetDotName(:$versionExpr=last)?
      *
      *
      * @param array $options
+     * @param array $virtualBin
      */
-    public function updateApplicationByLpiFile(array $options = [])
+    public function updateApplicationByWishlist(array $options = [], array &$virtualBin = [])
     {
+        $source = $options['source'] ?? 'lpi';
         $mode = $options['mode'] ?? 'import';
         $appDir = $options['appDir'] ?? null;
+        $bernoni = $options['bernoni'] ?? 'auto';
+        $keepBuild = $options['keepBuild'] ?? false;
+        $useDebug = $options['useDebug'] ?? false;
+
+
         if (null === $appDir) {
             $appDir = $this->currentDirectory;
         }
@@ -417,50 +481,46 @@ class LightPlanetInstallerApplication extends Application
         $this->useNotFoundPlanets();
         $output = $this->currentOutput;
 
-
-        if ('import' === $mode) {
-
-
-            $lpiDiff = $this->lpiDiff([
+        //--------------------------------------------
+        // DEFINING THE WISHLIST
+        //--------------------------------------------
+        if ('lpi' === $source) {
+            $wishlist = $this->lpiDiff([
                 "appDir" => $appDir,
             ]);
-
-
-
-
-            $u = new PlanetImportProcessUtil();
-
-//            $u->setDevMode(true);
-//            $u->setForceMode(true);
-
-            $u->setContainer($this->container);
-            $u->setOutput($output);
-
-
-            foreach ($lpiDiff as $planetDot => $versionExpr) {
-                $u->importTo($planetDot, $versionExpr, $appDir);
-            }
-
-            /**
-             *
-             * todo: doesn't work declared lpi files not installed in target app
-             * todo: doesn't work declared lpi files not installed in target app
-             * todo: doesn't work declared lpi files not installed in target app
-             * todo: doesn't work declared lpi files not installed in target app
-             * todo: doesn't work declared lpi files not installed in target app
-             *
-             * todo: here, what's difference betweeb problems and warning?
-             * todo: here, what's difference betweeb problems and warning?
-             * todo: here, what's difference betweeb problems and warning?
-             * todo: here, what's difference betweeb problems and warning?
-             * todo: here, what's difference betweeb problems and warning?
-             */
-            a($u->getProblems());
-
-
         } else {
-            $this->error("Unknown mode \"$mode\".");
+
+            $updateLpiFile = true;
+            $planetDefinition = $source;
+            $p = explode(':', $planetDefinition, 2);
+            if (1 === count($p)) {
+                $planetDotName = $p[0];
+                $versionExpr = 'last';
+            } else {
+                list($planetDotName, $versionExpr) = $p;
+            }
+            $wishlist = [
+                $planetDotName => $versionExpr,
+            ];
         }
+
+
+        //--------------------------------------------
+        // EXECUTING THE OPERATION
+        //--------------------------------------------
+        $u = new PlanetImportProcessUtil();
+        if (true === $useDebug) {
+            $u->setLogLevels(['debug', 'trace', 'info', 'warning', 'error']);
+        }
+        $u->setContainer($this->container);
+        $u->setOutput($output);
+        $u->updateApplicationByWishList($appDir, $wishlist, [
+            'bernoniMode' => $bernoni,
+            'keepBuild' => $keepBuild,
+            'operationMode' => $mode,
+        ]);
+        $virtualBin = $u->getVirtualBin();
+
     }
 
 
@@ -507,6 +567,9 @@ class LightPlanetInstallerApplication extends Application
      */
     protected function onCommandInstantiated(CommandInterface $command)
     {
+        if ($command instanceof LightServiceContainerAwareInterface) {
+            $command->setContainer($this->container);
+        }
         if ($command instanceof LightPlanetInstallerBaseCommand) {
             $command->setApplication($this);
         } else {
@@ -609,7 +672,7 @@ class LightPlanetInstallerApplication extends Application
             'appDir' => $appDir,
         ]);
         if (false === file_exists($lpiFile)) {
-            $this->error("Lpi file not found: $lpiFile.");
+            return [];
         }
 
         $arr = BabyYamlUtil::readFile($lpiFile);
@@ -663,7 +726,7 @@ class LightPlanetInstallerApplication extends Application
     {
         if ($this->notFoundPlanets) {
             $output = $this->currentOutput;
-            $f1 = $this->getBashtmlFormat('error');
+            $f1 = 'error';
 
 
             $output->write("<$f1>The following planets were not found:</$f1>" . PHP_EOL);

@@ -16,7 +16,7 @@ Description
 ================
 
 
-public [LpiRepositoryUtil::getFirstMatchingInfo](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Util/LpiRepositoryUtil/getFirstMatchingInfo.md)(string $planetDot, string $versionExpression) : array | false
+public [LpiRepositoryUtil::getFirstMatchingInfo](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Util/LpiRepositoryUtil/getFirstMatchingInfo.md)(string $planetDot, string $versionExpression, ?array $options = []) : array | false
 
 
 
@@ -36,6 +36,10 @@ This method tries the following techniques in order:
 - try from the web repository
 
 
+Available options are:
+- skipApp: bool=false. If true, the app repository won't be searched in.
+
+
 
 
 Parameters
@@ -47,6 +51,10 @@ Parameters
     
 
 - versionExpression
+
+    
+
+- options
 
     
 
@@ -65,7 +73,7 @@ Returns array | false.
 
 Source Code
 ===========
-See the source code for method [LpiRepositoryUtil::getFirstMatchingInfo](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/LpiRepositoryUtil.php#L90-L131)
+See the source code for method [LpiRepositoryUtil::getFirstMatchingInfo](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/LpiRepositoryUtil.php#L121-L181)
 
 
 See Also
@@ -73,5 +81,5 @@ See Also
 
 The [LpiRepositoryUtil](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Util/LpiRepositoryUtil.md) class.
 
-Previous method: [setAppDir](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Util/LpiRepositoryUtil/setAppDir.md)<br>Next method: [getAppRepository](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Util/LpiRepositoryUtil/getAppRepository.md)<br>
+Previous method: [setBuildDir](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Util/LpiRepositoryUtil/setBuildDir.md)<br>Next method: [getAppRepository](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Util/LpiRepositoryUtil/getAppRepository.md)<br>
 

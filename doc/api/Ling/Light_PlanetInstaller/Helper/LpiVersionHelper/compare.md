@@ -7,7 +7,7 @@ LpiVersionHelper::compare
 
 
 
-LpiVersionHelper::compare — Returns whether version is strictly greater than version 2.
+LpiVersionHelper::compare — Returns whether version 1 is strictly greater than version 2.
 
 
 
@@ -21,7 +21,7 @@ public static [LpiVersionHelper::compare](https://github.com/lingtalfi/Light_Pla
 
 
 
-Returns whether version is strictly greater than version 2.
+Returns whether version 1 is strictly greater than version 2.
 If orEqual flag is true, returns whether v1 is greater or equal to v2.
 
 
@@ -58,7 +58,7 @@ Returns bool.
 
 Source Code
 ===========
-See the source code for method [LpiVersionHelper::compare](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Helper/LpiVersionHelper.php#L52-L98)
+See the source code for method [LpiVersionHelper::compare](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Helper/LpiVersionHelper.php#L179-L186)
 
 
 See Also
@@ -66,5 +66,5 @@ See Also
 
 The [LpiVersionHelper](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiVersionHelper.md) class.
 
-Previous method: [versionMatchesVersionExpression](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiVersionHelper/versionMatchesVersionExpression.md)<br>Next method: [getFirstMatchingVersionByRepository](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiVersionHelper/getFirstMatchingVersionByRepository.md)<br>
+Previous method: [shouldBeReplaced](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiVersionHelper/shouldBeReplaced.md)<br>Next method: [getFirstMatchingVersionByRepository](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiVersionHelper/getFirstMatchingVersionByRepository.md)<br>
 

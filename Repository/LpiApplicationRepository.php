@@ -96,7 +96,16 @@ class LpiApplicationRepository implements LpiRepositoryInterface
      */
     public function getDependencies(string $planetDot, string $realVersion): array
     {
-        // TODO: Implement getDependencies() method.
+        throw new LightPlanetInstallerException("Are you sure you want to call the getDependencies method?");
+    }
+
+
+    /**
+     * @implementation
+     */
+    public function getUniDependencies(string $planetDot, string $realVersion): array
+    {
+        throw new LightPlanetInstallerException("Are you sure you want to call the getUniDependencies method?");
     }
 
 

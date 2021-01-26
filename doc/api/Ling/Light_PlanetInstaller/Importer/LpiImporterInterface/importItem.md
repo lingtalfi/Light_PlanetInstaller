@@ -35,7 +35,7 @@ become a directory located at $dstDir.
 An exception is thrown if the method fails.
 
 The warnings array is filled by this method if a warning should be displayed to the user, but the method can still be
-executed successfully.
+executed successfully. It's an array of strings.
 
 
 

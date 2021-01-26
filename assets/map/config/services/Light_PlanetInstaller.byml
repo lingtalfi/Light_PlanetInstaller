@@ -7,5 +7,17 @@ planet_installer:
             options: []
 
 
+# --------------------------------------
+# hooks
+# --------------------------------------
+$cli.methods_collection:
+    -
+        method: registerCliApp
+        args:
+            appId: lpi
+            app:
+                instance: Ling\Light_PlanetInstaller\CliTools\Program\LightPlanetInstallerApplication
+
+
 
 

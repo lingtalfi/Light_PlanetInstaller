@@ -56,7 +56,7 @@ Returns array.
 
 Source Code
 ===========
-See the source code for method [LightPlanetInstallerApplication::getPlanetsInfoFromLpi](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Program/LightPlanetInstallerApplication.php#L600-L617)
+See the source code for method [LightPlanetInstallerApplication::getPlanetsInfoFromLpi](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Program/LightPlanetInstallerApplication.php#L663-L680)
 
 
 See Also

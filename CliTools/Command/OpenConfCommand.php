@@ -8,6 +8,7 @@ use Ling\Bat\ConsoleTool;
 use Ling\CliTools\Input\InputInterface;
 use Ling\CliTools\Output\OutputInterface;
 use Ling\Light_PlanetInstaller\Helper\LpiConfHelper;
+use Ling\Light_PlanetInstaller\Helper\LpiFormatHelper;
 
 
 /**
@@ -29,4 +30,27 @@ class OpenConfCommand extends LightPlanetInstallerBaseCommand
         ConsoleTool::exec('open "' . str_replace('"', '\"', $path) . '"');
 
     }
+
+
+    /**
+     * @overrides
+     */
+    public function getDescription(): string
+    {
+
+        $concept = LpiFormatHelper::getConceptFmt();
+        $cmd = LpiFormatHelper::getCommandFmt();
+
+        return "Opens the <$concept>global configuration file</$concept> using macos <$cmd>open</$cmd> command.";
+    }
+
+    /**
+     * @overrides
+     */
+    public function getName(): string
+    {
+        return "conf";
+    }
+
+
 }

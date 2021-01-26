@@ -33,7 +33,7 @@ interface LpiImporterInterface
      * An exception is thrown if the method fails.
      *
      * The warnings array is filled by this method if a warning should be displayed to the user, but the method can still be
-     * executed successfully.
+     * executed successfully. It's an array of strings.
      *
      *
      *
@@ -89,6 +89,14 @@ interface LpiImporterInterface
      * @throws \Exception
      */
     public function getDependencies(string $planetIdentifier, string $version): array;
+
+    /**
+     * Returns an array of planetDotNames corresponding to the uni style dependencies for the given planet identifier.
+     *
+     * @param string $planetIdentifier
+     * @return array
+     */
+    public function getUniDependencies(string $planetIdentifier): array;
 
 }
 

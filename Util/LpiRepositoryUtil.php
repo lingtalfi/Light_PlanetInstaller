@@ -23,12 +23,25 @@ class LpiRepositoryUtil
      */
     protected $appDir;
 
+    /**
+     * This property holds the buildDir for this instance.
+     * @var string
+     */
+    protected $buildDir;
+
 
     /**
      * This property holds the appRepo for this instance.
      * @var LpiRepositoryInterface
      */
     private $appRepo;
+
+
+    /**
+     * This property holds the buildRepo for this instance.
+     * @var LpiRepositoryInterface
+     */
+    private $buildRepo;
 
 
     /**
@@ -49,7 +62,9 @@ class LpiRepositoryUtil
     public function __construct()
     {
         $this->appDir = null;
+        $this->buildDir = null;
         $this->appRepo = null;
+        $this->buildRepo = null;
         $this->globalDirRepo = null;
         $this->webRepo = null;
     }
@@ -60,9 +75,19 @@ class LpiRepositoryUtil
      *
      * @param string $appDir
      */
-    public function setAppDir(?string $appDir)
+    public function setAppDir(string $appDir)
     {
         $this->appDir = $appDir;
+    }
+
+    /**
+     * Sets the buildDir.
+     *
+     * @param string $buildDir
+     */
+    public function setBuildDir(string $buildDir)
+    {
+        $this->buildDir = $buildDir;
     }
 
 
@@ -82,48 +107,73 @@ class LpiRepositoryUtil
      * - try from the web repository
      *
      *
+     * Available options are:
+     * - skipApp: bool=false. If true, the app repository won't be searched in.
+     *
+     *
+     *
      *
      * @param string $planetDot
      * @param string $versionExpression
+     * @param array $options
      * @return array|false
      */
-    public function getFirstMatchingInfo(string $planetDot, string $versionExpression)
+    public function getFirstMatchingInfo(string $planetDot, string $versionExpression, array $options = [])
     {
         $ret = false;
+
+        $skipApp = $options['skipApp'] ?? false;
+
 
         if ('last' === $versionExpression) {
             goto web;
         }
 
 
-        // try from the app first...
-        $realVersion = LpiVersionHelper::getFirstMatchingVersionByRepository($planetDot, $versionExpression, $this->getAppRepository());
+        $realVersion = LpiVersionHelper::getFirstMatchingVersionByRepository($planetDot, $versionExpression, $this->getBuildRepository());
         if (false !== $realVersion) {
             $ret = [
-                'repo' => 'app',
+                'repo' => 'build',
                 'version' => $realVersion,
             ];
         } else {
-            // ...then try from the global dir...
-            $realVersion = LpiVersionHelper::getFirstMatchingVersionByRepository($planetDot, $versionExpression, $this->getGlobalDirRepository());
+
+
+            // try from the app first...
+            if (false === $skipApp) {
+                $realVersion = LpiVersionHelper::getFirstMatchingVersionByRepository($planetDot, $versionExpression, $this->getAppRepository());
+            } else {
+                $realVersion = false;
+            }
+
+
             if (false !== $realVersion) {
                 $ret = [
-                    'repo' => 'global',
+                    'repo' => 'app',
                     'version' => $realVersion,
                 ];
             } else {
-
-
-                web:
-                // ...then try from the web...
-                $realVersion = LpiVersionHelper::getFirstMatchingVersionByRepository($planetDot, $versionExpression, $this->getWebRepository());
+                // ...then try from the global dir...
+                $realVersion = LpiVersionHelper::getFirstMatchingVersionByRepository($planetDot, $versionExpression, $this->getGlobalDirRepository());
                 if (false !== $realVersion) {
                     $ret = [
-                        'repo' => 'web',
+                        'repo' => 'global',
                         'version' => $realVersion,
                     ];
-                }
+                } else {
 
+
+                    web:
+                    // ...then try from the web...
+                    $realVersion = LpiVersionHelper::getFirstMatchingVersionByRepository($planetDot, $versionExpression, $this->getWebRepository());
+                    if (false !== $realVersion) {
+                        $ret = [
+                            'repo' => 'web',
+                            'version' => $realVersion,
+                        ];
+                    }
+
+                }
             }
         }
 
@@ -145,6 +195,20 @@ class LpiRepositoryUtil
             $this->appRepo->setAppDir($this->appDir);
         }
         return $this->appRepo;
+    }
+
+
+    /**
+     * Returns the build repository.
+     * @return LpiRepositoryInterface
+     */
+    public function getBuildRepository(): LpiRepositoryInterface
+    {
+        if (null === $this->buildRepo) {
+            $this->buildRepo = new LpiApplicationRepository();
+            $this->buildRepo->setAppDir($this->buildDir);
+        }
+        return $this->buildRepo;
     }
 
     /**

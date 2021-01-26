@@ -57,7 +57,7 @@ Returns false | string.
 
 Source Code
 ===========
-See the source code for method [LpiVersionHelper::getFirstMatchingVersionByRepository](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Helper/LpiVersionHelper.php#L110-L139)
+See the source code for method [LpiVersionHelper::getFirstMatchingVersionByRepository](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Helper/LpiVersionHelper.php#L198-L227)
 
 
 See Also

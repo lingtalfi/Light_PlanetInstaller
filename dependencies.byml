@@ -1,10 +1,12 @@
 dependencies: 
     Ling: 
-        - Bat
         - CliTools
-        - UniverseTools
-        - BabyYaml
+        - Bat
+        - Light_Cli
         - Light
+        - UniverseTools
+        - Light_PluginInstaller
+        - BabyYaml
         - Light_Logger
         - DirScanner
         - LingTalfi

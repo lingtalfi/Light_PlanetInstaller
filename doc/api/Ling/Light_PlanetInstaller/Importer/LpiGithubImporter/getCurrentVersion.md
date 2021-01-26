@@ -54,7 +54,7 @@ Exceptions thrown
 
 Source Code
 ===========
-See the source code for method [LpiGithubImporter::getCurrentVersion](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Importer/LpiGithubImporter.php#L107-L113)
+See the source code for method [LpiGithubImporter::getCurrentVersion](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Importer/LpiGithubImporter.php#L135-L145)
 
 
 See Also

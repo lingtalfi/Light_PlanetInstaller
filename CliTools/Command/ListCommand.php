@@ -24,7 +24,7 @@ class ListCommand extends LightPlanetInstallerBaseCommand
     protected function doRun(InputInterface $input, OutputInterface $output)
     {
 
-        $universeDir = $this->getUniversePath();
+        $universeDir = $this->application->getUniversePath();
         $planetDirs = PlanetTool::getPlanetDirs($universeDir);
         foreach ($planetDirs as $planetDir) {
             list($galaxy, $planet) = PlanetTool::getGalaxyNamePlanetNameByDir($planetDir);
@@ -33,4 +33,15 @@ class ListCommand extends LightPlanetInstallerBaseCommand
         }
 
     }
+
+
+    /**
+     * @overrides
+     */
+    public function getDescription(): string
+    {
+        return "Lists all the planets found in the current application, along with their current version numbers.";
+    }
+
+
 }

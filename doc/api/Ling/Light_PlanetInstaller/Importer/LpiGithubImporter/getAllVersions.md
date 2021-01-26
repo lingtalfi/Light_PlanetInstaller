@@ -49,7 +49,7 @@ Returns array.
 
 Source Code
 ===========
-See the source code for method [LpiGithubImporter::getAllVersions](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Importer/LpiGithubImporter.php#L130-L152)
+See the source code for method [LpiGithubImporter::getAllVersions](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Importer/LpiGithubImporter.php#L173-L195)
 
 
 See Also
@@ -57,5 +57,5 @@ See Also
 
 The [LpiGithubImporter](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Importer/LpiGithubImporter.md) class.
 
-Previous method: [getDependencies](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Importer/LpiGithubImporter/getDependencies.md)<br>
+Previous method: [getUniDependencies](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Importer/LpiGithubImporter/getUniDependencies.md)<br>
 
