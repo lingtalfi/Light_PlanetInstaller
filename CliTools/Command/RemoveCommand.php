@@ -42,7 +42,6 @@ class RemoveCommand extends LightPlanetInstallerBaseCommand
          * @var $pi LightPluginInstallerService
          */
         $pi = $this->container->get("plugin_installer");
-
         if (true === $pi->isInstallable($planetDotName)) {
             $output->write("Logic uninstalling planet $planetDotName...");
             $pi->uninstall($planetDotName);

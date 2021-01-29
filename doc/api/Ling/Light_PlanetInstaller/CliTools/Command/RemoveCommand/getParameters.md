@@ -47,7 +47,7 @@ Returns array.
 
 Source Code
 ===========
-See the source code for method [RemoveCommand::getParameters](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Command/RemoveCommand.php#L95-L106)
+See the source code for method [RemoveCommand::getParameters](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Command/RemoveCommand.php#L94-L105)
 
 
 See Also

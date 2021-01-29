@@ -53,7 +53,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [RemoveCommand::doRun](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Command/RemoveCommand.php#L25-L66)
+See the source code for method [RemoveCommand::doRun](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Command/RemoveCommand.php#L25-L65)
 
 
 See Also

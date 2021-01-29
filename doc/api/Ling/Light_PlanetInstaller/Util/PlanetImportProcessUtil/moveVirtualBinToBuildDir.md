@@ -54,7 +54,7 @@ Exceptions thrown
 
 Source Code
 ===========
-See the source code for method [PlanetImportProcessUtil::moveVirtualBinToBuildDir](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/PlanetImportProcessUtil.php#L404-L471)
+See the source code for method [PlanetImportProcessUtil::moveVirtualBinToBuildDir](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/PlanetImportProcessUtil.php#L407-L474)
 
 
 See Also

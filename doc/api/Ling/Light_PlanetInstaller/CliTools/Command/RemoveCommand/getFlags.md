@@ -47,7 +47,7 @@ Returns array.
 
 Source Code
 ===========
-See the source code for method [RemoveCommand::getFlags](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Command/RemoveCommand.php#L112-L117)
+See the source code for method [RemoveCommand::getFlags](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Command/RemoveCommand.php#L111-L116)
 
 
 See Also

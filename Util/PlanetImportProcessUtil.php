@@ -253,20 +253,22 @@ class PlanetImportProcessUtil
 
 
         $buildDir = $this->getBuildDir();
+
         $this->info("Removing build dir (<blue>$buildDir</blue>)...");
         FileSystemTool::remove($buildDir);
+
+
         $this->info("<success>ok</success>" . PHP_EOL);
 
 
         $output = $this->output;
-        $this->info("Creating virtual bin..." . PHP_EOL);
+        $this->info("Creating virtual bin...be patient..." . PHP_EOL);
 
 
         $this->applicationDir = $appDir;
         $this->wishList = $this->prepareWishlist($wishList);
         $this->init();
         $wishList = $this->wishList;
-
 
         // add a loader...
         $nbItems = count($wishList);
@@ -280,6 +282,7 @@ class PlanetImportProcessUtil
             $this->importToVirtualBin($planetDot, $versionExpr);
             $loader->incrementBy(1);
         }
+
 
         $this->info(PHP_EOL);
         $this->info("<success>Ok</success>." . PHP_EOL);
