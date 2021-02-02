@@ -98,6 +98,7 @@ class LightPlanetInstallerApplication extends LightCliBaseApplication
         $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\ReImportAppPlanetsCommand", "reimport");
         $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\RemoveCommand", "remove");
         $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\UninstallCommand", "uninstall");
+        $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\LogicInstallCommand", "logic_install");
 
 
         $this->notFoundPlanets = [];
@@ -126,7 +127,7 @@ class LightPlanetInstallerApplication extends LightCliBaseApplication
     /**
      * @overrides
      */
-    protected function runProgram(InputInterface $input, OutputInterface $output)
+    protected function runProgram(InputInterface $input, OutputInterface $output): int|null
     {
         if (true === $input->hasFlag('dev')) {
             $this->devMode = true;

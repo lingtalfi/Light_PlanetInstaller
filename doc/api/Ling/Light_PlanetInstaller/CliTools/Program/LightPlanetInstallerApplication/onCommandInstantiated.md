@@ -50,7 +50,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [LightPlanetInstallerApplication::onCommandInstantiated](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Program/LightPlanetInstallerApplication.php#L568-L578)
+See the source code for method [LightPlanetInstallerApplication::onCommandInstantiated](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Program/LightPlanetInstallerApplication.php#L569-L579)
 
 
 See Also

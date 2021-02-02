@@ -53,7 +53,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [LightPlanetInstallerApplication::addNotFoundPlanet](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Program/LightPlanetInstallerApplication.php#L716-L719)
+See the source code for method [LightPlanetInstallerApplication::addNotFoundPlanet](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Program/LightPlanetInstallerApplication.php#L717-L720)
 
 
 See Also

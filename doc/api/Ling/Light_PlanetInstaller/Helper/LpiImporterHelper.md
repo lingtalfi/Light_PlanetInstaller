@@ -4,7 +4,7 @@
 
 The LpiImporterHelper class
 ================
-2020-12-08 --> 2021-01-29
+2020-12-08 --> 2021-02-02
 
 
 
@@ -26,7 +26,6 @@ class <span class="pl-k">LpiImporterHelper</span>  {
 
 - Methods
     - public static [getImporterByGalaxy](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiImporterHelper/getImporterByGalaxy.md)(string $galaxy) : [LpiImporterInterface](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Importer/LpiImporterInterface.md)
-    - private static [getHandlers](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiImporterHelper/getHandlers.md)() : array
     - private static [error](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiImporterHelper/error.md)(string $msg, ?int $code = null) : void
 
 }
@@ -40,7 +39,6 @@ Methods
 ==============
 
 - [LpiImporterHelper::getImporterByGalaxy](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiImporterHelper/getImporterByGalaxy.md) &ndash; Returns the lpi importer instance corresponding to the given $importerInfo.
-- [LpiImporterHelper::getHandlers](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiImporterHelper/getHandlers.md) &ndash; Returns the handlers defined in the global configuration, or the default handlers otherwise.
 - [LpiImporterHelper::error](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiImporterHelper/error.md) &ndash; Throws an exception.
 
 
@@ -56,4 +54,4 @@ See the source code of [Ling\Light_PlanetInstaller\Helper\LpiImporterHelper](htt
 
 SeeAlso
 ==============
-Previous class: [LpiHelper](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiHelper.md)<br>Next class: [LpiPlanetHelper](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiPlanetHelper.md)<br>
+Previous class: [LpiHelper](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiHelper.md)<br>Next class: [LpiLocalUniverseHelper](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiLocalUniverseHelper.md)<br>

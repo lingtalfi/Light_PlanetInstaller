@@ -51,7 +51,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [PlanetImportProcessUtil::write](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/PlanetImportProcessUtil.php#L1185-L1194)
+See the source code for method [PlanetImportProcessUtil::write](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/PlanetImportProcessUtil.php#L1257-L1266)
 
 
 See Also

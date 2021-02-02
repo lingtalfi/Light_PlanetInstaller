@@ -4,7 +4,7 @@
 
 The LpiIncompatibleException class
 ================
-2020-12-08 --> 2021-01-29
+2020-12-08 --> 2021-02-02
 
 
 
@@ -22,7 +22,7 @@ Class synopsis
 ==============
 
 
-class <span class="pl-k">LpiIncompatibleException</span> extends [LightPlanetInstallerException](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Exception/LightPlanetInstallerException.md) implements [\Throwable](http://php.net/manual/en/class.throwable.php) {
+class <span class="pl-k">LpiIncompatibleException</span> extends [LightPlanetInstallerException](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Exception/LightPlanetInstallerException.md) implements [\Throwable](http://php.net/manual/en/class.throwable.php), [\Stringable](https://wiki.php.net/rfc/stringable) {
 
 - Inherited properties
     - protected  [Exception::$message](#property-message) =  ;

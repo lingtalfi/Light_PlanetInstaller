@@ -53,7 +53,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [LightPlanetInstallerBaseCommand::doRun](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Command/LightPlanetInstallerBaseCommand.php#L52-L52)
+See the source code for method [LightPlanetInstallerBaseCommand::doRun](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Command/LightPlanetInstallerBaseCommand.php#L50-L50)
 
 
 See Also

@@ -49,7 +49,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [PlanetImportProcessUtil::setLogLevels](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/PlanetImportProcessUtil.php#L224-L227)
+See the source code for method [PlanetImportProcessUtil::setLogLevels](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/PlanetImportProcessUtil.php#L225-L228)
 
 
 See Also

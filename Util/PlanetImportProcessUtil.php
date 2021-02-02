@@ -11,12 +11,14 @@ use Ling\CliTools\Util\LoaderUtil;
 use Ling\Light\ServiceContainer\LightServiceContainerInterface;
 use Ling\Light_PlanetInstaller\Exception\LightPlanetInstallerException;
 use Ling\Light_PlanetInstaller\Exception\LpiIncompatibleException;
+use Ling\Light_PlanetInstaller\Helper\LpiConfHelper;
+use Ling\Light_PlanetInstaller\Helper\LpiLocalUniverseHelper;
 use Ling\Light_PlanetInstaller\Helper\LpiPlanetHelper;
 use Ling\Light_PlanetInstaller\Helper\LpiVersionHelper;
 use Ling\Light_PlanetInstaller\Helper\LpiWebHelper;
 use Ling\Light_PlanetInstaller\Repository\LpiApplicationRepository;
+use Ling\Light_PlanetInstaller\Repository\LpiLocalUniverseRepository;
 use Ling\Light_PlanetInstaller\Repository\LpiWebRepository;
-use Ling\Light_PluginInstaller\Service\LightPluginInstallerService;
 use Ling\UniverseTools\PlanetTool;
 
 /**
@@ -67,10 +69,10 @@ class PlanetImportProcessUtil
 
 
     /**
-     * This property holds the webLastPlanets for this instance.
+     * This property holds the lastPlanets for this instance.
      * @var array
      */
-    private $webLastPlanets;
+    private $lastPlanets;
 
     /**
      * This property holds the bernoniMode for this instance.
@@ -171,7 +173,6 @@ class PlanetImportProcessUtil
      */
     private $keepBuild;
 
-
     /**
      * Builds the PlanetInstallerUtil instance.
      */
@@ -183,7 +184,7 @@ class PlanetImportProcessUtil
         $this->virtualBin = [];
         $this->applicationPlanets = [];
         $this->sessionErrors = [];
-        $this->webLastPlanets = [];
+        $this->lastPlanets = [];
         $this->bernoniMode = "auto";
         $this->planetDependencies = [];
         $this->indentLevel = 0;
@@ -267,6 +268,7 @@ class PlanetImportProcessUtil
 
         $this->applicationDir = $appDir;
         $this->wishList = $this->prepareWishlist($wishList);
+
         $this->init();
         $wishList = $this->wishList;
 
@@ -339,21 +341,65 @@ class PlanetImportProcessUtil
 
             if (true === $importToApp) {
 
+                $s = '';
                 if (true === $install) {
-                    $this->info("Install planets from build directory to app (<blue>$appDir</blue>)..." . PHP_EOL);
-                } else {
-                    $this->info("Importing build directory to app (<blue>$appDir</blue>)..." . PHP_EOL);
+                    $s .= ", with assets/map";
                 }
+                $this->info("Importing build directory to app (<blue>$appDir</blue>)$s..." . PHP_EOL);
 
                 $errors = [];
-                $this->importBuildDirToApp($errors, [
+                $planetDotNames = $this->importBuildDirToApp($errors, [
                     "install" => $install,
                 ]);
+
                 if ($errors) {
                     $this->info("<error>Oops, the process failed. You should find the error messages above</error>." . PHP_EOL);
                 } else {
                     $this->info("<success>Ok</success>." . PHP_EOL);
                 }
+
+
+                if (true === $install) {
+
+                    $lightScript = $this->applicationDir . "/scripts/Ling/Light_Cli/light-cli.php";
+
+                    if ($planetDotNames) {
+                        $this->info("Logic installing imported planets..." . PHP_EOL);
+                        $sOptions = "";
+                        if (
+                            true === in_array("debug", $this->logLevels) ||
+                            true === in_array("trace", $this->logLevels)
+                        ) {
+                            $sOptions = ' -d';
+                        }
+
+                        foreach ($planetDotNames as $planetDotName) {
+
+
+                            $cmdOutput = [];
+                            $cmdBuffer = '';
+                            $resultCode = null;
+                            exec('php -f "' . $lightScript . '" -- lpi logic_install "' . $planetDotName . '" ' . $sOptions, $cmdOutput, $resultCode);
+                            if ($cmdOutput) {
+                                $cmdBuffer = implode(PHP_EOL, $cmdOutput) . PHP_EOL;
+                            }
+
+
+                            if (0 !== $resultCode) {
+                                $this->error("The logic install of planet $planetDotName failed: $cmdBuffer.");
+                            }
+
+                            if ($cmdOutput) {
+                                $this->output->write($cmdBuffer);
+                            }
+                        }
+
+
+                    } else {
+                        $this->info("0 imported planets, nothing to logic install..." . PHP_EOL);
+                    }
+                }
+
 
             }
         } else {
@@ -410,7 +456,6 @@ class PlanetImportProcessUtil
 
         $forceWeb = $options['forceWeb'] ?? false;
 
-
         $this->debug("Calling <blue>moveVirtualBinToBuildDir</blue>." . PHP_EOL);
         $nbItems = count($this->virtualBin);
 
@@ -434,6 +479,7 @@ class PlanetImportProcessUtil
                 $appRepo->setAppDir($this->applicationDir);
             }
             $webRepo = new LpiWebRepository();
+            $localUniRepo = new LpiLocalUniverseRepository();
 
             $warnings = [];
             foreach ($this->virtualBin as $planetDot => $version) {
@@ -444,6 +490,10 @@ class PlanetImportProcessUtil
 
                 $this->trace("Processing item <blue>$planetDot:$version</blue>" . PHP_EOL);
 
+
+                //--------------------------------------------
+                // FIRST TRY FROM APP
+                //--------------------------------------------
                 $planetFound = false;
                 if (null !== $appRepo && false === $forceWeb) {
                     if (true === $appRepo->hasPlanet($planetDot, $version)) {
@@ -452,6 +502,22 @@ class PlanetImportProcessUtil
                     }
                 }
 
+
+                //--------------------------------------------
+                // IF NOT FOUND TRY FROM LOCAL UNIVERSE
+                //--------------------------------------------
+                if (false === $planetFound) {
+                    if (true === $localUniRepo->hasPlanet($planetDot, $version)) {
+                        $this->trace("Found in local universe, importing from local universe." . PHP_EOL);
+                        $localUniRepo->copy($planetDot, $version, $dstDir, $warnings);
+                        $this->handleCopyWarnings($warnings);
+                        $planetFound = true;
+                    }
+                }
+
+                //--------------------------------------------
+                // IF NOT FOUND TRY FROM WEB
+                //--------------------------------------------
                 if (false === $planetFound) {
                     if (true === $webRepo->hasPlanet($planetDot, $version)) {
                         $this->trace("Found in web, importing from web." . PHP_EOL);
@@ -475,21 +541,23 @@ class PlanetImportProcessUtil
 
 
     /**
-     * Imports the planets found in the build dir to the application dir.
+     * Imports the planets found in the build dir to the application dir, and returns the planet dot names that have been successfully imported.
      * The errors variable is filled, if errors occur.
      *
      *
      * Available options are:
-     * - install: bool=false. If true, the planet(s) will be [installed](https://github.com/lingtalfi/TheBar/blob/master/discussions/import-install.md#summary) instead of being just imported.
+     * - install: bool=false. If true, the assets/map of the planet(s) will be imported as well
      *
      *
      * @param array $errors
      * @param array $options
+     * @return array
      * @throws \Exception
      */
     public function importBuildDirToApp(array &$errors = [], array $options = [])
     {
 
+        $ret = [];
         $install = $options['install'] ?? false;
 
 
@@ -513,33 +581,10 @@ class PlanetImportProcessUtil
 
             if ($planetDirs) {
 
-                /**
-                 * @var $pi LightPluginInstallerService
-                 */
-                $pi = $this->container->get("plugin_installer");
-
-
-                /**
-                 * We only set the output in debug modes, because the output messes up the clean percent increment otherwise.
-                 */
-                if (
-                    true === in_array("debug", $this->logLevels) ||
-                    true === in_array("trace", $this->logLevels)
-                ) {
-                    $outputLevels = $this->logLevels;
-                    if (
-                        false === in_array("debug", $this->logLevels) &&
-                        true === in_array("trace", $this->logLevels)
-                    ) {
-                        //at the moment, Light_PluginInstaller doesn't use trace level...
-                        $outputLevels[] = "debug";
-                    }
-                    $pi->setOutputLevels($outputLevels);
-                    $pi->setOutput($this->output);
-                }
-
 
                 foreach ($planetDirs as $planetDir) {
+
+
                     list($galaxy, $planet) = PlanetTool::getGalaxyNamePlanetNameByDir($planetDir);
                     $planetDotName = $galaxy . "." . $planet;
 
@@ -548,7 +593,6 @@ class PlanetImportProcessUtil
                     $this->trace("Processing $planetDotName:$version ($planetDir)." . PHP_EOL);
 
                     $appPlanetDir = $appDir . "/universe/$galaxy/$planet";
-
                     if (is_dir($appPlanetDir)) {
 
 
@@ -577,6 +621,7 @@ class PlanetImportProcessUtil
                         PlanetTool::importPlanetByExternalDir($planetDotName, $planetDir, $appDir, [
                             "assets" => $install,
                         ]);
+                        $ret[] = $planetDotName;
                     } catch (\Exception $e) {
                         $isImported = false;
                         $err = $e->getMessage();
@@ -586,27 +631,10 @@ class PlanetImportProcessUtil
                     }
 
 
-                    if (true === $install && true === $isImported) {
-
-                        if (true === $pi->isInstallable($planetDotName)) {
-                            try {
-
-                                $this->trace("Installer found, installing planet." . PHP_EOL);
-                                $pi->install($planetDotName);
-                            } catch (\Exception $e) {
-                                $err = $e->getMessage();
-                                $errors[] = $err;
-                                $this->logError("An error occurred while trying to install $planetDotName:$version: $err." . PHP_EOL);
-                                $this->trace("Exception detail: " . (string)$e . PHP_EOL);
-                            }
-                        } else {
-                            $this->trace("No installer found, skipping." . PHP_EOL);
-                        }
-                    }
-
-
                     $loader->incrementBy(1);
                 }
+
+
                 $this->output->write(PHP_EOL);
             }
 
@@ -618,6 +646,7 @@ class PlanetImportProcessUtil
         } else {
             $this->debug("universe dir not found in build (<blue>$buildUniverseDir</blue>)." . PHP_EOL);
         }
+        return $ret;
     }
 
     /**
@@ -750,6 +779,8 @@ class PlanetImportProcessUtil
 
                 $this->trace("Checking for dependencies of planet $planetDot...");
                 $dependencies = $this->getPlanetDependencies($planetDot, $versionToAddToVirtualBin);
+
+
                 $nbDeps = count($dependencies);
                 $this->trace("$nbDeps dependency(ies) found." . PHP_EOL);
 
@@ -836,12 +867,17 @@ class PlanetImportProcessUtil
         if (false === array_key_exists($planetFullId, $this->planetDependencies)) {
 
 
-            $repository = new LpiWebRepository();
             $onLpiDepsNotFoundUseUni = true;
 
 
+            //--------------------------------------------
+            // TRY FROM LOCAL UNIVERSE
+            //--------------------------------------------
+            $foundInLocalUniverse = false;
+            $repository = new LpiLocalUniverseRepository();
             try {
                 $dependencies = $repository->getDependencies($planetDot, $realVersion);
+                $foundInLocalUniverse = true;
             } catch (LpiIncompatibleException $e) {
                 if (true === $onLpiDepsNotFoundUseUni) {
                     $__dependencies = $repository->getUniDependencies($planetDot, $realVersion);
@@ -852,10 +888,37 @@ class PlanetImportProcessUtil
                             "last",
                         ];
                     }
+                    $foundInLocalUniverse = true;
                 } else {
                     throw $e;
                 }
             }
+
+
+            //--------------------------------------------
+            // TRY FROM WEB
+            //--------------------------------------------
+            if (false === $foundInLocalUniverse) {
+                $repository = new LpiWebRepository();
+                try {
+                    $dependencies = $repository->getDependencies($planetDot, $realVersion);
+                } catch (LpiIncompatibleException $e) {
+                    if (true === $onLpiDepsNotFoundUseUni) {
+                        $__dependencies = $repository->getUniDependencies($planetDot, $realVersion);
+                        $dependencies = [];
+                        foreach ($__dependencies as $pdot) {
+                            $dependencies[] = [
+                                $pdot,
+                                "last",
+                            ];
+                        }
+                    } else {
+                        throw $e;
+                    }
+                }
+            }
+
+
             $this->planetDependencies[$planetFullId] = $dependencies;
         }
         return $this->planetDependencies[$planetFullId];
@@ -1105,11 +1168,20 @@ class PlanetImportProcessUtil
     private function toMiniVersionExpression(string $planetDot, string $versionExpr): string
     {
         if ('last' === $versionExpr) {
-            if (false === array_key_exists($planetDot, $this->webLastPlanets)) {
+            if (false === array_key_exists($planetDot, $this->lastPlanets)) {
 
-                $this->webLastPlanets[$planetDot] = LpiWebHelper::getPlanetCurrentVersion($planetDot);
+                $foundInLocal = false;
+                if (true === LpiConfHelper::getLocalUniverseHasLast() && true === LpiLocalUniverseHelper::hasPlanet($planetDot)) {
+
+                    $this->lastPlanets[$planetDot] = LpiLocalUniverseHelper::getVersion($planetDot);
+                    $foundInLocal = true;
+                }
+
+                if (false === $foundInLocal) {
+                    $this->lastPlanets[$planetDot] = LpiWebHelper::getPlanetCurrentVersion($planetDot);
+                }
             }
-            return $this->webLastPlanets[$planetDot];
+            return $this->lastPlanets[$planetDot];
         }
         return $versionExpr;
     }

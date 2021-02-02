@@ -4,7 +4,7 @@
 
 The LightPlanetInstallerException class
 ================
-2020-12-08 --> 2021-01-29
+2020-12-08 --> 2021-02-02
 
 
 
@@ -22,7 +22,7 @@ Class synopsis
 ==============
 
 
-class <span class="pl-k">LightPlanetInstallerException</span> extends [\Exception](http://php.net/manual/en/class.exception.php) implements [\Throwable](http://php.net/manual/en/class.throwable.php) {
+class <span class="pl-k">LightPlanetInstallerException</span> extends [\Exception](http://php.net/manual/en/class.exception.php) implements [\Stringable](https://wiki.php.net/rfc/stringable), [\Throwable](http://php.net/manual/en/class.throwable.php) {
 
 - Inherited properties
     - protected  [Exception::$message](#property-message) =  ;

@@ -60,7 +60,7 @@ Returns array.
 
 Source Code
 ===========
-See the source code for method [PlanetImportProcessUtil::getPlanetDependencies](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/PlanetImportProcessUtil.php#L832-L862)
+See the source code for method [PlanetImportProcessUtil::getPlanetDependencies](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/PlanetImportProcessUtil.php#L863-L925)
 
 
 See Also

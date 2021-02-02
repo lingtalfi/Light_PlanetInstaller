@@ -55,7 +55,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [LightPlanetInstallerApplication::createLpiFile](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Program/LightPlanetInstallerApplication.php#L234-L274)
+See the source code for method [LightPlanetInstallerApplication::createLpiFile](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Program/LightPlanetInstallerApplication.php#L235-L275)
 
 
 See Also

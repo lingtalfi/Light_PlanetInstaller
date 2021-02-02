@@ -1,6 +1,6 @@
 Light_PlanetInstaller
 ===========
-2020-12-08 -> 2021-01-29
+2020-12-08 -> 2021-02-02
 
 
 
@@ -66,6 +66,10 @@ planet_installer:
 History Log
 =============
 
+- 1.0.2 -- 2021-02-02
+
+    - add concept of local universe
+  
 - 1.0.1 -- 2021-01-29
 
     - improve one of the "install" command output messages

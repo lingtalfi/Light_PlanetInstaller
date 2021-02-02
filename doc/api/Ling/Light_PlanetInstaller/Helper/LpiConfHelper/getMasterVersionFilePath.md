@@ -46,7 +46,7 @@ Returns string.
 
 Source Code
 ===========
-See the source code for method [LpiConfHelper::getMasterVersionFilePath](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Helper/LpiConfHelper.php#L96-L100)
+See the source code for method [LpiConfHelper::getMasterVersionFilePath](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Helper/LpiConfHelper.php#L117-L121)
 
 
 See Also
@@ -54,5 +54,5 @@ See Also
 
 The [LpiConfHelper](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiConfHelper.md) class.
 
-Previous method: [getMasterFilePath](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiConfHelper/getMasterFilePath.md)<br>
+Previous method: [getMasterFilePath](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiConfHelper/getMasterFilePath.md)<br>Next method: [getConfValue](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiConfHelper/getConfValue.md)<br>
 

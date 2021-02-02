@@ -1,6 +1,6 @@
 Light_PlanetInstaller, conception notes
 ================
-2020-12-03 -> 2021-01-26
+2020-12-03 -> 2021-02-01
 
 This is a variation of the [uni tool](https://github.com/lingtalfi/universe-naive-importer), which I found too
 complicated.
@@ -241,6 +241,11 @@ handlers:
     Ling:
         type: github
         account: lingtalfi
+# path to the local universe, if any, or null by default        
+local_universe: null
+
+# whether to fetch planets with version expression "last" in the local universe or in the web
+local_universe_has_last: true 
 
 ```
 
@@ -248,6 +253,30 @@ Those are the default values, which are implicit. Which means if you don't creat
 values will still be used.
 
 Of course, you can overwrite them by creating the configuration file.
+
+
+The local universe
+---------
+2021-02-01
+
+During development, I found myself needing to test things a lot, and I needed a way for the installer to use my local planets, as publishing
+a planet every time I wanted to do a test would have been very cumbersome.
+
+As a result, the planet installer now has a local universe option.
+
+The **local universe** is a directory which contains the universe that you might use locally.
+
+The main idea is that instead of looking for planets in the web, which takes some time due to the http request trip, 
+our **planet installer** searches first for planets in the **local universe** if any.
+
+Basically, the local universe is a copy of some the planets on the web, and acts as a cache for our installer.
+If a planet is not found in the local universe, then only the **planet installer** will fetch that planet on the web.
+
+By default, this also applies to the **last** [version expression](#version-expression). This means that if you specify
+the **last** version expression when installing/importing a planet, our **planet installer** will first look in the local universe too.
+
+If you prefer that **last** always fetch planets from the web, set the **local_universe_has_last** property of the [global conf](#the-global-configuration) to false. 
+
 
 
 
@@ -321,7 +350,7 @@ It refers to the [version expression](#version-expression), but with the "last" 
 
 Usage: the commands
 -----------
-2020-12-03 -> 2021-01-26
+2020-12-03 -> 2021-02-01
 
 
 All commands described below assume that you're at the root directory of your app (i.e. **cd /my_app**),
@@ -341,7 +370,7 @@ and the app is a Light app.
             The **$planetDefinition** stands for: $planetDotName(:$versionExpression)?
           
             With:
-            - planetDotName: the [planetDotName](https://github.com/karayabin/universe-snapshot#the-planet-dot-name)
+            - planetDotName: the [planetDotName](https://github.com/karayabin/universe-snapshot#the-planet-https://github.com/lingtalfi/TheBar/blob/master/discussions/import-install.md#summarydot-name)
             - versionExpression: the [versionExpression](#version-expression), defaults to last if not defined
       - options: 
         - bernoni: string (auto|manual) = auto. The mode to use when a [bernoni conflict](#the-bernoni-problem-what-happens-in-case-of-conflict) occurs.
@@ -354,11 +383,11 @@ and the app is a Light app.
   
     Same as import, but does a few extra steps:
     - copy the [assets/map](https://github.com/lingtalfi/UniverseTools/blob/master/doc/pages/conception-notes.md#the-planets-and-assetsmap) if any 
-    - install the [Light](https://github.com/lingtalfi/Light) plugin if it's [installable](#the-difference-between-install-and-import).
+    - [logic installs](https://github.com/lingtalfi/TheBar/blob/master/discussions/import-install.md#summary) the [Light](https://github.com/lingtalfi/Light) plugin if it's [installable](#the-difference-between-install-and-import).
 
   - Arguments:
       - parameters:
-          - planetDefinition: if the **planetDefinition** argument is defined, it will [import](https://github.com/lingtalfi/TheBar/blob/master/discussions/import-install.md#summary)
+          - planetDefinition: if the **planetDefinition** argument is defined, it will [install](https://github.com/lingtalfi/TheBar/blob/master/discussions/import-install.md#summary)
             the given planet (and its dependencies recursively), with the **assets/map**, and update the **lpi.byml** file accordingly, using a plus symbol at the end of every newly imported planet's version number.
 
             The **$planetDefinition** stands for: $planetDotName(:$versionExpression)?
@@ -373,7 +402,15 @@ and the app is a Light app.
           - d: if set, enables the debug mode, in which all log levels messages are displayed
           - n: if set, doesn't update the **lpi file** when the **planetDefinition** parameter is defined
         
+- **logic_install**: [logic installs](https://github.com/lingtalfi/TheBar/blob/master/discussions/import-install.md#summary) the given planet. This command is used internally by the **install** command.
+    This command assumes that the planet you want to **logic install** is already imported with assets/map.
+    - Arguments:
+        - parameters:
+            - planetDotName: the [planetDotName](https://github.com/karayabin/universe-snapshot#the-planet-dot-name) of the planet to logic install
+      - flags:
+          - d: whether to use debug mode    
     
+
 - **list**: lists all planets found in the current application, along with their current version numbers
 
 - **remove $planetName**: 

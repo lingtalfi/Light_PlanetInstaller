@@ -24,13 +24,13 @@ abstract class LightPlanetInstallerBaseCommand implements CommandInterface, Ligh
      * This property holds the LightPlanetInstallerApplication instance.
      * @var LightPlanetInstallerApplication
      */
-    protected $application;
+    protected LightPlanetInstallerApplication $application;
 
     /**
      * This property holds the container for this instance.
      * @var LightServiceContainerInterface
      */
-    protected $container;
+    protected LightServiceContainerInterface $container;
 
 
     /**
@@ -38,8 +38,6 @@ abstract class LightPlanetInstallerBaseCommand implements CommandInterface, Ligh
      */
     public function __construct()
     {
-        $this->application = null;
-        $this->container = null;
     }
 
 
@@ -76,7 +74,7 @@ abstract class LightPlanetInstallerBaseCommand implements CommandInterface, Ligh
     {
         $this->application->setCurrentOutput($output);
         try {
-            $this->doRun($input, $output);
+            return $this->doRun($input, $output);
         } catch (\Exception $e) {
             $this->application->logError($e);
         }
@@ -152,7 +150,7 @@ abstract class LightPlanetInstallerBaseCommand implements CommandInterface, Ligh
      * @param string|Exception $error
      *
      */
-    public function logError(string $error)
+    public function logError(string|\Exception $error)
     {
         $this->application->logError($error);
     }

@@ -54,7 +54,7 @@ Returns bool.
 
 Source Code
 ===========
-See the source code for method [PlanetImportProcessUtil::addToVirtualBin](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/PlanetImportProcessUtil.php#L872-L881)
+See the source code for method [PlanetImportProcessUtil::addToVirtualBin](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/PlanetImportProcessUtil.php#L935-L944)
 
 
 See Also

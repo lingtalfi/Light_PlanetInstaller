@@ -16,7 +16,7 @@ Description
 ================
 
 
-protected [LightPlanetInstallerApplication::runProgram](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Program/LightPlanetInstallerApplication/runProgram.md)(Ling\CliTools\Input\InputInterface $input, [Ling\CliTools\Output\OutputInterface](https://github.com/lingtalfi/CliTools/blob/master/doc/api/Ling/CliTools/Output/OutputInterface.md) $output) : int | null
+protected [LightPlanetInstallerApplication::runProgram](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Program/LightPlanetInstallerApplication/runProgram.md)(Ling\CliTools\Input\InputInterface $input, [Ling\CliTools\Output\OutputInterface](https://github.com/lingtalfi/CliTools/blob/master/doc/api/Ling/CliTools/Output/OutputInterface.md) $output) : mixed
 
 
 
@@ -43,9 +43,10 @@ Parameters
 Return values
 ================
 
-Returns int | null.
-The exit status.
-If null is returned, 0 should be assumed.
+Returns mixed.
+If int is returned, it's the exit status.
+If nothing or null is returned, 0 should be assumed.
+Other return types are free to be interpreted as you see fit.
 
 
 
@@ -55,7 +56,7 @@ If null is returned, 0 should be assumed.
 
 Source Code
 ===========
-See the source code for method [LightPlanetInstallerApplication::runProgram](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Program/LightPlanetInstallerApplication.php#L129-L135)
+See the source code for method [LightPlanetInstallerApplication::runProgram](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Program/LightPlanetInstallerApplication.php#L130-L136)
 
 
 See Also

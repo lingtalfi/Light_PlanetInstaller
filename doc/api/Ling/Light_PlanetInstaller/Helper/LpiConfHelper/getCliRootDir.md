@@ -46,7 +46,7 @@ Returns string.
 
 Source Code
 ===========
-See the source code for method [LpiConfHelper::getCliRootDir](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Helper/LpiConfHelper.php#L21-L24)
+See the source code for method [LpiConfHelper::getCliRootDir](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Helper/LpiConfHelper.php#L28-L31)
 
 
 See Also

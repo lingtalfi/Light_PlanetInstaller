@@ -49,7 +49,7 @@ Returns array.
 
 Source Code
 ===========
-See the source code for method [InstallCommand::getAliases](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Command/InstallCommand.php#L84-L89)
+See the source code for method [InstallCommand::getAliases](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Command/InstallCommand.php#L81-L86)
 
 
 See Also

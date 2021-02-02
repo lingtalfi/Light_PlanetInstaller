@@ -46,7 +46,7 @@ Returns array.
 
 Source Code
 ===========
-See the source code for method [PlanetImportProcessUtil::getSessionErrors](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/PlanetImportProcessUtil.php#L383-L386)
+See the source code for method [PlanetImportProcessUtil::getSessionErrors](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/PlanetImportProcessUtil.php#L429-L432)
 
 
 See Also

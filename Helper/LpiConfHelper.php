@@ -15,6 +15,13 @@ class LpiConfHelper
 
 
     /**
+     * This property holds the conf for this instance.
+     * @var array
+     */
+    private static $conf = null;
+
+
+    /**
      * Returns the path to the root dir (containing the global conf, lpi master etc...).
      * @return string
      */
@@ -36,31 +43,45 @@ class LpiConfHelper
 
 
     /**
+     * Returns the handlers global conf value.
      *
-     * Returns a value from the global configuration file.
-     * If not found returns the default value by default, or throws an exception if $throwEx=true.
+     * It's an array of galaxy => handlerInfo.
+     *
+     * See the conception notes for more details.
      *
      *
-     * @param string $key
-     * @param null $default
-     * @param bool $throwEx
-     * @return mixed
+     * @return array
      * @throws \Exception
      */
-    public static function getConfValue(string $key, $default = null, bool $throwEx = false)
+    public static function getHandlers(): array
     {
-        $globalConfPath = self::getConfPath();
+        $defaultHandlers = [
+            'Ling' => [
+                'type' => 'github',
+                'account' => 'lingtalfi',
+            ],
+        ];
+        return LpiConfHelper::getConfValue("handlers", $defaultHandlers);
+    }
 
-        if (true === file_exists($globalConfPath)) {
-            $arr = BabyYamlUtil::readFile($globalConfPath);
-            if (array_key_exists($key, $arr)) {
-                return $arr[$key];
-            }
-        }
-        if (false === $throwEx) {
-            return $default;
-        }
-        throw new LightPlanetInstallerException("Configuration value not found with key=$key.");
+
+    /**
+     * Returns the local_universe_has_last global conf value.
+     * @return bool
+     */
+    public static function getLocalUniverseHasLast(): bool
+    {
+        return self::getConfValue("local_universe_has_path", true);
+    }
+
+
+    /**
+     * Returns the local_universe global conf value.
+     * @return string|null
+     */
+    public static function getLocalUniversePath(): ?string
+    {
+        return self::getConfValue("local_universe", null);
     }
 
 
@@ -97,6 +118,46 @@ class LpiConfHelper
     {
         $default = self::getCliRootDir() . "/lpi-master-version.byml";
         return self::getConfValue("master_version_path", $default);
+    }
+
+
+    //--------------------------------------------
+    //
+    //--------------------------------------------
+
+
+    /**
+     *
+     * Returns a value from the global configuration file.
+     * If not found returns the default value by default, or throws an exception if $throwEx=true.
+     *
+     *
+     * @param string $key
+     * @param null $default
+     * @param bool $throwEx
+     * @return mixed
+     * @throws \Exception
+     */
+    private static function getConfValue(string $key, $default = null, bool $throwEx = false)
+    {
+        if (null === self::$conf) {
+
+            $globalConfPath = self::getConfPath();
+
+            if (true === file_exists($globalConfPath)) {
+                $arr = BabyYamlUtil::readFile($globalConfPath);
+                self::$conf = $arr;
+            }
+        }
+
+
+        if (array_key_exists($key, self::$conf)) {
+            return self::$conf[$key];
+        }
+        if (false === $throwEx) {
+            return $default;
+        }
+        throw new LightPlanetInstallerException("Configuration value not found with key=$key.");
     }
 
 

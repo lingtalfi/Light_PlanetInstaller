@@ -58,7 +58,7 @@ Exceptions thrown
 
 Source Code
 ===========
-See the source code for method [LpiImporterHelper::error](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Helper/LpiImporterHelper.php#L92-L95)
+See the source code for method [LpiImporterHelper::error](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Helper/LpiImporterHelper.php#L70-L73)
 
 
 See Also
@@ -66,5 +66,5 @@ See Also
 
 The [LpiImporterHelper](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiImporterHelper.md) class.
 
-Previous method: [getHandlers](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiImporterHelper/getHandlers.md)<br>
+Previous method: [getImporterByGalaxy](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiImporterHelper/getImporterByGalaxy.md)<br>
 

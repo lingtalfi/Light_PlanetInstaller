@@ -7,7 +7,7 @@ PlanetImportProcessUtil::importBuildDirToApp
 
 
 
-PlanetImportProcessUtil::importBuildDirToApp — Imports the planets found in the build dir to the application dir.
+PlanetImportProcessUtil::importBuildDirToApp — Imports the planets found in the build dir to the application dir, and returns the planet dot names that have been successfully imported.
 
 
 
@@ -16,17 +16,17 @@ Description
 ================
 
 
-public [PlanetImportProcessUtil::importBuildDirToApp](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Util/PlanetImportProcessUtil/importBuildDirToApp.md)(?array &$errors = [], ?array $options = []) : void
+public [PlanetImportProcessUtil::importBuildDirToApp](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Util/PlanetImportProcessUtil/importBuildDirToApp.md)(?array &$errors = [], ?array $options = []) : array
 
 
 
 
-Imports the planets found in the build dir to the application dir.
+Imports the planets found in the build dir to the application dir, and returns the planet dot names that have been successfully imported.
 The errors variable is filled, if errors occur.
 
 
 Available options are:
-- install: bool=false. If true, the planet(s) will be [installed](https://github.com/lingtalfi/TheBar/blob/master/discussions/import-install.md#summary) instead of being just imported.
+- install: bool=false. If true, the assets/map of the planet(s) will be imported as well
 
 
 
@@ -47,7 +47,7 @@ Parameters
 Return values
 ================
 
-Returns void.
+Returns array.
 
 
 Exceptions thrown
@@ -63,7 +63,7 @@ Exceptions thrown
 
 Source Code
 ===========
-See the source code for method [PlanetImportProcessUtil::importBuildDirToApp](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/PlanetImportProcessUtil.php#L490-L621)
+See the source code for method [PlanetImportProcessUtil::importBuildDirToApp](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/PlanetImportProcessUtil.php#L557-L650)
 
 
 See Also

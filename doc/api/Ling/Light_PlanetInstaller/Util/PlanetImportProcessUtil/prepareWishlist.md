@@ -49,7 +49,7 @@ Returns array.
 
 Source Code
 ===========
-See the source code for method [PlanetImportProcessUtil::prepareWishlist](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/PlanetImportProcessUtil.php#L1203-L1210)
+See the source code for method [PlanetImportProcessUtil::prepareWishlist](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/PlanetImportProcessUtil.php#L1275-L1282)
 
 
 See Also

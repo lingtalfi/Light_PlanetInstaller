@@ -52,7 +52,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [LightPlanetInstallerApplication::addPlanetListToLpiFile](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Program/LightPlanetInstallerApplication.php#L181-L201)
+See the source code for method [LightPlanetInstallerApplication::addPlanetListToLpiFile](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Program/LightPlanetInstallerApplication.php#L182-L202)
 
 
 See Also

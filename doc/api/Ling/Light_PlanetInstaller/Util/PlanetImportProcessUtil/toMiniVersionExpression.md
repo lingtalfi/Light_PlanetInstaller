@@ -53,7 +53,7 @@ Returns string.
 
 Source Code
 ===========
-See the source code for method [PlanetImportProcessUtil::toMiniVersionExpression](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/PlanetImportProcessUtil.php#L1105-L1115)
+See the source code for method [PlanetImportProcessUtil::toMiniVersionExpression](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/PlanetImportProcessUtil.php#L1168-L1187)
 
 
 See Also

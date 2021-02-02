@@ -46,7 +46,7 @@ Returns string.
 
 Source Code
 ===========
-See the source code for method [LpiConfHelper::getGlobalDirPath](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Helper/LpiConfHelper.php#L72-L76)
+See the source code for method [LpiConfHelper::getGlobalDirPath](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Helper/LpiConfHelper.php#L93-L97)
 
 
 See Also
@@ -54,5 +54,5 @@ See Also
 
 The [LpiConfHelper](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiConfHelper.md) class.
 
-Previous method: [getConfValue](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiConfHelper/getConfValue.md)<br>Next method: [getMasterFilePath](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiConfHelper/getMasterFilePath.md)<br>
+Previous method: [getLocalUniversePath](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiConfHelper/getLocalUniversePath.md)<br>Next method: [getMasterFilePath](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiConfHelper/getMasterFilePath.md)<br>
 

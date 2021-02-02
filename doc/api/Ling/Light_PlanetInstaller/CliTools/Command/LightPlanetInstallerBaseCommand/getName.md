@@ -46,7 +46,7 @@ Returns string.
 
 Source Code
 ===========
-See the source code for method [LightPlanetInstallerBaseCommand::getName](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Command/LightPlanetInstallerBaseCommand.php#L92-L96)
+See the source code for method [LightPlanetInstallerBaseCommand::getName](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Command/LightPlanetInstallerBaseCommand.php#L90-L94)
 
 
 See Also

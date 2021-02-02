@@ -46,7 +46,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [LightPlanetInstallerApplication::useNotFoundPlanets](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Program/LightPlanetInstallerApplication.php#L704-L707)
+See the source code for method [LightPlanetInstallerApplication::useNotFoundPlanets](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Program/LightPlanetInstallerApplication.php#L705-L708)
 
 
 See Also

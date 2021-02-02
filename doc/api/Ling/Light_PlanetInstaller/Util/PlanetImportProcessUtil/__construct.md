@@ -46,7 +46,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [PlanetImportProcessUtil::__construct](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/PlanetImportProcessUtil.php#L178-L196)
+See the source code for method [PlanetImportProcessUtil::__construct](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/PlanetImportProcessUtil.php#L179-L197)
 
 
 See Also

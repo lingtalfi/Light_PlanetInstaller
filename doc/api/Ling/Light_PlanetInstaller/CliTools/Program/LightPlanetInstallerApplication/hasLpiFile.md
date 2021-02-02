@@ -53,7 +53,7 @@ Returns bool.
 
 Source Code
 ===========
-See the source code for method [LightPlanetInstallerApplication::hasLpiFile](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Program/LightPlanetInstallerApplication.php#L155-L159)
+See the source code for method [LightPlanetInstallerApplication::hasLpiFile](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Program/LightPlanetInstallerApplication.php#L156-L160)
 
 
 See Also

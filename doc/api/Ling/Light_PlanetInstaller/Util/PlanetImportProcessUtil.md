@@ -4,7 +4,7 @@
 
 The PlanetImportProcessUtil class
 ================
-2020-12-08 --> 2021-01-29
+2020-12-08 --> 2021-02-02
 
 
 
@@ -31,7 +31,7 @@ class <span class="pl-k">PlanetImportProcessUtil</span>  {
     - private string [$buildDir](#property-buildDir) ;
     - private array [$applicationPlanets](#property-applicationPlanets) ;
     - private [Ling\Light_PlanetInstaller\Util\array array](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Util/array array.md) [$virtualBin](#property-virtualBin) ;
-    - private array [$webLastPlanets](#property-webLastPlanets) ;
+    - private array [$lastPlanets](#property-lastPlanets) ;
     - private string [$bernoniMode](#property-bernoniMode) ;
     - private array [$planetDependencies](#property-planetDependencies) ;
     - private int [$indentLevel](#property-indentLevel) ;
@@ -52,7 +52,7 @@ class <span class="pl-k">PlanetImportProcessUtil</span>  {
     - public [getSessionErrors](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Util/PlanetImportProcessUtil/getSessionErrors.md)() : array
     - public [getBuildDir](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Util/PlanetImportProcessUtil/getBuildDir.md)() : string
     - public [moveVirtualBinToBuildDir](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Util/PlanetImportProcessUtil/moveVirtualBinToBuildDir.md)(?array $options = []) : void
-    - public [importBuildDirToApp](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Util/PlanetImportProcessUtil/importBuildDirToApp.md)(?array &$errors = [], ?array $options = []) : void
+    - public [importBuildDirToApp](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Util/PlanetImportProcessUtil/importBuildDirToApp.md)(?array &$errors = [], ?array $options = []) : array
     - private [handleCopyWarnings](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Util/PlanetImportProcessUtil/handleCopyWarnings.md)(array &$warnings) : void
     - public [importToVirtualBin](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Util/PlanetImportProcessUtil/importToVirtualBin.md)(string $planetDot, string $versionExpr, ?array $options = []) : void
     - private [planetExistsInVirtualBin](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Util/PlanetImportProcessUtil/planetExistsInVirtualBin.md)(string $planetDot, ?string $version = null) : bool
@@ -120,9 +120,9 @@ Properties
     
     
 
-- <span id="property-webLastPlanets"><b>webLastPlanets</b></span>
+- <span id="property-lastPlanets"><b>lastPlanets</b></span>
 
-    This property holds the webLastPlanets for this instance.
+    This property holds the lastPlanets for this instance.
     
     
 
@@ -229,7 +229,7 @@ Methods
 - [PlanetImportProcessUtil::getSessionErrors](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Util/PlanetImportProcessUtil/getSessionErrors.md) &ndash; Returns the sessionErrors of this instance.
 - [PlanetImportProcessUtil::getBuildDir](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Util/PlanetImportProcessUtil/getBuildDir.md) &ndash; Returns the path to the build dir.
 - [PlanetImportProcessUtil::moveVirtualBinToBuildDir](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Util/PlanetImportProcessUtil/moveVirtualBinToBuildDir.md) &ndash; Moves the planets defined in the virtual bin to the build dir.
-- [PlanetImportProcessUtil::importBuildDirToApp](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Util/PlanetImportProcessUtil/importBuildDirToApp.md) &ndash; Imports the planets found in the build dir to the application dir.
+- [PlanetImportProcessUtil::importBuildDirToApp](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Util/PlanetImportProcessUtil/importBuildDirToApp.md) &ndash; Imports the planets found in the build dir to the application dir, and returns the planet dot names that have been successfully imported.
 - [PlanetImportProcessUtil::handleCopyWarnings](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Util/PlanetImportProcessUtil/handleCopyWarnings.md) &ndash; Display all the warnings to the output (if the conf allows it), and empties the warnings array.
 - [PlanetImportProcessUtil::importToVirtualBin](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Util/PlanetImportProcessUtil/importToVirtualBin.md) &ndash; Imports the given planet and its dependencies recursively to the virtual bin.
 - [PlanetImportProcessUtil::planetExistsInVirtualBin](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Util/PlanetImportProcessUtil/planetExistsInVirtualBin.md) &ndash; Returns whether the given planet dot exists in the virtual bin.

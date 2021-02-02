@@ -49,7 +49,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [PlanetImportProcessUtil::handleCopyWarnings](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/PlanetImportProcessUtil.php#L628-L634)
+See the source code for method [PlanetImportProcessUtil::handleCopyWarnings](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/PlanetImportProcessUtil.php#L657-L663)
 
 
 See Also

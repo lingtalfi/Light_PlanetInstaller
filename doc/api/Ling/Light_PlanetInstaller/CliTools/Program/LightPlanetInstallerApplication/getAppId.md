@@ -46,7 +46,7 @@ Returns string.
 
 Source Code
 ===========
-See the source code for method [LightPlanetInstallerApplication::getAppId](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Program/LightPlanetInstallerApplication.php#L114-L117)
+See the source code for method [LightPlanetInstallerApplication::getAppId](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Program/LightPlanetInstallerApplication.php#L115-L118)
 
 
 See Also

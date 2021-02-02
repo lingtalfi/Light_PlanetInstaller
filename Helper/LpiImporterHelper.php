@@ -31,7 +31,7 @@ class LpiImporterHelper
     public static function getImporterByGalaxy(string $galaxy): LpiImporterInterface
     {
 
-        $handlers = self::getHandlers();
+        $handlers = LpiConfHelper::getHandlers();
         if (array_key_exists($galaxy, $handlers)) {
             $importerConf = $handlers[$galaxy];
             $type = $importerConf['type'];
@@ -61,28 +61,6 @@ class LpiImporterHelper
     //--------------------------------------------
     //
     //--------------------------------------------
-    /**
-     * Returns the handlers defined in the global configuration, or the default handlers otherwise.
-     * It's an array of galaxy => handlerInfo.
-     *
-     * See the conception notes for more details.
-     *
-     *
-     *
-     * @return array
-     */
-    private static function getHandlers(): array
-    {
-        $defaultHandlers = [
-            'Ling' => [
-                'type' => 'github',
-                'account' => 'lingtalfi',
-            ],
-        ];
-        return LpiConfHelper::getConfValue("handlers", $defaultHandlers);
-    }
-
-
     /**
      * Throws an exception.
      * @param string $msg

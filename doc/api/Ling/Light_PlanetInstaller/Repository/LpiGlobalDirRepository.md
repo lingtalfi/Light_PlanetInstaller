@@ -4,7 +4,7 @@
 
 The LpiGlobalDirRepository class
 ================
-2020-12-08 --> 2021-01-29
+2020-12-08 --> 2021-02-02
 
 
 
@@ -60,4 +60,4 @@ See the source code of [Ling\Light_PlanetInstaller\Repository\LpiGlobalDirReposi
 
 SeeAlso
 ==============
-Previous class: [LpiApplicationRepository](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Repository/LpiApplicationRepository.md)<br>Next class: [LpiRepositoryInterface](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Repository/LpiRepositoryInterface.md)<br>
+Previous class: [LpiApplicationRepository](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Repository/LpiApplicationRepository.md)<br>Next class: [LpiLocalUniverseRepository](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Repository/LpiLocalUniverseRepository.md)<br>

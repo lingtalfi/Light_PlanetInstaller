@@ -64,7 +64,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [LightPlanetInstallerApplication::updateApplicationByWishlist](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Program/LightPlanetInstallerApplication.php#L467-L524)
+See the source code for method [LightPlanetInstallerApplication::updateApplicationByWishlist](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Program/LightPlanetInstallerApplication.php#L468-L525)
 
 
 See Also

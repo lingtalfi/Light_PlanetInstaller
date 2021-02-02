@@ -16,7 +16,7 @@ Description
 ================
 
 
-public static [LpiConfHelper::getConfValue](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiConfHelper/getConfValue.md)(string $key, ?$default = null, ?bool $throwEx = false) : mixed
+private static [LpiConfHelper::getConfValue](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiConfHelper/getConfValue.md)(string $key, ?$default = null, ?bool $throwEx = false) : mixed
 
 
 
@@ -63,7 +63,7 @@ Exceptions thrown
 
 Source Code
 ===========
-See the source code for method [LpiConfHelper::getConfValue](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Helper/LpiConfHelper.php#L50-L64)
+See the source code for method [LpiConfHelper::getConfValue](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Helper/LpiConfHelper.php#L141-L161)
 
 
 See Also
@@ -71,5 +71,5 @@ See Also
 
 The [LpiConfHelper](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiConfHelper.md) class.
 
-Previous method: [getConfPath](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiConfHelper/getConfPath.md)<br>Next method: [getGlobalDirPath](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiConfHelper/getGlobalDirPath.md)<br>
+Previous method: [getMasterVersionFilePath](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiConfHelper/getMasterVersionFilePath.md)<br>
 

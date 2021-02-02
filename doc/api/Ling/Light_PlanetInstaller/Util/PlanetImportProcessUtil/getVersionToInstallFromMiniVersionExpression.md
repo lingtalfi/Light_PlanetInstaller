@@ -49,7 +49,7 @@ Returns string.
 
 Source Code
 ===========
-See the source code for method [PlanetImportProcessUtil::getVersionToInstallFromMiniVersionExpression](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/PlanetImportProcessUtil.php#L889-L892)
+See the source code for method [PlanetImportProcessUtil::getVersionToInstallFromMiniVersionExpression](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/PlanetImportProcessUtil.php#L952-L955)
 
 
 See Also
