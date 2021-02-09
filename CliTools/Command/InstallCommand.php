@@ -37,7 +37,8 @@ class InstallCommand extends ImportCommand
         $url = LpiFormatHelper::getUrlFmt();
         $ret = <<<EEE
 Same as import, but does a few extra steps:
-- copy the <$concept>assets/map</$concept>(<$url>https://github.com/lingtalfi/UniverseTools/blob/master/doc/pages/conception-notes.md#the-planets-and-assetsmap</$url>) if any 
+- copy the <$concept>assets/map</$concept>(<$url>https://github.com/lingtalfi/UniverseTools/blob/master/doc/pages/conception-notes.md#the-planets-and-assetsmap</$url>) if any
+- triggers post assets/map hooks if any 
 - <$concept>logic installs</$concept> the <$concept>Light plugin</$concept> if it's <$concept>installable</$concept>(<$url>https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/pages/conception-notes.md#the-difference-between-install-and-import</$url>).
 EEE;
 
@@ -71,6 +72,21 @@ EEE;
                 $desc,
                 false
             ],
+        ];
+    }
+
+    /**
+     * @overrides
+     */
+    public function getFlags(): array
+    {
+        $concept = LpiFormatHelper::getConceptFmt();
+        $pmt = LpiFormatHelper::getCommandLineParameterFmt();
+        return [
+            "d" => "Whether to use <b>debug</b> mode. In <b>debug</b> mode, the display is more verbose and shows the debug and trace messages.",
+            "n" => "if set, doesn't update the <$concept>lpi file</$concept> when the <$pmt>planetDefinition</$pmt> parameter is defined",
+            "f" => "if set, forces the reimporting and reinstalling of the planet, even if it's already in your app and already installed",
+            "keep-build" => "if set, the <$concept>build directory</$concept> will not be automatically removed after a successful operation.",
         ];
     }
 

@@ -4,7 +4,7 @@
 
 The LpiImporterInterface class
 ================
-2020-12-08 --> 2021-02-02
+2020-12-08 --> 2021-02-09
 
 
 
@@ -64,4 +64,4 @@ See the source code of [Ling\Light_PlanetInstaller\Importer\LpiImporterInterface
 
 SeeAlso
 ==============
-Previous class: [LpiGithubImporter](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Importer/LpiGithubImporter.md)<br>Next class: [LpiApplicationRepository](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Repository/LpiApplicationRepository.md)<br>
+Previous class: [LpiGithubImporter](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Importer/LpiGithubImporter.md)<br>Next class: [LightBasePlanetInstaller](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/PlanetInstaller/LightBasePlanetInstaller.md)<br>

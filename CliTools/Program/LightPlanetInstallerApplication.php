@@ -460,6 +460,7 @@ class LightPlanetInstallerApplication extends LightCliBaseApplication
      * - useDebug: bool=false. If true, all log levels are displayed to the screen.
      * - source: mixed. The source to use as the wishlist. Can be either the keyword "lpi", or a string representing the planetDefinition.
      *      The planetDefinition is: $planetDotName(:$versionExpr=last)?
+     * - force: bool=false. Whether to force the reimport/reinstall
      *
      *
      * @param array $options
@@ -473,6 +474,7 @@ class LightPlanetInstallerApplication extends LightCliBaseApplication
         $bernoni = $options['bernoni'] ?? 'auto';
         $keepBuild = $options['keepBuild'] ?? false;
         $useDebug = $options['useDebug'] ?? false;
+        $force = $options['force'] ?? false;
 
 
         if (null === $appDir) {
@@ -516,6 +518,7 @@ class LightPlanetInstallerApplication extends LightCliBaseApplication
         $u->setContainer($this->container);
         $u->setOutput($output);
         $u->updateApplicationByWishList($appDir, $wishlist, [
+            'force' => $force,
             'bernoniMode' => $bernoni,
             'keepBuild' => $keepBuild,
             'operationMode' => $mode,

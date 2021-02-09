@@ -28,6 +28,7 @@ Available options are:
 - bernoniMode: string (manual|auto)=auto. See the bernoniMode property of this class for more details.
 - keepBuild: bool=false, whether to keep the buildDir. If false, it's removed after the execution in case of success.
 - operationMode: string (import|install) = import. The operation mode.
+- force: bool=false, whether to force the reimport/reinstall, even if the planet is already imported/installed.
 
 
 
@@ -63,7 +64,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [PlanetImportProcessUtil::updateApplicationByWishList](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/PlanetImportProcessUtil.php#L245-L410)
+See the source code for method [PlanetImportProcessUtil::updateApplicationByWishList](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/PlanetImportProcessUtil.php#L254-L452)
 
 
 See Also

@@ -1,6 +1,6 @@
 Light_PlanetInstaller
 ===========
-2020-12-08 -> 2021-02-02
+2020-12-08 -> 2021-02-09
 
 
 
@@ -66,6 +66,11 @@ planet_installer:
 History Log
 =============
 
+- 1.0.3 -- 2021-02-05
+
+    - add force flag to import/install commands
+    - remove dependencies to Ling.LingTalfi planet
+  
 - 1.0.2 -- 2021-02-02
 
     - add concept of local universe

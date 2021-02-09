@@ -9,7 +9,6 @@ dependencies:
         - BabyYaml
         - Light_Logger
         - DirScanner
-        - LingTalfi
         - CopyDir
     
 

@@ -37,6 +37,12 @@ However, if your target application had Ling:Bat in version 1.200 (for instance)
 
 
 
+Available options are:
+- force: whether to force the reimport of this planet, not recursively.
+
+
+
+
 Parameters
 ================
 
@@ -68,7 +74,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [PlanetImportProcessUtil::importToVirtualBin](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/PlanetImportProcessUtil.php#L688-L799)
+See the source code for method [PlanetImportProcessUtil::importToVirtualBin](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/PlanetImportProcessUtil.php#L730-L846)
 
 
 See Also

@@ -46,7 +46,7 @@ Returns int.
 
 Source Code
 ===========
-See the source code for method [LightPlanetInstallerApplication::countPlanetsFromLpi](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Program/LightPlanetInstallerApplication.php#L690-L699)
+See the source code for method [LightPlanetInstallerApplication::countPlanetsFromLpi](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Program/LightPlanetInstallerApplication.php#L693-L702)
 
 
 See Also

@@ -4,7 +4,7 @@
 
 The LpiApplicationRepository class
 ================
-2020-12-08 --> 2021-02-02
+2020-12-08 --> 2021-02-09
 
 
 
@@ -76,4 +76,4 @@ See the source code of [Ling\Light_PlanetInstaller\Repository\LpiApplicationRepo
 
 SeeAlso
 ==============
-Previous class: [LpiImporterInterface](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Importer/LpiImporterInterface.md)<br>Next class: [LpiGlobalDirRepository](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Repository/LpiGlobalDirRepository.md)<br>
+Previous class: [LightPlanetInstallerInterface](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/PlanetInstaller/LightPlanetInstallerInterface.md)<br>Next class: [LpiGlobalDirRepository](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Repository/LpiGlobalDirRepository.md)<br>

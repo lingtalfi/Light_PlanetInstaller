@@ -19,6 +19,7 @@ use Ling\Light_PlanetInstaller\Helper\LpiWebHelper;
 use Ling\Light_PlanetInstaller\Repository\LpiApplicationRepository;
 use Ling\Light_PlanetInstaller\Repository\LpiLocalUniverseRepository;
 use Ling\Light_PlanetInstaller\Repository\LpiWebRepository;
+use Ling\Light_PlanetInstaller\Service\LightPlanetInstallerService;
 use Ling\UniverseTools\PlanetTool;
 
 /**
@@ -174,6 +175,12 @@ class PlanetImportProcessUtil
     private $keepBuild;
 
     /**
+     * This property holds the force for this instance.
+     * @var bool = false
+     */
+    private $force;
+
+    /**
      * Builds the PlanetInstallerUtil instance.
      */
     public function __construct()
@@ -193,6 +200,7 @@ class PlanetImportProcessUtil
         $this->logLevels = ['info', 'warning', 'error'];
         $this->buildDir = null;
         $this->keepBuild = false;
+        $this->force = false;
         $this->wishList = [];
     }
 
@@ -236,6 +244,7 @@ class PlanetImportProcessUtil
      * - bernoniMode: string (manual|auto)=auto. See the bernoniMode property of this class for more details.
      * - keepBuild: bool=false, whether to keep the buildDir. If false, it's removed after the execution in case of success.
      * - operationMode: string (import|install) = import. The operation mode.
+     * - force: bool=false, whether to force the reimport/reinstall, even if the planet is already imported/installed.
      *
      *
      * @param string $appDir
@@ -248,6 +257,8 @@ class PlanetImportProcessUtil
         $install = ('install' === $operationMode);
         $this->bernoniMode = $options['bernoniMode'] ?? 'auto';
         $this->keepBuild = $options['keepBuild'] ?? false;
+        $this->force = $options['force'] ?? false;
+
         if (false === in_array($this->bernoniMode, ['auto', 'manual'], true)) {
             $this->error("Unknown bernoni mode: \"$this->bernoniMode\".");
         }
@@ -281,7 +292,9 @@ class PlanetImportProcessUtil
         $loader->start();
 
         foreach ($wishList as $planetDot => $versionExpr) {
-            $this->importToVirtualBin($planetDot, $versionExpr);
+            $this->importToVirtualBin($planetDot, $versionExpr, [
+                'force' => $this->force,
+            ]);
             $loader->incrementBy(1);
         }
 
@@ -359,6 +372,30 @@ class PlanetImportProcessUtil
                 }
 
 
+                //--------------------------------------------
+                // POST ASSETS/MAP HOOKS
+                //--------------------------------------------
+
+                if (true === $install) {
+                    if ($planetDotNames) {
+
+                        $this->info("Checking for post assets/map hooks..." . PHP_EOL);
+
+                        /**
+                         * @var $pis LightPlanetInstallerService
+                         */
+                        $pis = $this->container->get("planet_installer");
+                        foreach ($planetDotNames as $planetDotName) {
+                            $planetInstaller = $pis->getInstallerInstance($planetDotName);
+                            if (null !== $planetInstaller) {
+                                $planetInstaller->onMapCopyAfter($this->applicationDir, $output);
+                            }
+                        }
+                    }
+
+                }
+
+
                 if (true === $install) {
 
                     $lightScript = $this->applicationDir . "/scripts/Ling/Light_Cli/light-cli.php";
@@ -379,6 +416,11 @@ class PlanetImportProcessUtil
                             $cmdOutput = [];
                             $cmdBuffer = '';
                             $resultCode = null;
+
+                            if (true === $this->force) {
+                                $sOptions .= ' -f';
+                            }
+
                             exec('php -f "' . $lightScript . '" -- lpi logic_install "' . $planetDotName . '" ' . $sOptions, $cmdOutput, $resultCode);
                             if ($cmdOutput) {
                                 $cmdBuffer = implode(PHP_EOL, $cmdOutput) . PHP_EOL;
@@ -495,7 +537,7 @@ class PlanetImportProcessUtil
                 // FIRST TRY FROM APP
                 //--------------------------------------------
                 $planetFound = false;
-                if (null !== $appRepo && false === $forceWeb) {
+                if (false === $this->force && null !== $appRepo && false === $forceWeb) {
                     if (true === $appRepo->hasPlanet($planetDot, $version)) {
                         $this->trace("Found in app, skipping." . PHP_EOL);
                         $planetFound = true;
@@ -597,7 +639,7 @@ class PlanetImportProcessUtil
 
 
                         $appVersion = PlanetTool::getVersionByPlanetDir($appPlanetDir);
-                        if ($version === $appVersion) {
+                        if (false === $this->force && $version === $appVersion) {
                             $this->trace("Planet already exists with same version in the app, skipping." . PHP_EOL);
                             $loader->incrementBy(1);
                             continue;
@@ -609,7 +651,6 @@ class PlanetImportProcessUtil
                     }
 
 
-                    $isImported = true;
                     $s = "without";
                     if (false === $install) {
                         $s = "with";
@@ -623,7 +664,6 @@ class PlanetImportProcessUtil
                         ]);
                         $ret[] = $planetDotName;
                     } catch (\Exception $e) {
-                        $isImported = false;
                         $err = $e->getMessage();
                         $errors[] = $err;
                         $this->logError("An error occurred while trying to import $planetDotName:$version from build to app: $err." . PHP_EOL);
@@ -679,6 +719,8 @@ class PlanetImportProcessUtil
      *
      *
      *
+     * Available options are:
+     * - force: whether to force the reimport of this planet, not recursively.
      *
      *
      * @param string $planetDot
@@ -688,6 +730,8 @@ class PlanetImportProcessUtil
     public function importToVirtualBin(string $planetDot, string $versionExpr, array $options = [])
     {
 
+
+        $force = $options['force'] ?? false;
 
         $this->debug("Calling importToVirtualBin: <blue>$planetDot:$versionExpr</blue>." . PHP_EOL);
 
@@ -717,7 +761,7 @@ class PlanetImportProcessUtil
             if (true === $this->planetExistsInVirtualBin($planetDot, $versionToAddToVirtualBin)) {
                 $this->trace("The planet already exists in version $versionToAddToVirtualBin in the virtual bin, skipping" . PHP_EOL);
                 $versionToAddToVirtualBin = null;
-            } elseif (true === $this->planetExistsInApp($planetDot, $versionToAddToVirtualBin)) {
+            } elseif (false === $force && true === $this->planetExistsInApp($planetDot, $versionToAddToVirtualBin)) {
                 $this->trace("The planet already exists in version $versionToAddToVirtualBin in the app, skipping" . PHP_EOL);
                 $versionToAddToVirtualBin = null;
             }
@@ -745,7 +789,7 @@ class PlanetImportProcessUtil
             } else {
                 $this->trace("The planet doesn't exist in the virtual bin." . PHP_EOL);
                 // the planet doesn't exist in the bin
-                if (true === $this->planetExistsInApp($planetDot)) {
+                if (false === $force && true === $this->planetExistsInApp($planetDot)) {
                     $this->trace("The planet already exists in the target application." . PHP_EOL);
 
                     if (true === $this->hasConflict('app', $planetDot, $miniVersionExpression, $versionToAddToVirtualBin)) {
@@ -789,6 +833,9 @@ class PlanetImportProcessUtil
                     list($depPlanetDot, $depVersionExpr) = $dependencyItem;
 
                     $this->indentLevel++;
+                    /**
+                     * Note: force flag is not passed, we don't want recursion, at least for now
+                     */
                     $this->importToVirtualBin($depPlanetDot, $depVersionExpr);
                     $this->indentLevel--;
                 }

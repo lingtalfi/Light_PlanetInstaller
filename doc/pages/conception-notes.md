@@ -1,6 +1,6 @@
 Light_PlanetInstaller, conception notes
 ================
-2020-12-03 -> 2021-02-01
+2020-12-03 -> 2021-02-05
 
 This is a variation of the [uni tool](https://github.com/lingtalfi/universe-naive-importer), which I found too
 complicated.
@@ -350,7 +350,7 @@ It refers to the [version expression](#version-expression), but with the "last" 
 
 Usage: the commands
 -----------
-2020-12-03 -> 2021-02-01
+2020-12-03 -> 2021-02-05
 
 
 All commands described below assume that you're at the root directory of your app (i.e. **cd /my_app**),
@@ -378,11 +378,13 @@ and the app is a Light app.
         - keep-build: if set, the [build dir](#importing-to-the-build-dir) will not be automatically removed after a successful operation.
         - d: if set, enables the debug mode, in which all log levels messages are displayed
         - n: if set, doesn't update the **lpi file** when the **planetDefinition** parameter is defined
+        - f: if set, forces the reimporting of the planet, even if it's already in your app
 
 - **install** ($planetDefinition)?
   
     Same as import, but does a few extra steps:
     - copy the [assets/map](https://github.com/lingtalfi/UniverseTools/blob/master/doc/pages/conception-notes.md#the-planets-and-assetsmap) if any 
+    - triggers post assets/map hooks if any
     - [logic installs](https://github.com/lingtalfi/TheBar/blob/master/discussions/import-install.md#summary) the [Light](https://github.com/lingtalfi/Light) plugin if it's [installable](#the-difference-between-install-and-import).
 
   - Arguments:
@@ -401,6 +403,7 @@ and the app is a Light app.
           - keep-build: if set, the [build dir](#importing-to-the-build-dir) will not be automatically removed after a successful operation.
           - d: if set, enables the debug mode, in which all log levels messages are displayed
           - n: if set, doesn't update the **lpi file** when the **planetDefinition** parameter is defined
+        - f: if set, forces the reimporting and reinstalling of the planet, even if it's already in your app and already installed
         
 - **logic_install**: [logic installs](https://github.com/lingtalfi/TheBar/blob/master/discussions/import-install.md#summary) the given planet. This command is used internally by the **install** command.
     This command assumes that the planet you want to **logic install** is already imported with assets/map.
@@ -408,7 +411,8 @@ and the app is a Light app.
         - parameters:
             - planetDotName: the [planetDotName](https://github.com/karayabin/universe-snapshot#the-planet-dot-name) of the planet to logic install
       - flags:
-          - d: whether to use debug mode    
+          - d: whether to use debug mode
+          - f: if set, forces the logic reinstalling of the planet, even if it's already logic installed
     
 
 - **list**: lists all planets found in the current application, along with their current version numbers

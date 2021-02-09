@@ -1,6 +1,6 @@
 Ling/Light_PlanetInstaller
 ================
-2020-12-08 --> 2021-02-02
+2020-12-08 --> 2021-02-09
 
 
 
@@ -48,9 +48,9 @@ Table of contents
     - [InstallCommand::__construct](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/InstallCommand/__construct.md) &ndash; Builds the InstallCommand instance.
     - [InstallCommand::getDescription](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/InstallCommand/getDescription.md) &ndash; Returns the description of the command.
     - [InstallCommand::getParameters](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/InstallCommand/getParameters.md) &ndash; Returns the parameters available for this command.
+    - [InstallCommand::getFlags](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/InstallCommand/getFlags.md) &ndash; Returns the array of flags available for this command, which form is name => description.
     - [InstallCommand::getAliases](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/InstallCommand/getAliases.md) &ndash; Returns the aliases used by this command.
     - [ImportCommand::getOptions](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/ImportCommand/getOptions.md) &ndash; Returns the array of available options for this command, which form is name => optionItem.
-    - [ImportCommand::getFlags](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/ImportCommand/getFlags.md) &ndash; Returns the array of flags available for this command, which form is name => description.
     - [LightPlanetInstallerBaseCommand::setContainer](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LightPlanetInstallerBaseCommand/setContainer.md) &ndash; Sets the light service container interface.
     - [LightPlanetInstallerBaseCommand::run](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LightPlanetInstallerBaseCommand/run.md) &ndash; Runs the command.
     - [LightPlanetInstallerBaseCommand::getName](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LightPlanetInstallerBaseCommand/getName.md) &ndash; Returns the name of the command.
@@ -246,6 +246,12 @@ Table of contents
     - [LpiImporterInterface::getAllVersions](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Importer/LpiImporterInterface/getAllVersions.md) &ndash; Returns an array of all available versions of the planet, sorted by increasing number.
     - [LpiImporterInterface::getDependencies](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Importer/LpiImporterInterface/getDependencies.md) &ndash; Returns the array of dependencies for the given planet and version.
     - [LpiImporterInterface::getUniDependencies](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Importer/LpiImporterInterface/getUniDependencies.md) &ndash; Returns an array of planetDotNames corresponding to the uni style dependencies for the given planet identifier.
+- [LightBasePlanetInstaller](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/PlanetInstaller/LightBasePlanetInstaller.md) &ndash; The LightBasePlanetInstaller interface.
+    - [LightBasePlanetInstaller::__construct](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/PlanetInstaller/LightBasePlanetInstaller/__construct.md) &ndash; Builds the LightBasePlanetInstaller instance.
+    - [LightBasePlanetInstaller::setContainer](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/PlanetInstaller/LightBasePlanetInstaller/setContainer.md) &ndash; Sets the light service container interface.
+    - [LightBasePlanetInstaller::onMapCopyAfter](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/PlanetInstaller/LightBasePlanetInstaller/onMapCopyAfter.md) &ndash; This hook is executed during an [install](https://github.com/lingtalfi/TheBar/blob/master/discussions/import-install.md#summary).
+- [LightPlanetInstallerInterface](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/PlanetInstaller/LightPlanetInstallerInterface.md) &ndash; The LightPlanetInstallerInterface interface.
+    - [LightPlanetInstallerInterface::onMapCopyAfter](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/PlanetInstaller/LightPlanetInstallerInterface/onMapCopyAfter.md) &ndash; This hook is executed during an [install](https://github.com/lingtalfi/TheBar/blob/master/discussions/import-install.md#summary).
 - [LpiApplicationRepository](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Repository/LpiApplicationRepository.md) &ndash; The LpiApplicationRepository class.
     - [LpiApplicationRepository::__construct](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Repository/LpiApplicationRepository/__construct.md) &ndash; Builds the ApplicationRepository instance.
     - [LpiApplicationRepository::setAppDir](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Repository/LpiApplicationRepository/setAppDir.md) &ndash; Sets the appDir.
@@ -282,6 +288,7 @@ Table of contents
     - [LightPlanetInstallerService::__construct](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Service/LightPlanetInstallerService/__construct.md) &ndash; Builds the LightPlanetInstallerService instance.
     - [LightPlanetInstallerService::setContainer](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Service/LightPlanetInstallerService/setContainer.md) &ndash; Sets the container.
     - [LightPlanetInstallerService::setOptions](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Service/LightPlanetInstallerService/setOptions.md) &ndash; Sets the options.
+    - [LightPlanetInstallerService::getInstallerInstance](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Service/LightPlanetInstallerService/getInstallerInstance.md) &ndash; Returns the planet installer instance for the given planetDotName if defined, or null otherwise.
 - [LpiRepositoryUtil](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Util/LpiRepositoryUtil.md) &ndash; The LpiRepositoryUtil class.
     - [LpiRepositoryUtil::__construct](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Util/LpiRepositoryUtil/__construct.md) &ndash; Builds the LpiRepositoryUtil instance.
     - [LpiRepositoryUtil::setAppDir](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Util/LpiRepositoryUtil/setAppDir.md) &ndash; Sets the appDir.
@@ -316,7 +323,6 @@ Dependencies
 - [BabyYaml](https://github.com/lingtalfi/BabyYaml)
 - [Light_Logger](https://github.com/lingtalfi/Light_Logger)
 - [DirScanner](https://github.com/lingtalfi/DirScanner)
-- [LingTalfi](https://github.com/lingtalfi/LingTalfi)
 - [CopyDir](https://github.com/lingtalfi/CopyDir)
 
 

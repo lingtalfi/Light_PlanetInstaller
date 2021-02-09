@@ -25,6 +25,7 @@ class LogicInstallCommand extends LightPlanetInstallerBaseCommand
     {
         $planetDotName = $input->getParameter(2);
         $debug = $input->hasFlag("d");
+        $force = $input->hasFlag("f");
 
 
         /**
@@ -49,7 +50,9 @@ class LogicInstallCommand extends LightPlanetInstallerBaseCommand
                 if (true === $debug) {
                     $output->write("Installer found, installing planet." . PHP_EOL);
                 }
-                $pi->install($planetDotName);
+                $pi->install($planetDotName, [
+                    'force' => $force,
+                ]);
             } catch (\Exception $e) {
 
                 $err = $e->getMessage();
@@ -118,7 +121,8 @@ EEE;
     public function getFlags(): array
     {
         return [
-            "d" => "Whether to use <b>debug</b> mode.",
+            "d" => "Whether to use <b>debug</b> mode",
+            "f" => "if set, forces the logic reinstalling of the planet, even if it's already logic installed",
         ];
     }
 

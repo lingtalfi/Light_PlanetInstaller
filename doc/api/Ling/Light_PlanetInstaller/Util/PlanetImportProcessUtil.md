@@ -4,7 +4,7 @@
 
 The PlanetImportProcessUtil class
 ================
-2020-12-08 --> 2021-02-02
+2020-12-08 --> 2021-02-09
 
 
 
@@ -41,6 +41,7 @@ class <span class="pl-k">PlanetImportProcessUtil</span>  {
     - private array [$sessionErrors](#property-sessionErrors) ;
     - private array [$wishList](#property-wishList) ;
     - private bool [$keepBuild](#property-keepBuild) ;
+    - private bool [$force](#property-force) ;
 
 - Methods
     - public [__construct](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Util/PlanetImportProcessUtil/__construct.md)() : void
@@ -212,6 +213,12 @@ Properties
 - <span id="property-keepBuild"><b>keepBuild</b></span>
 
     This property holds the keepBuild for this instance.
+    
+    
+
+- <span id="property-force"><b>force</b></span>
+
+    This property holds the force for this instance.
     
     
 

@@ -33,6 +33,7 @@ Available options are:
 - useDebug: bool=false. If true, all log levels are displayed to the screen.
 - source: mixed. The source to use as the wishlist. Can be either the keyword "lpi", or a string representing the planetDefinition.
      The planetDefinition is: $planetDotName(:$versionExpr=last)?
+- force: bool=false. Whether to force the reimport/reinstall
 
 
 
@@ -64,7 +65,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [LightPlanetInstallerApplication::updateApplicationByWishlist](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Program/LightPlanetInstallerApplication.php#L468-L525)
+See the source code for method [LightPlanetInstallerApplication::updateApplicationByWishlist](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Program/LightPlanetInstallerApplication.php#L469-L528)
 
 
 See Also

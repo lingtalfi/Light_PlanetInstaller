@@ -5,9 +5,8 @@ namespace Ling\Light_PlanetInstaller\Helper;
 
 use Ling\BabyYaml\BabyYamlUtil;
 use Ling\Bat\FileSystemTool;
+use Ling\Light_PlanetInstaller\Exception\LightPlanetInstallerException;
 use Ling\Light_PlanetInstaller\Exception\LpiIncompatibleException;
-use Ling\LingTalfi\Exception\LingTalfiException;
-use Ling\LingTalfi\GranularDependency\GranularDependencyUtil;
 use Ling\UniverseTools\DependencyTool;
 use Ling\UniverseTools\MetaInfoTool;
 use Ling\UniverseTools\PlanetTool;
@@ -80,7 +79,7 @@ class LpiHelper
         if (null === $uniDir) {
             $uniDir = realpath($planetDir . "/../../");
             if ('universe' !== basename($uniDir)) {
-                throw new LingTalfiException("The universe dir name should be \"universe\", not the case with $uniDir.");
+                throw new LightPlanetInstallerException("The universe dir name should be \"universe\", not the case with $uniDir.");
             }
         }
 
@@ -142,7 +141,7 @@ class LpiHelper
         $lpiDepsFilePath = $planetDir . "/lpi-deps.byml";
 
         $data = [];
-        $versionNumbers = GranularDependencyUtil::getReadmeVersionsByPlanetDir($planetDir);
+        $versionNumbers = ReadmeTool::getReadmeVersionsByPlanetDir($planetDir);
         $deps = LpiHelper::getDependencyListByPlanetDir($planetDir, [
             'universeDir' => $uniDir,
             'versionPlus' => true,

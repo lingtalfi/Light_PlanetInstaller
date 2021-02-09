@@ -46,6 +46,7 @@ class ImportCommand extends LightPlanetInstallerBaseCommand
         $keepBuild = $input->hasFlag("keep-build");
         $useDebug = $input->hasFlag("d");
         $doNotUpdateLpiFile = $input->hasFlag("n");
+        $force = $input->hasFlag("f");
 
 
         $updateLpiFile = false;
@@ -60,6 +61,7 @@ class ImportCommand extends LightPlanetInstallerBaseCommand
         $virtualBin = [];
         $this->application->updateApplicationByWishlist([
             'mode' => $this->operationMode,
+            'force' => $force,
             //
             'source' => $source,
             'keepBuild' => $keepBuild,
@@ -168,6 +170,7 @@ EEE;
         return [
             "d" => "Whether to use <b>debug</b> mode. In <b>debug</b> mode, the display is more verbose and shows the debug and trace messages.",
             "n" => "if set, doesn't update the <$concept>lpi file</$concept> when the <$pmt>planetDefinition</$pmt> parameter is defined",
+            "f" => "if set, forces the reimporting of the planet, even if it's already in your app",
             "keep-build" => "if set, the <$concept>build directory</$concept> will not be automatically removed after a successful operation.",
         ];
     }

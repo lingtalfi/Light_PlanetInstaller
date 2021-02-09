@@ -4,8 +4,12 @@
 namespace Ling\Light_PlanetInstaller\Service;
 
 
+use Ling\Bat\ClassTool;
+use Ling\Light\ServiceContainer\LightServiceContainerAwareInterface;
 use Ling\Light\ServiceContainer\LightServiceContainerInterface;
 use Ling\Light_PlanetInstaller\Exception\LightPlanetInstallerException;
+use Ling\Light_PlanetInstaller\PlanetInstaller\LightPlanetInstallerInterface;
+use Ling\UniverseTools\PlanetTool;
 
 
 /**
@@ -34,6 +38,13 @@ class LightPlanetInstallerService
      */
     protected $options;
 
+    /**
+     * The array of planetDotName => installer. It's a cache.
+     *
+     * @var LightPlanetInstallerInterface[]
+     */
+    protected $installers;
+
 
     /**
      * Builds the LightPlanetInstallerService instance.
@@ -42,6 +53,7 @@ class LightPlanetInstallerService
     {
         $this->container = null;
         $this->options = [];
+        $this->installers = [];
     }
 
     /**
@@ -65,9 +77,32 @@ class LightPlanetInstallerService
     }
 
 
+    /**
+     * Returns the planet installer instance for the given planetDotName if defined, or null otherwise.
+     *
+     *
+     * @param string $planetDotName
+     * @return LightPlanetInstallerInterface|null
+     */
+    public function getInstallerInstance(string $planetDotName): ?LightPlanetInstallerInterface
+    {
+        if (false === array_key_exists($planetDotName, $this->installers)) {
+            list($galaxy, $planet) = PlanetTool::extractPlanetDotName($planetDotName);
 
-
-
+            $compressed = PlanetTool::getCompressedPlanetName($planet);
+            $installerClass = "$galaxy\\$planet\\Light_PlanetInstaller\\${compressed}PlanetInstaller";
+            if (true === ClassTool::isLoaded($installerClass)) {
+                $instance = new $installerClass;
+                if ($instance instanceof LightServiceContainerAwareInterface) {
+                    $instance->setContainer($this->container);
+                }
+                $this->installers[$planetDotName] = $instance;
+            } else {
+                $this->installers[$planetDotName] = null;
+            }
+        }
+        return $this->installers[$planetDotName];
+    }
 
 
 
