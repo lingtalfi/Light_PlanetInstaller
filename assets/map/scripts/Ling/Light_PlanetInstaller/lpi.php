@@ -2,13 +2,13 @@
 
 
 //--------------------------------------------
-// Welcome to the Light_PluginInstaller CLI
+// Welcome to the Light_PlanetInstaller CLI
 //--------------------------------------------
 use Ling\CliTools\Input\CommandLineInput;
 use Ling\CliTools\Output\Output;
 use Ling\Light_PlanetInstaller\CliTools\Program\LightPlanetInstallerApplication;
 
-require_once __DIR__ . "/../Light/app.init.inc.php";
+require_once __DIR__ . "/../Light/init.light.inc.php";
 
 
 

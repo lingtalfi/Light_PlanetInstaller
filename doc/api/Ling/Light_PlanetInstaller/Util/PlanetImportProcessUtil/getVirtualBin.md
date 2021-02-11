@@ -46,7 +46,7 @@ Returns array.
 
 Source Code
 ===========
-See the source code for method [PlanetImportProcessUtil::getVirtualBin](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/PlanetImportProcessUtil.php#L460-L463)
+See the source code for method [PlanetImportProcessUtil::getVirtualBin](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/PlanetImportProcessUtil.php#L465-L468)
 
 
 See Also

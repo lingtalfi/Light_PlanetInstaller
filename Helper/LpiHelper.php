@@ -10,6 +10,7 @@ use Ling\Light_PlanetInstaller\Exception\LpiIncompatibleException;
 use Ling\UniverseTools\DependencyTool;
 use Ling\UniverseTools\MetaInfoTool;
 use Ling\UniverseTools\PlanetTool;
+use Ling\UniverseTools\Util\StandardReadmeUtil;
 
 /**
  * The LpiHelper class.
@@ -141,8 +142,8 @@ class LpiHelper
         $lpiDepsFilePath = $planetDir . "/lpi-deps.byml";
 
         $data = [];
-        $versionNumbers = ReadmeTool::getReadmeVersionsByPlanetDir($planetDir);
-        $deps = LpiHelper::getDependencyListByPlanetDir($planetDir, [
+        $versionNumbers = StandardReadmeUtil::getReadmeVersionsByPlanetDir($planetDir);
+        $deps = self::getDependencyListByPlanetDir($planetDir, [
             'universeDir' => $uniDir,
             'versionPlus' => true,
         ]);

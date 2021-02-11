@@ -4,7 +4,7 @@
 
 The LightPlanetInstallerInterface class
 ================
-2020-12-08 --> 2021-02-09
+2020-12-08 --> 2021-02-11
 
 
 

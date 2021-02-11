@@ -62,7 +62,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [LpiHelper::createLpiDepsFileByPlanetDir](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Helper/LpiHelper.php#L138-L154)
+See the source code for method [LpiHelper::createLpiDepsFileByPlanetDir](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Helper/LpiHelper.php#L139-L155)
 
 
 See Also

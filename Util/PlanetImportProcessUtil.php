@@ -291,6 +291,8 @@ class PlanetImportProcessUtil
         $loader->setDisplayMode('percent');
         $loader->start();
 
+
+
         foreach ($wishList as $planetDot => $versionExpr) {
             $this->importToVirtualBin($planetDot, $versionExpr, [
                 'force' => $this->force,
@@ -305,6 +307,7 @@ class PlanetImportProcessUtil
 
         $virtualBin = $this->getVirtualBin();
         $this->info("The virtual bin looks like this: " . PHP_EOL);
+
 
 
         if ($virtualBin) {
@@ -425,6 +428,8 @@ class PlanetImportProcessUtil
                             if ($cmdOutput) {
                                 $cmdBuffer = implode(PHP_EOL, $cmdOutput) . PHP_EOL;
                             }
+
+
 
 
                             if (0 !== $resultCode) {

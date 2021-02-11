@@ -33,6 +33,9 @@ class LogicInstallCommand extends LightPlanetInstallerBaseCommand
          */
         $pi = $this->container->get("plugin_installer");
 
+        if (true === $debug) {
+            $output->write("Logic installing planet $planetDotName." . PHP_EOL);
+        }
 
         /**
          * We only set the output in debug modes, because the output messes up the clean percent increment otherwise.
@@ -48,7 +51,7 @@ class LogicInstallCommand extends LightPlanetInstallerBaseCommand
 
 
                 if (true === $debug) {
-                    $output->write("Installer found, installing planet." . PHP_EOL);
+                    $output->write("Installer found, logic installing planet." . PHP_EOL);
                 }
                 $pi->install($planetDotName, [
                     'force' => $force,
