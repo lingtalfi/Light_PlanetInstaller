@@ -28,6 +28,7 @@ class ListCommand extends LightPlanetInstallerBaseCommand
         $lightOnly = $input->hasFlag("l");
 
 
+        $n = 0;
         $universeDir = $this->application->getUniversePath();
         $planetDirs = PlanetTool::getPlanetDirs($universeDir);
         foreach ($planetDirs as $planetDir) {
@@ -38,9 +39,14 @@ class ListCommand extends LightPlanetInstallerBaseCommand
             }
 
 
+            $n++;
+
             $version = MetaInfoTool::getVersion($planetDir);
             $output->write("$galaxy.$planet: $version" . PHP_EOL);
         }
+
+
+        $output->write("$n elements displayed." . PHP_EOL);
 
     }
 
@@ -52,7 +58,6 @@ class ListCommand extends LightPlanetInstallerBaseCommand
     {
         return "Lists all the planets found in the current application, along with their current version numbers.";
     }
-
 
 
     /**

@@ -66,6 +66,10 @@ planet_installer:
 History Log
 =============
 
+- 1.0.6 -- 2021-02-15
+
+    - update list command, now also displays the number of elements displayed
+  
 - 1.0.5 -- 2021-02-15
 
     - update list command, add -l option to display only light plugins
