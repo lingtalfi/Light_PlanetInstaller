@@ -24,10 +24,20 @@ class ListCommand extends LightPlanetInstallerBaseCommand
     protected function doRun(InputInterface $input, OutputInterface $output)
     {
 
+
+        $lightOnly = $input->hasFlag("l");
+
+
         $universeDir = $this->application->getUniversePath();
         $planetDirs = PlanetTool::getPlanetDirs($universeDir);
         foreach ($planetDirs as $planetDir) {
             list($galaxy, $planet) = PlanetTool::getGalaxyNamePlanetNameByDir($planetDir);
+
+            if (true === $lightOnly && false === str_starts_with($planet, "Light_")) {
+                continue;
+            }
+
+
             $version = MetaInfoTool::getVersion($planetDir);
             $output->write("$galaxy.$planet: $version" . PHP_EOL);
         }
@@ -41,6 +51,18 @@ class ListCommand extends LightPlanetInstallerBaseCommand
     public function getDescription(): string
     {
         return "Lists all the planets found in the current application, along with their current version numbers.";
+    }
+
+
+
+    /**
+     * @overrides
+     */
+    public function getFlags(): array
+    {
+        return [
+            "l" => "display only light planets",
+        ];
     }
 
 

@@ -1,6 +1,6 @@
 Light_PlanetInstaller
 ===========
-2020-12-08 -> 2021-02-11
+2020-12-08 -> 2021-02-15
 
 
 
@@ -66,6 +66,10 @@ planet_installer:
 History Log
 =============
 
+- 1.0.5 -- 2021-02-15
+
+    - update list command, add -l option to display only light plugins
+  
 - 1.0.4 -- 2021-02-11
 
     - update LogicInstallCommand, more verbose in debug mode

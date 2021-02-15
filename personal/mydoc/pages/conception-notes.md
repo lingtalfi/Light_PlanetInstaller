@@ -416,6 +416,11 @@ and the app is a Light app.
     
 
 - **list**: lists all planets found in the current application, along with their current version numbers
+    - Arguments:
+        - flags:
+            - l: display only light planets
+    
+
 
 - **remove $planetName**: 
         This command does the following:
