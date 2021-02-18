@@ -20,6 +20,17 @@ class LpiHelper
 
 
     /**
+     * Returns the lpi-deps.byml file location from the given planetDir.
+     *
+     * @param string $planetDir
+     * @return string
+     */
+    public static function getLpiDepsFilePathByPlanetDir(string $planetDir): string
+    {
+        return $planetDir . "/lpi-deps.byml";
+    }
+
+    /**
      * Create a global dir planet for every planets listed in the given universe dir.
      * The location of the global dir is the one defined in the global configuration.
      *
@@ -97,6 +108,43 @@ class LpiHelper
 
 
     /**
+     * Returns an array containing @page(lpi-deps) info for the last version of the given planet.
+     *
+     * The returned array has the following structure:
+     *
+     * - 0: real version number
+     * - 1: array of planetDotName => version expression
+     *
+     *
+     * Links: [version expression](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/pages/conception-notes.md#version-expression).
+     *
+     *
+     *
+     *
+     * @param string $planetDir
+     * @return array
+     */
+    public static function getLatestLpiDependenciesByPlanetDir(string $planetDir): array
+    {
+        $lpiDepsFilePath = self::getLpiDepsFilePathByPlanetDir($planetDir);
+        if (false === file_exists($lpiDepsFilePath)) {
+            throw new LightPlanetInstallerException("No lpi-deps.byml file found in $lpiDepsFilePath.");
+        }
+
+
+        $data = BabyYamlUtil::readFile($lpiDepsFilePath);
+        $last = array_key_last($data);
+        $deps = array_pop($data);
+
+
+        return [
+            $last,
+            $deps,
+        ];
+    }
+
+
+    /**
      * Updates the lpi-deps file for the planet which dir is given.
      * If the file doesn't exist, it's created.
      *
@@ -105,7 +153,7 @@ class LpiHelper
     public static function updateLpiDepsByPlanetDir(string $planetDir)
     {
 
-        $lpiDepsFilePath = $planetDir . "/lpi-deps.byml";
+        $lpiDepsFilePath = self::getLpiDepsFilePathByPlanetDir($planetDir);
         if (true === file_exists($lpiDepsFilePath)) {
             $data = BabyYamlUtil::readFile($lpiDepsFilePath);
             $version = MetaInfoTool::getVersion($planetDir);
@@ -139,7 +187,7 @@ class LpiHelper
     public static function createLpiDepsFileByPlanetDir(string $planetDir, array $options = [])
     {
         $uniDir = $options['uniDir'] ?? $planetDir . "/../../";
-        $lpiDepsFilePath = $planetDir . "/lpi-deps.byml";
+        $lpiDepsFilePath = self::getLpiDepsFilePathByPlanetDir($planetDir);
 
         $data = [];
         $versionNumbers = StandardReadmeUtil::getReadmeVersionsByPlanetDir($planetDir);

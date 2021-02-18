@@ -4,7 +4,7 @@
 
 The BuildCommand class
 ================
-2020-12-08 --> 2021-02-15
+2020-12-08 --> 2021-02-18
 
 
 
@@ -80,4 +80,4 @@ See the source code of [Ling\Light_PlanetInstaller\CliTools\Command\BuildCommand
 
 SeeAlso
 ==============
-Next class: [HelpCommand](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/HelpCommand.md)<br>
+Next class: [DependencyCommand](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/DependencyCommand.md)<br>

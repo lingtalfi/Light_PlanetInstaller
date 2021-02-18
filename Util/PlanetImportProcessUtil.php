@@ -11,11 +11,8 @@ use Ling\CliTools\Util\LoaderUtil;
 use Ling\Light\ServiceContainer\LightServiceContainerInterface;
 use Ling\Light_PlanetInstaller\Exception\LightPlanetInstallerException;
 use Ling\Light_PlanetInstaller\Exception\LpiIncompatibleException;
-use Ling\Light_PlanetInstaller\Helper\LpiConfHelper;
-use Ling\Light_PlanetInstaller\Helper\LpiLocalUniverseHelper;
 use Ling\Light_PlanetInstaller\Helper\LpiPlanetHelper;
 use Ling\Light_PlanetInstaller\Helper\LpiVersionHelper;
-use Ling\Light_PlanetInstaller\Helper\LpiWebHelper;
 use Ling\Light_PlanetInstaller\Repository\LpiApplicationRepository;
 use Ling\Light_PlanetInstaller\Repository\LpiLocalUniverseRepository;
 use Ling\Light_PlanetInstaller\Repository\LpiWebRepository;
@@ -292,7 +289,6 @@ class PlanetImportProcessUtil
         $loader->start();
 
 
-
         foreach ($wishList as $planetDot => $versionExpr) {
             $this->importToVirtualBin($planetDot, $versionExpr, [
                 'force' => $this->force,
@@ -309,6 +305,7 @@ class PlanetImportProcessUtil
         $this->info("The virtual bin looks like this: " . PHP_EOL);
 
 
+//        azf($virtualBin);
 
         if ($virtualBin) {
             foreach ($virtualBin as $planetDot => $version) {
@@ -424,12 +421,12 @@ class PlanetImportProcessUtil
                                 $sOptions .= ' -f';
                             }
 
-                            exec('php -f "' . $lightScript . '" -- lpi logic_install "' . $planetDotName . '" ' . $sOptions, $cmdOutput, $resultCode);
+                            $cmd = 'php -f "' . $lightScript . '" -- lpi logic_install "' . $planetDotName . '" ' . $sOptions;
+                            $this->trace("Executing command: " . $cmd);
+                            exec($cmd, $cmdOutput, $resultCode);
                             if ($cmdOutput) {
                                 $cmdBuffer = implode(PHP_EOL, $cmdOutput) . PHP_EOL;
                             }
-
-
 
 
                             if (0 !== $resultCode) {
@@ -1221,17 +1218,7 @@ class PlanetImportProcessUtil
     {
         if ('last' === $versionExpr) {
             if (false === array_key_exists($planetDot, $this->lastPlanets)) {
-
-                $foundInLocal = false;
-                if (true === LpiConfHelper::getLocalUniverseHasLast() && true === LpiLocalUniverseHelper::hasPlanet($planetDot)) {
-
-                    $this->lastPlanets[$planetDot] = LpiLocalUniverseHelper::getVersion($planetDot);
-                    $foundInLocal = true;
-                }
-
-                if (false === $foundInLocal) {
-                    $this->lastPlanets[$planetDot] = LpiWebHelper::getPlanetCurrentVersion($planetDot);
-                }
+                $this->lastPlanets[$planetDot] = LpiVersionHelper::toMiniVersionExpression($planetDot, $versionExpr);
             }
             return $this->lastPlanets[$planetDot];
         }

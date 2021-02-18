@@ -4,7 +4,7 @@
 
 The LightPlanetInstallerBaseCommand class
 ================
-2020-12-08 --> 2021-02-15
+2020-12-08 --> 2021-02-18
 
 
 
@@ -93,4 +93,4 @@ See the source code of [Ling\Light_PlanetInstaller\CliTools\Command\LightPlanetI
 
 SeeAlso
 ==============
-Previous class: [InstallCommand](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/InstallCommand.md)<br>Next class: [ListCommand](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/ListCommand.md)<br>
+Previous class: [InstallCommand](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/InstallCommand.md)<br>Next class: [LightPlanetInstallerSimpleCommand](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LightPlanetInstallerSimpleCommand.md)<br>

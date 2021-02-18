@@ -105,7 +105,7 @@ EEE;
 
 
         $desc = <<<EEE
-- <$pmt>planetDotName</$pmt>: the <$concept>planetDotName</$concept> (<$url>https://github.com/karayabin/universe-snapshot#the-planet-dot-name</$url>) of the planet to logic install
+<$pmt>planetDotName</$pmt>: the <$concept>planetDotName</$concept> (<$url>https://github.com/karayabin/universe-snapshot#the-planet-dot-name</$url>) of the planet to logic install
 EEE;
 
 

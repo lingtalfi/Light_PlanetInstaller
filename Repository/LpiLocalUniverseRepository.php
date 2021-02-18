@@ -70,7 +70,7 @@ class LpiLocalUniverseRepository implements LpiRepositoryInterface
     {
         $planetDir = LpiLocalUniverseHelper::getPlanetPath($planetDot);
         if (null !== $planetDir) {
-            $lpiDepsPath = $planetDir . "/lpi-deps.byml";
+            $lpiDepsPath = LpiHelper::getLpiDepsFilePathByPlanetDir($planetDir);
             return LpiHelper::getLpiDepsByLocation($lpiDepsPath, $realVersion);
         }
         return [];

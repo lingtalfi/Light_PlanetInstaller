@@ -1,6 +1,6 @@
 Light_PlanetInstaller, conception notes
 ================
-2020-12-03 -> 2021-02-05
+2020-12-03 -> 2021-02-18
 
 This is a variation of the [uni tool](https://github.com/lingtalfi/universe-naive-importer), which I found too
 complicated.
@@ -11,6 +11,31 @@ What's different from the **uni** tool is that:
 - it can install (installable) plugins in addition to importing them into your app
 - it has a **lpi.byml** file, which you can use as an interface to express your installation wishes (very much like
   the **package.json** used by npm)
+
+
+
+
+Table of Contents
+=================
+* [How to install](#how-to-install)
+* [The lpi.byml file](#the-lpibyml-file)
+    * [The content of the lpi.byml](#the-content-of-the-lpibyml)
+    * [Resolution of lpi.byml](#resolution-of-lpibyml)
+* [The handlers](#the-handlers)
+* [The difference between install and import](#the-difference-between-install-and-import)
+* [The global configuration](#the-global-configuration)
+* [The local universe](#the-local-universe)
+* [The logging system](#the-logging-system)
+* [Version expression](#version-expression)
+* [mini version expression](#mini-version-expression)
+* [Usage: the commands](#usage-the-commands)
+* [The bernoni problem: what happens in case of conflict?](#the-bernoni-problem-what-happens-in-case-of-conflict)
+* [The <strong>lpi-deps.byml</strong> file](#the-lpi-depsbyml-file)
+* [The import algorithm](#the-import-algorithm)
+    * [Creating the virtual bin](#creating-the-virtual-bin)
+    * [Importing to the build dir](#importing-to-the-build-dir)
+    * [Copying to the target application](#copying-to-the-target-application)
+* [Related](#related)
 
 
 
@@ -241,8 +266,6 @@ handlers:
     Ling:
         type: github
         account: lingtalfi
-# path to the local universe, if any, or null by default        
-local_universe: null
 
 # whether to fetch planets with version expression "last" in the local universe or in the web
 local_universe_has_last: true 
@@ -257,14 +280,13 @@ Of course, you can overwrite them by creating the configuration file.
 
 The local universe
 ---------
-2021-02-01
+2021-02-01 -> 2021-02-18
 
 During development, I found myself needing to test things a lot, and I needed a way for the installer to use my local planets, as publishing
 a planet every time I wanted to do a test would have been very cumbersome.
 
-As a result, the planet installer now has a local universe option.
+As a result, the planet installer can use the [local universe](https://github.com/lingtalfi/UniverseTools/blob/master/doc/pages/conception-notes.md#local-universe) as a cache.
 
-The **local universe** is a directory which contains the universe that you might use locally.
 
 The main idea is that instead of looking for planets in the web, which takes some time due to the http request trip, 
 our **planet installer** searches first for planets in the **local universe** if any.
@@ -350,7 +372,7 @@ It refers to the [version expression](#version-expression), but with the "last" 
 
 Usage: the commands
 -----------
-2020-12-03 -> 2021-02-05
+2020-12-03 -> 2021-02-16
 
 
 All commands described below assume that you're at the root directory of your app (i.e. **cd /my_app**),
@@ -358,29 +380,29 @@ and the app is a Light app.
 
 
 - **help**: displays the help 
-- **import** ($planetDefinition)?
-    - With no argument, reads the [lpi.byml](#the-lpibyml-file) file and makes sure every planet defined in it is imported (along with its dependencies, recursively) in the host app.
+- **import**:
+    With no argument, reads the [lpi.byml](#the-lpibyml-file) file and makes sure every planet defined in it is imported (along with its dependencies, recursively) in the host app.
     The [assets/map](https://github.com/lingtalfi/UniverseTools/blob/master/doc/pages/conception-notes.md#the-planets-and-assetsmap) are not copied.
       
     - Arguments:
-      - parameters: 
-        - planetDefinition: if the **planetDefinition** argument is defined, it will [import](https://github.com/lingtalfi/TheBar/blob/master/discussions/import-install.md#summary) 
-          the given planet (and its dependencies recursively), without the **assets/map**, and update the **lpi.byml** file accordingly, using a plus symbol at the end of every newly imported planet's version number.
+        - parameters: 
+            - planetDefinition: if the **planetDefinition** argument is defined, it will [import](https://github.com/lingtalfi/TheBar/blob/master/discussions/import-install.md#summary) 
+            the given planet (and its dependencies recursively), without the **assets/map**, and update the **lpi.byml** file accordingly, using a plus symbol at the end of every newly imported planet's version number.
           
             The **$planetDefinition** stands for: $planetDotName(:$versionExpression)?
           
             With:
             - planetDotName: the [planetDotName](https://github.com/karayabin/universe-snapshot#the-planet-https://github.com/lingtalfi/TheBar/blob/master/discussions/import-install.md#summarydot-name)
             - versionExpression: the [versionExpression](#version-expression), defaults to last if not defined
-      - options: 
-        - bernoni: string (auto|manual) = auto. The mode to use when a [bernoni conflict](#the-bernoni-problem-what-happens-in-case-of-conflict) occurs.
-      - flags: 
-        - keep-build: if set, the [build dir](#importing-to-the-build-dir) will not be automatically removed after a successful operation.
-        - d: if set, enables the debug mode, in which all log levels messages are displayed
-        - n: if set, doesn't update the **lpi file** when the **planetDefinition** parameter is defined
-        - f: if set, forces the reimporting of the planet, even if it's already in your app
+        - options: 
+            - bernoni: string (auto|manual) = auto. The mode to use when a [bernoni conflict](#the-bernoni-problem-what-happens-in-case-of-conflict) occurs.
+        - flags: 
+            - keep-build: if set, the [build dir](#importing-to-the-build-dir) will not be automatically removed after a successful operation.
+            - d: if set, enables the debug mode, in which all log levels messages are displayed
+            - n: if set, doesn't update the **lpi file** when the **planetDefinition** parameter is defined
+            - f: if set, forces the reimporting of the planet, even if it's already in your app
 
-- **install** ($planetDefinition)?
+- **install**:
   
     Same as import, but does a few extra steps:
     - copy the [assets/map](https://github.com/lingtalfi/UniverseTools/blob/master/doc/pages/conception-notes.md#the-planets-and-assetsmap) if any 
@@ -447,6 +469,16 @@ and the app is a Light app.
         - flags:
             - n: if set, will only create the file if it doesn't exist already
 - **reimport**: launch the **import** command for every planet found in the app.
+- **deps $planetDotName**: displays the dependencies of the given planet. By default, the [lpi-dependencies](#the-lpi-depsbyml-file) for the latest version of the planet is displayed.
+    - Arguments:
+        - parameters:
+            - planetDotName: the [planetDotName](https://github.com/karayabin/universe-snapshot#the-planet-dot-name)              
+        - options:
+            - version: the version number to filter the result with. The special keyword "all" will show all the versions at once.
+        - flags:
+            - u: uni, shows the dependencies in [uni style](https://github.com/lingtalfi/Uni2#dependenciesbyml) instead of the lpi style.
+            - r: recursive, shows the uni dependencies recursively (only works when the "u" flag is raised) 
+
 
 
 

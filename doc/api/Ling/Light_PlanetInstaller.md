@@ -1,6 +1,6 @@
 Ling/Light_PlanetInstaller
 ================
-2020-12-08 --> 2021-02-15
+2020-12-08 --> 2021-02-18
 
 
 
@@ -18,6 +18,24 @@ Table of contents
     - [LightPlanetInstallerBaseCommand::getAliases](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LightPlanetInstallerBaseCommand/getAliases.md) &ndash; Returns the aliases used by this command.
     - [LightPlanetInstallerBaseCommand::getOptions](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LightPlanetInstallerBaseCommand/getOptions.md) &ndash; Returns the array of available options for this command, which form is name => optionItem.
     - [LightPlanetInstallerBaseCommand::getParameters](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LightPlanetInstallerBaseCommand/getParameters.md) &ndash; Returns the parameters available for this command.
+    - [LightPlanetInstallerBaseCommand::setApplication](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LightPlanetInstallerBaseCommand/setApplication.md) &ndash; Sets the application.
+    - [LightPlanetInstallerBaseCommand::logError](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LightPlanetInstallerBaseCommand/logError.md) &ndash; Proxy to the application's logError method.
+- [DependencyCommand](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/DependencyCommand.md) &ndash; The DependencyCommand class.
+    - [DependencyCommand::getDescription](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/DependencyCommand/getDescription.md) &ndash; Returns the description of the command.
+    - [DependencyCommand::getParameters](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/DependencyCommand/getParameters.md) &ndash; Returns the parameters available for this command.
+    - [DependencyCommand::getOptions](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/DependencyCommand/getOptions.md) &ndash; Returns the array of available options for this command, which form is name => optionItem.
+    - [DependencyCommand::getFlags](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/DependencyCommand/getFlags.md) &ndash; Returns the array of flags available for this command, which form is name => description.
+    - [DependencyCommand::getAliases](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/DependencyCommand/getAliases.md) &ndash; Returns the aliases used by this command.
+    - [LightPlanetInstallerSimpleCommand::__construct](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LightPlanetInstallerSimpleCommand/__construct.md) &ndash; Builds the LightPlanetInstallerSimpleCommand instance.
+    - [LightPlanetInstallerSimpleCommand::msg](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LightPlanetInstallerSimpleCommand/msg.md) &ndash; Writes a message to the current output.
+    - [LightPlanetInstallerSimpleCommand::msgError](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LightPlanetInstallerSimpleCommand/msgError.md) &ndash; Writes an error message to the current output.
+    - [LightPlanetInstallerSimpleCommand::msgSuccess](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LightPlanetInstallerSimpleCommand/msgSuccess.md) &ndash; Writes a success message to the current output.
+    - [LightPlanetInstallerSimpleCommand::msgWarning](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LightPlanetInstallerSimpleCommand/msgWarning.md) &ndash; Writes a warning message to the current output.
+    - [LightPlanetInstallerSimpleCommand::msgInfo](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LightPlanetInstallerSimpleCommand/msgInfo.md) &ndash; Writes an info message to the current output.
+    - [LightPlanetInstallerSimpleCommand::msgDebug](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LightPlanetInstallerSimpleCommand/msgDebug.md) &ndash; Writes a debug message to the current output.
+    - [LightPlanetInstallerBaseCommand::setContainer](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LightPlanetInstallerBaseCommand/setContainer.md) &ndash; Sets the light service container interface.
+    - [LightPlanetInstallerBaseCommand::run](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LightPlanetInstallerBaseCommand/run.md) &ndash; Runs the command.
+    - [LightPlanetInstallerBaseCommand::getName](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LightPlanetInstallerBaseCommand/getName.md) &ndash; Returns the name of the command.
     - [LightPlanetInstallerBaseCommand::setApplication](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LightPlanetInstallerBaseCommand/setApplication.md) &ndash; Sets the application.
     - [LightPlanetInstallerBaseCommand::logError](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LightPlanetInstallerBaseCommand/logError.md) &ndash; Proxy to the application's logError method.
 - [HelpCommand](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/HelpCommand.md) &ndash; The HelpCommand class.
@@ -58,6 +76,24 @@ Table of contents
     - [LightPlanetInstallerBaseCommand::logError](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LightPlanetInstallerBaseCommand/logError.md) &ndash; Proxy to the application's logError method.
 - [LightPlanetInstallerBaseCommand](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LightPlanetInstallerBaseCommand.md) &ndash; The LightPlanetInstallerBaseCommand class.
     - [LightPlanetInstallerBaseCommand::__construct](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LightPlanetInstallerBaseCommand/__construct.md) &ndash; Builds the LightPlanetInstallerBaseCommand instance.
+    - [LightPlanetInstallerBaseCommand::setContainer](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LightPlanetInstallerBaseCommand/setContainer.md) &ndash; Sets the light service container interface.
+    - [LightPlanetInstallerBaseCommand::run](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LightPlanetInstallerBaseCommand/run.md) &ndash; Runs the command.
+    - [LightPlanetInstallerBaseCommand::getName](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LightPlanetInstallerBaseCommand/getName.md) &ndash; Returns the name of the command.
+    - [LightPlanetInstallerBaseCommand::getDescription](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LightPlanetInstallerBaseCommand/getDescription.md) &ndash; Returns the description of the command.
+    - [LightPlanetInstallerBaseCommand::getAliases](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LightPlanetInstallerBaseCommand/getAliases.md) &ndash; Returns the aliases used by this command.
+    - [LightPlanetInstallerBaseCommand::getFlags](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LightPlanetInstallerBaseCommand/getFlags.md) &ndash; Returns the array of flags available for this command, which form is name => description.
+    - [LightPlanetInstallerBaseCommand::getOptions](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LightPlanetInstallerBaseCommand/getOptions.md) &ndash; Returns the array of available options for this command, which form is name => optionItem.
+    - [LightPlanetInstallerBaseCommand::getParameters](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LightPlanetInstallerBaseCommand/getParameters.md) &ndash; Returns the parameters available for this command.
+    - [LightPlanetInstallerBaseCommand::setApplication](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LightPlanetInstallerBaseCommand/setApplication.md) &ndash; Sets the application.
+    - [LightPlanetInstallerBaseCommand::logError](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LightPlanetInstallerBaseCommand/logError.md) &ndash; Proxy to the application's logError method.
+- [LightPlanetInstallerSimpleCommand](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LightPlanetInstallerSimpleCommand.md) &ndash; The LightPlanetInstallerSimpleCommand class.
+    - [LightPlanetInstallerSimpleCommand::__construct](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LightPlanetInstallerSimpleCommand/__construct.md) &ndash; Builds the LightPlanetInstallerSimpleCommand instance.
+    - [LightPlanetInstallerSimpleCommand::msg](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LightPlanetInstallerSimpleCommand/msg.md) &ndash; Writes a message to the current output.
+    - [LightPlanetInstallerSimpleCommand::msgError](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LightPlanetInstallerSimpleCommand/msgError.md) &ndash; Writes an error message to the current output.
+    - [LightPlanetInstallerSimpleCommand::msgSuccess](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LightPlanetInstallerSimpleCommand/msgSuccess.md) &ndash; Writes a success message to the current output.
+    - [LightPlanetInstallerSimpleCommand::msgWarning](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LightPlanetInstallerSimpleCommand/msgWarning.md) &ndash; Writes a warning message to the current output.
+    - [LightPlanetInstallerSimpleCommand::msgInfo](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LightPlanetInstallerSimpleCommand/msgInfo.md) &ndash; Writes an info message to the current output.
+    - [LightPlanetInstallerSimpleCommand::msgDebug](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LightPlanetInstallerSimpleCommand/msgDebug.md) &ndash; Writes a debug message to the current output.
     - [LightPlanetInstallerBaseCommand::setContainer](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LightPlanetInstallerBaseCommand/setContainer.md) &ndash; Sets the light service container interface.
     - [LightPlanetInstallerBaseCommand::run](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LightPlanetInstallerBaseCommand/run.md) &ndash; Runs the command.
     - [LightPlanetInstallerBaseCommand::getName](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LightPlanetInstallerBaseCommand/getName.md) &ndash; Returns the name of the command.
@@ -145,6 +181,7 @@ Table of contents
     - [LightPlanetInstallerApplication::getAppId](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Program/LightPlanetInstallerApplication/getAppId.md) &ndash; Returns the appId of the application.
     - [LightPlanetInstallerApplication::hasLpiFile](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Program/LightPlanetInstallerApplication/hasLpiFile.md) &ndash; Returns whether there is a lpi file in the current application.
     - [LightPlanetInstallerApplication::setCurrentOutput](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Program/LightPlanetInstallerApplication/setCurrentOutput.md) &ndash; Sets the currentOutput.
+    - [LightPlanetInstallerApplication::getCurrentOutput](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Program/LightPlanetInstallerApplication/getCurrentOutput.md) &ndash; Returns the currentOutput of this instance.
     - [LightPlanetInstallerApplication::addPlanetListToLpiFile](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Program/LightPlanetInstallerApplication/addPlanetListToLpiFile.md) &ndash; Adds/replaces the planets of the given list to the lpi file.
     - [LightPlanetInstallerApplication::removePlanetFromLpiFile](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Program/LightPlanetInstallerApplication/removePlanetFromLpiFile.md) &ndash; Removes a planet from the lpi file.
     - [LightPlanetInstallerApplication::createLpiFile](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Program/LightPlanetInstallerApplication/createLpiFile.md) &ndash; Creates the lpi file for this application if it doesn't exist yet.
@@ -171,10 +208,12 @@ Table of contents
     - [LpiConfHelper::getConfPath](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiConfHelper/getConfPath.md) &ndash; Returns the path to the global configuration file.
     - [LpiConfHelper::getHandlers](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiConfHelper/getHandlers.md) &ndash; Returns the handlers global conf value.
     - [LpiConfHelper::getLocalUniverseHasLast](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiConfHelper/getLocalUniverseHasLast.md) &ndash; Returns the local_universe_has_last global conf value.
-    - [LpiConfHelper::getLocalUniversePath](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiConfHelper/getLocalUniversePath.md) &ndash; Returns the local_universe global conf value.
     - [LpiConfHelper::getGlobalDirPath](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiConfHelper/getGlobalDirPath.md) &ndash; Returns the path to the global directory.
     - [LpiConfHelper::getMasterFilePath](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiConfHelper/getMasterFilePath.md) &ndash; Returns the path to the master lpi file.
     - [LpiConfHelper::getMasterVersionFilePath](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiConfHelper/getMasterVersionFilePath.md) &ndash; Returns the path to the master version file.
+- [LpiDependenciesHelper](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiDependenciesHelper.md) &ndash; The LpiDependenciesHelper class.
+    - [LpiDependenciesHelper::__construct](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiDependenciesHelper/__construct.md) &ndash; Builds the LpiDependenciesHelper instance.
+    - [LpiDependenciesHelper::getLpiDependenciesByPlanetDir](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiDependenciesHelper/getLpiDependenciesByPlanetDir.md) &ndash; Returns an array of lpi dependencies for the given planet.
 - [LpiFormatHelper](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiFormatHelper.md) &ndash; The LpiFormatHelper class.
     - [LpiFormatHelper::getConceptFmt](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiFormatHelper/getConceptFmt.md) &ndash; Returns the bashtml format for a concept, which is usually defined in the conception notes.
     - [LpiFormatHelper::getCommandFmt](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiFormatHelper/getCommandFmt.md) &ndash; Returns the bashtml format for a command.
@@ -191,8 +230,10 @@ Table of contents
     - [LpiGlobalDirHelper::globalDirHasPlanet](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiGlobalDirHelper/globalDirHasPlanet.md) &ndash; Returns whether the global directory contains the planet identified by the given $planetDot, in the specified $realVersion.
     - [LpiGlobalDirHelper::getPlanetPath](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiGlobalDirHelper/getPlanetPath.md) &ndash; Returns the path to the planet in the global directory.
 - [LpiHelper](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiHelper.md) &ndash; The LpiHelper class.
+    - [LpiHelper::getLpiDepsFilePathByPlanetDir](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiHelper/getLpiDepsFilePathByPlanetDir.md) &ndash; Returns the lpi-deps.byml file location from the given planetDir.
     - [LpiHelper::createGlobalDirByUniverseDir](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiHelper/createGlobalDirByUniverseDir.md) &ndash; Create a global dir planet for every planets listed in the given universe dir.
     - [LpiHelper::getDependencyListByPlanetDir](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiHelper/getDependencyListByPlanetDir.md) &ndash; Builds and returns an array of items representing the dependencies in their latest version for the planet which dir is given.
+    - [LpiHelper::getLatestLpiDependenciesByPlanetDir](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiHelper/getLatestLpiDependenciesByPlanetDir.md) &ndash; Returns an array containing [lpi-deps](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/pages/conception-notes.md#the-lpibyml-file) info for the last version of the given planet.
     - [LpiHelper::updateLpiDepsByPlanetDir](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiHelper/updateLpiDepsByPlanetDir.md) &ndash; Updates the lpi-deps file for the planet which dir is given.
     - [LpiHelper::createLpiDepsFileByPlanetDir](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiHelper/createLpiDepsFileByPlanetDir.md) &ndash; Creates the lpi-deps file for the given planetDir.
     - [LpiHelper::getLpiDepsByLocation](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiHelper/getLpiDepsByLocation.md) &ndash; Returns the dependencies for the given version, found in the lpi-deps.byml file which location is given.
@@ -205,7 +246,12 @@ Table of contents
     - [LpiLocalUniverseHelper::getVersion](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiLocalUniverseHelper/getVersion.md) &ndash; Returns the current version of the given planet from the local universe.
 - [LpiPlanetHelper](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiPlanetHelper.md) &ndash; The LpiPlanetHelper class.
     - [LpiPlanetHelper::getPlanetsVersionsByUniverseDir](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiPlanetHelper/getPlanetsVersionsByUniverseDir.md) &ndash; Returns an array of planetDot => version of the planets in the given universe dir.
+- [LpiUniDependenciesHelper](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiUniDependenciesHelper.md) &ndash; The LpiUniDependenciesHelper class.
+    - [LpiUniDependenciesHelper::__construct](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiUniDependenciesHelper/__construct.md) &ndash; Builds the LpiUniDependenciesHelper instance.
+    - [LpiUniDependenciesHelper::getUniDependenciesByPlanetDir](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiUniDependenciesHelper/getUniDependenciesByPlanetDir.md) &ndash; Returns an array of uni dependencies for the given planet.
 - [LpiVersionHelper](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiVersionHelper.md) &ndash; The LpiVersionHelper class.
+    - [LpiVersionHelper::toMiniVersionExpression](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiVersionHelper/toMiniVersionExpression.md) &ndash; Returns the mini version of the given version expression.
+    - [LpiVersionHelper::getRealVersionByVersionExpression](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiVersionHelper/getRealVersionByVersionExpression.md) &ndash; Returns the real version corresponding to the given planet and versionExpr, or throws an exception in case of problem.
     - [LpiVersionHelper::extractMiniVersion](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiVersionHelper/extractMiniVersion.md) &ndash; Returns an information array about the given mini version expression.
     - [LpiVersionHelper::isPolaritySymbol](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiVersionHelper/isPolaritySymbol.md) &ndash; Returns whether the given modifierSymbol is a polarity symbol.
     - [LpiVersionHelper::versionMeetsExpectations](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiVersionHelper/versionMeetsExpectations.md) &ndash; Returns whether the given real version meets the expectations of the given mini version expression.
@@ -314,15 +360,15 @@ Table of contents
 
 Dependencies
 ============
-- [CliTools](https://github.com/lingtalfi/CliTools)
-- [Bat](https://github.com/lingtalfi/Bat)
-- [Light_Cli](https://github.com/lingtalfi/Light_Cli)
-- [Light](https://github.com/lingtalfi/Light)
-- [UniverseTools](https://github.com/lingtalfi/UniverseTools)
-- [Light_PluginInstaller](https://github.com/lingtalfi/Light_PluginInstaller)
 - [BabyYaml](https://github.com/lingtalfi/BabyYaml)
-- [Light_Logger](https://github.com/lingtalfi/Light_Logger)
-- [DirScanner](https://github.com/lingtalfi/DirScanner)
+- [Bat](https://github.com/lingtalfi/Bat)
+- [CliTools](https://github.com/lingtalfi/CliTools)
 - [CopyDir](https://github.com/lingtalfi/CopyDir)
+- [DirScanner](https://github.com/lingtalfi/DirScanner)
+- [Light](https://github.com/lingtalfi/Light)
+- [Light_Cli](https://github.com/lingtalfi/Light_Cli)
+- [Light_Logger](https://github.com/lingtalfi/Light_Logger)
+- [Light_PluginInstaller](https://github.com/lingtalfi/Light_PluginInstaller)
+- [UniverseTools](https://github.com/lingtalfi/UniverseTools)
 
 

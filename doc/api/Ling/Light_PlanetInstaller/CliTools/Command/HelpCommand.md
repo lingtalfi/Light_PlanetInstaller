@@ -4,7 +4,7 @@
 
 The HelpCommand class
 ================
-2020-12-08 --> 2021-02-15
+2020-12-08 --> 2021-02-18
 
 
 
@@ -89,4 +89,4 @@ See the source code of [Ling\Light_PlanetInstaller\CliTools\Command\HelpCommand]
 
 SeeAlso
 ==============
-Previous class: [BuildCommand](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/BuildCommand.md)<br>Next class: [ImportCommand](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/ImportCommand.md)<br>
+Previous class: [DependencyCommand](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/DependencyCommand.md)<br>Next class: [ImportCommand](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/ImportCommand.md)<br>

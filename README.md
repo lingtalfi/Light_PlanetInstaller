@@ -1,6 +1,6 @@
 Light_PlanetInstaller
 ===========
-2020-12-08 -> 2021-02-15
+2020-12-08 -> 2021-02-18
 
 
 
@@ -66,6 +66,10 @@ planet_installer:
 History Log
 =============
 
+- 1.0.7 -- 2021-02-18
+
+    - add "deps" command
+  
 - 1.0.6 -- 2021-02-15
 
     - update list command, now also displays the number of elements displayed

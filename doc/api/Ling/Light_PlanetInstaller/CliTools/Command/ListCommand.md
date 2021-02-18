@@ -4,7 +4,7 @@
 
 The ListCommand class
 ================
-2020-12-08 --> 2021-02-15
+2020-12-08 --> 2021-02-18
 
 
 
@@ -80,4 +80,4 @@ See the source code of [Ling\Light_PlanetInstaller\CliTools\Command\ListCommand]
 
 SeeAlso
 ==============
-Previous class: [LightPlanetInstallerBaseCommand](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LightPlanetInstallerBaseCommand.md)<br>Next class: [LogicInstallCommand](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LogicInstallCommand.md)<br>
+Previous class: [LightPlanetInstallerSimpleCommand](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LightPlanetInstallerSimpleCommand.md)<br>Next class: [LogicInstallCommand](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LogicInstallCommand.md)<br>

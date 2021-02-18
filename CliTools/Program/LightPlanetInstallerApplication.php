@@ -99,6 +99,7 @@ class LightPlanetInstallerApplication extends LightCliBaseApplication
         $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\RemoveCommand", "remove");
         $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\UninstallCommand", "uninstall");
         $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\LogicInstallCommand", "logic_install");
+        $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\DependencyCommand", "deps");
 
 
         $this->notFoundPlanets = [];
@@ -168,6 +169,19 @@ class LightPlanetInstallerApplication extends LightCliBaseApplication
     {
         $this->currentOutput = $currentOutput;
     }
+
+    /**
+     * Returns the currentOutput of this instance.
+     *
+     * @return OutputInterface
+     */
+    public function getCurrentOutput(): OutputInterface
+    {
+        return $this->currentOutput;
+    }
+
+
+
 
 
     /**
