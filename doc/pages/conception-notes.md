@@ -1,6 +1,6 @@
 Light_PlanetInstaller, conception notes
 ================
-2020-12-03 -> 2021-02-18
+2020-12-03 -> 2021-02-19
 
 This is a variation of the [uni tool](https://github.com/lingtalfi/universe-naive-importer), which I found too
 complicated.
@@ -372,11 +372,30 @@ It refers to the [version expression](#version-expression), but with the "last" 
 
 Usage: the commands
 -----------
-2020-12-03 -> 2021-02-16
+2020-12-03 -> 2021-02-19
 
 
 All commands described below assume that you're at the root directory of your app (i.e. **cd /my_app**),
 and the app is a Light app.
+
+
+
+- **build**: creates/updates the **lpi.byml** file at the root of the application, based on the current planets found in the application.
+    - Arguments:
+        - flags:
+            - n: if set, will only create the file if it doesn't exist already
+- **conf**: opens the [global configuration file](#the-global-configuration) using macos "open" command
+- **deps**: displays the dependencies of the given planet. By default, the [lpi-dependencies](#the-lpi-depsbyml-file) for the latest version of the planet is displayed.
+    - Arguments:
+        - parameters:
+            - planetDotName: the [planetDotName](https://github.com/karayabin/universe-snapshot#the-planet-dot-name)
+        - options:
+            - version: the version number to filter the result with. The special keyword "all" will show all the versions at once.
+        - flags:
+            - u: uni, shows the dependencies in [uni style](https://github.com/lingtalfi/Uni2#dependenciesbyml) instead of the lpi style.
+            - r: recursive, shows the uni dependencies recursively (only works when the "u" flag is raised)
+            - i: invert, gives an overview of all the planets that have a dependency to the given planet.
+                Note: when this flag is on, the "version" option and the "r" and "u" flags are ignored.
 
 
 - **help**: displays the help 
@@ -437,14 +456,9 @@ and the app is a Light app.
           - f: if set, forces the logic reinstalling of the planet, even if it's already logic installed
     
 
-- **list**: lists all planets found in the current application, along with their current version numbers
-    - Arguments:
-        - flags:
-            - l: display only light planets
-    
 
-
-- **remove $planetName**: 
+- **reimport**: launch the **import** command for every planet found in the app.
+- **remove**: 
         This command does the following:
             - [logic uninstalls](https://github.com/lingtalfi/Light_PluginInstaller/blob/master/doc/pages/conception-notes.md#the-logic-uninstall-procedure) the planet if it's [uninstallable](#the-difference-between-install-and-import) 
             - remove the [assets/map](https://github.com/lingtalfi/UniverseTools/blob/master/doc/pages/conception-notes.md#the-planets-and-assetsmap) if any
@@ -458,26 +472,11 @@ and the app is a Light app.
             - n: if set, will not update the lpi file 
           
 
-- **uninstall $planetName**: [logic uninstalls](https://github.com/lingtalfi/Light_PluginInstaller/blob/master/doc/pages/conception-notes.md#the-logic-uninstall-procedure) the plugin (if it's [uninstallable](#the-difference-between-install-and-import))
+- **uninstall**: [logic uninstalls](https://github.com/lingtalfi/Light_PluginInstaller/blob/master/doc/pages/conception-notes.md#the-logic-uninstall-procedure) the plugin (if it's [uninstallable](#the-difference-between-install-and-import))
     - Arguments:
         - parameters:
             - planetDotName: the [planetDotName](https://github.com/karayabin/universe-snapshot#the-planet-dot-name) of the planet to **logic uninstall**
 
-- **conf**: opens the [global configuration file](#the-global-configuration) using macos "open" command
-- **build**: creates/updates the **lpi.byml** file at the root of the application, based on the current planets found in the application.
-    - Arguments:
-        - flags:
-            - n: if set, will only create the file if it doesn't exist already
-- **reimport**: launch the **import** command for every planet found in the app.
-- **deps $planetDotName**: displays the dependencies of the given planet. By default, the [lpi-dependencies](#the-lpi-depsbyml-file) for the latest version of the planet is displayed.
-    - Arguments:
-        - parameters:
-            - planetDotName: the [planetDotName](https://github.com/karayabin/universe-snapshot#the-planet-dot-name)              
-        - options:
-            - version: the version number to filter the result with. The special keyword "all" will show all the versions at once.
-        - flags:
-            - u: uni, shows the dependencies in [uni style](https://github.com/lingtalfi/Uni2#dependenciesbyml) instead of the lpi style.
-            - r: recursive, shows the uni dependencies recursively (only works when the "u" flag is raised) 
 
 
 

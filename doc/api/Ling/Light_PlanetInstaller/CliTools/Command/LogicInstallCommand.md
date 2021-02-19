@@ -4,7 +4,7 @@
 
 The LogicInstallCommand class
 ================
-2020-12-08 --> 2021-02-18
+2020-12-08 --> 2021-02-19
 
 
 
@@ -80,4 +80,4 @@ See the source code of [Ling\Light_PlanetInstaller\CliTools\Command\LogicInstall
 
 SeeAlso
 ==============
-Previous class: [ListCommand](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/ListCommand.md)<br>Next class: [OpenConfCommand](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/OpenConfCommand.md)<br>
+Previous class: [LightPlanetInstallerSimpleCommand](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LightPlanetInstallerSimpleCommand.md)<br>Next class: [OpenConfCommand](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/OpenConfCommand.md)<br>

@@ -3,6 +3,8 @@
 
 namespace Ling\Light_PlanetInstaller\Helper;
 
+use Ling\BabyYaml\BabyYamlUtil;
+use Ling\Light_PlanetInstaller\Exception\LpiIncompatibleException;
 use Ling\Light_PlanetInstaller\Repository\LpiWebRepository;
 
 /**
@@ -80,7 +82,7 @@ class LpiDependenciesHelper
 
         if (true === $recursive) {
             foreach ($deps as $planetDotName => $version) {
-                self::collectLpiDependenciesRecursive($planetDotName, $version, $ret);
+                $this->collectLpiDependenciesRecursive($planetDotName, $version, $ret);
             }
         } else {
             $ret = $deps;
@@ -90,6 +92,49 @@ class LpiDependenciesHelper
         ksort($ret);
         return $ret;
     }
+
+
+    /**
+     * Returns all the lpi dependencies for the given planet dir, or false if no lpi-deps.byml file was found.
+     * The returned array is an array of version => item.
+     * Each item is an rray with the following structure:
+     *
+     * - 0: planetDotName
+     * - 1: versionExpr
+     *
+     *
+     *
+     * @param string $planetDir
+     * @return array|false
+     * @throws \Exception
+     */
+    public function getLpiDepsFileDependenciesByPlanetDir(string $planetDir): array|false
+    {
+        $ret = [];
+        $lpiDepsFile = LpiHelper::getLpiDepsFilePathByPlanetDir($planetDir);
+        if (false === file_exists($lpiDepsFile)) {
+            return false;
+        }
+        $content = file_get_contents($lpiDepsFile);
+        if (false === $content) {
+            throw new LpiIncompatibleException("The lpi-deps.byml file was not found at \"$lpiDepsFile\".");
+        }
+        $deps = BabyYamlUtil::readBabyYamlString($content);
+        foreach ($deps as $version => $items) {
+            foreach ($items as $item) {
+                $p = explode(":", $item);
+                $vExpr = array_pop($p);
+                $pDotName = implode('.', $p);
+
+                $ret[$version][] = [
+                    $pDotName,
+                    $vExpr,
+                ];
+            }
+        }
+        return $ret;
+    }
+
 
 
 

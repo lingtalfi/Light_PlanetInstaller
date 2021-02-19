@@ -53,7 +53,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [DependencyCommand::doRun](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Command/DependencyCommand.php#L25-L87)
+See the source code for method [DependencyCommand::doRun](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Command/DependencyCommand.php#L25-L165)
 
 
 See Also

@@ -53,7 +53,7 @@ Returns array.
 
 Source Code
 ===========
-See the source code for method [DependencyCommand::getOptions](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Command/DependencyCommand.php#L121-L130)
+See the source code for method [DependencyCommand::getOptions](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Command/DependencyCommand.php#L199-L208)
 
 
 See Also

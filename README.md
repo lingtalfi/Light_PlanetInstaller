@@ -1,6 +1,6 @@
 Light_PlanetInstaller
 ===========
-2020-12-08 -> 2021-02-18
+2020-12-08 -> 2021-02-19
 
 
 
@@ -66,6 +66,10 @@ planet_installer:
 History Log
 =============
 
+- 1.0.8 -- 2021-02-19
+
+    - update ImportCommand, add safety measure, removed List command (use light cli planets command instead), add deps command invert option
+  
 - 1.0.7 -- 2021-02-18
 
     - add "deps" command

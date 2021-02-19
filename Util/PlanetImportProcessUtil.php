@@ -386,14 +386,20 @@ class PlanetImportProcessUtil
                          */
                         $pis = $this->container->get("planet_installer");
                         foreach ($planetDotNames as $planetDotName) {
+                            $this->trace("- $planetDotName...");
                             $planetInstaller = $pis->getInstallerInstance($planetDotName);
                             if (null !== $planetInstaller) {
+                                $this->trace(" installer found, executing installer..." . PHP_EOL);
                                 $planetInstaller->onMapCopyAfter($this->applicationDir, $output);
+                            } else {
+                                $this->trace("no installer found, skipping." . PHP_EOL);
                             }
                         }
                     }
 
                 }
+
+
 
 
                 if (true === $install) {
@@ -654,7 +660,7 @@ class PlanetImportProcessUtil
 
 
                     $s = "without";
-                    if (false === $install) {
+                    if (true === $install) {
                         $s = "with";
                     }
                     $s .= " assets/map";

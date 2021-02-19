@@ -30,6 +30,7 @@ class DependencyCommand extends LightPlanetInstallerSimpleCommand
         $version = $input->getOption("version");
         $uni = $input->hasFlag("u");
         $recursive = $input->hasFlag("r");
+        $invert = $input->hasFlag("i");
 
 
         if (null !== $planetDotName) {
@@ -54,24 +55,101 @@ class DependencyCommand extends LightPlanetInstallerSimpleCommand
 //                } else {
 
 
-                $u = new  LpiDependenciesHelper();
-                $lastVersion = null;
-                $deps = $u->getLpiDependenciesByPlanetDir($planetDir, [
-                    "recursive" => $recursive,
-                    "version" => $version,
-                ], $lastVersion);
+                if (false === $invert) {
+
+                    $u = new  LpiDependenciesHelper();
+                    $lastVersion = null;
+                    $deps = $u->getLpiDependenciesByPlanetDir($planetDir, [
+                        "recursive" => $recursive,
+                        "version" => $version,
+                    ], $lastVersion);
 
 
-                if (null !== $version) {
-                    $this->msg("$planetDotName $version:" . PHP_EOL);
-                } else {
-                    $this->msg("$planetDotName $lastVersion (last version):" . PHP_EOL);
-                }
-                foreach ($deps as $pDotName => $ver) {
-                    if (true === $uni) {
-                        $this->msg("- $pDotName" . PHP_EOL);
+                    if (null !== $version) {
+                        $this->msg("$planetDotName $version:" . PHP_EOL);
                     } else {
-                        $this->msg("- $pDotName:$ver" . PHP_EOL);
+                        $this->msg("$planetDotName $lastVersion (last version):" . PHP_EOL);
+                    }
+
+
+                    foreach ($deps as $pDotName => $ver) {
+                        if (true === $uni) {
+                            $this->msg("- $pDotName" . PHP_EOL);
+                        } else {
+                            $this->msg("- $pDotName:$ver" . PHP_EOL);
+                        }
+                    }
+                } else {
+                    $uniDir = $appDir . "/universe";
+                    $matches = [];
+                    $noLpiFiles = [];
+                    if (true === is_dir($uniDir)) {
+                        $depHelper = new LpiDependenciesHelper();
+                        $planetDirs = PlanetTool::getPlanetDirs($uniDir);
+
+                        foreach ($planetDirs as $planetDir) {
+                            $pDotName = PlanetTool::getPlanetDotNameByPlanetDir($planetDir);
+                            $deps = $depHelper->getLpiDepsFileDependenciesByPlanetDir($planetDir);
+
+
+                            if (true === is_array($deps)) {
+                                foreach ($deps as $version => $items) {
+                                    foreach ($items as $item) {
+                                        list($dotName, $versionExpr) = $item;
+                                        if ($planetDotName === $dotName) {
+                                            if (false === array_key_exists($pDotName, $matches)) {
+                                                $matches[$pDotName] = [];
+                                            }
+                                            $matches[$pDotName][] = [$version, $versionExpr];
+                                        }
+                                    }
+                                }
+                            } else {
+//                                a("no lpi-deps.byml file for planet $pDotName.");
+                                /**
+                                 * Note: we could go with uni style deps here, but for now I didn't need it personally...
+                                 */
+                                $noLpiFiles[] = $pDotName;
+                            }
+                        }
+
+
+                        //--------------------------------------------
+                        // DISPLAYING
+                        //--------------------------------------------
+                        foreach ($matches as $dotName => $versionItems) {
+                            $this->msg("- $dotName (");
+                            $max = 3;
+                            for ($i = 1; $i <= $max; $i++) {
+                                $s = '';
+                                if (1 !== $i) {
+                                    $s .= ", ";
+                                }
+                                if (count($versionItems) > 1) {
+                                    $versionItem = array_pop($versionItems);
+                                    list($callerVersion, $calledVersionExpr) = $versionItem;
+                                    $s .= "$callerVersion -> $calledVersionExpr";
+                                    $this->msg($s);
+                                }
+                            }
+
+                            if (count($versionItems) > 1) {
+                                $this->msg(", ...");
+                            }
+                            $this->msg(")" . PHP_EOL);
+                        }
+
+                        if ($noLpiFiles) {
+                            $this->msg(PHP_EOL);
+                            $this->msg("The following planets didn't have a lpi-deps.byml file:" . PHP_EOL);
+                            foreach ($noLpiFiles as $dotName) {
+                                $this->msg("- $dotName" . PHP_EOL);
+                            }
+                        }
+
+
+                    } else {
+                        $this->msgError("No universe dir found in <b>$uniDir</b>. Aborting." . PHP_EOL);
                     }
                 }
 
@@ -129,7 +207,6 @@ class DependencyCommand extends LightPlanetInstallerSimpleCommand
         ];
     }
 
-
     /**
      * @overrides
      */
@@ -140,8 +217,9 @@ class DependencyCommand extends LightPlanetInstallerSimpleCommand
 
         return [
             "u" => " uni, shows the dependencies in <$co>uni style</$co>(<$url>https://github.com/lingtalfi/Uni2#dependenciesbyml</$url>) instead of the lpi style.",
-            "r" => " recursive, shows the uni dependencies recursively (only works when the \"u\" flag is raised) 
-",
+            "r" => " recursive, shows the uni dependencies recursively (only works when the \"u\" flag is raised)",
+            "i" => " invert, lists the planets that have a dependency to the given planet.
+ Note: when this flag is on, the \"version\" option and the \"r\" and \"u\" flags are ignored.",
         ];
     }
 

@@ -166,6 +166,12 @@ class LpiHelper
     }
 
 
+
+
+
+
+
+
     /**
      * Creates the lpi-deps file for the given planetDir.
      *
@@ -199,6 +205,43 @@ class LpiHelper
             $data[$number] = $deps;
         }
         BabyYamlUtil::writeFile($data, $lpiDepsFilePath);
+
+    }
+
+
+    /**
+     * Takes the lpi-deps.byml file of the given source planet, and updates all dependencies of the given dstPlanetDotName found in it with the given version expression.
+     *
+     *
+     * @param string $srcPlanetDir
+     * @param string $dstPlanetDotName
+     * @param string $dstVersionExpr
+     */
+    public static function updateDependency(string $srcPlanetDir, string $dstPlanetDotName, string $dstVersionExpr)
+    {
+        $lpiDepsFile = self::getLpiDepsFilePathByPlanetDir($srcPlanetDir);
+        list($galaxy, $planet) = explode(".", $dstPlanetDotName);
+        $content = file_get_contents($lpiDepsFile);
+        if (false === $content) {
+            throw new LpiIncompatibleException("The lpi-deps.byml file was not found at \"$lpiDepsFile\".");
+        }
+        $deps = BabyYamlUtil::readBabyYamlString($content);
+
+        foreach ($deps as $version => $items) {
+            $found = false;
+            foreach ($items as $k => $v) {
+                if (true === str_starts_with($v, "$galaxy:$planet:")) {
+                    $found = true;
+                    $deps[$version][$k] = "$galaxy:$planet:$dstVersionExpr";
+                }
+            }
+
+            if (false === $found) {
+                $deps[$version][] = "$galaxy:$planet:$dstVersionExpr";
+            }
+        }
+
+        BabyYamlUtil::writeFile($deps, $lpiDepsFile);
 
     }
 
