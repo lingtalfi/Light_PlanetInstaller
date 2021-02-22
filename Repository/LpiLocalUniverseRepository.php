@@ -6,6 +6,7 @@ namespace Ling\Light_PlanetInstaller\Repository;
 
 use Ling\Bat\FileSystemTool;
 use Ling\Light_PlanetInstaller\Exception\LightPlanetInstallerException;
+use Ling\Light_PlanetInstaller\Helper\LpiDepsFileHelper;
 use Ling\Light_PlanetInstaller\Helper\LpiHelper;
 use Ling\Light_PlanetInstaller\Helper\LpiLocalUniverseHelper;
 use Ling\UniverseTools\DependencyTool;
@@ -70,8 +71,8 @@ class LpiLocalUniverseRepository implements LpiRepositoryInterface
     {
         $planetDir = LpiLocalUniverseHelper::getPlanetPath($planetDot);
         if (null !== $planetDir) {
-            $lpiDepsPath = LpiHelper::getLpiDepsFilePathByPlanetDir($planetDir);
-            return LpiHelper::getLpiDepsByLocation($lpiDepsPath, $realVersion);
+            $lpiDepsPath = LpiDepsFileHelper::getLpiDepsFilePathByPlanetDir($planetDir);
+            return LpiDepsFileHelper::getLpiDepsByLocation($lpiDepsPath, $realVersion);
         }
         return [];
     }

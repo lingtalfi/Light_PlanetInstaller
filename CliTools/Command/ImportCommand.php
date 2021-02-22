@@ -40,11 +40,7 @@ class ImportCommand extends LightPlanetInstallerBaseCommand
     {
 
 
-        $uniDir = $this->application->getApplicationDirectory() . "/universe";
-        if (false === is_dir($uniDir)) {
-            $output->write("<warning>Warning: no universe directory found, you're probably not inside a light app directory. Aborting (this is a safety measure).</warning>." . PHP_EOL);
-            return 4;
-        }
+        $this->checkInsideAppDir($output);
 
 
         $planetDefinition = $input->getParameter(2);

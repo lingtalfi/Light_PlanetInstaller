@@ -64,14 +64,14 @@ class LpiDependenciesHelper
 
 
         if (null !== $version) {
-            $lpiDepsFile = LpiHelper::getLpiDepsFilePathByPlanetDir($planetDir);
-            $tmpDeps = LpiHelper::getLpiDepsByLocation($lpiDepsFile, $version);
+            $lpiDepsFile = LpiDepsFileHelper::getLpiDepsFilePathByPlanetDir($planetDir);
+            $tmpDeps = LpiDepsFileHelper::getLpiDepsByLocation($lpiDepsFile, $version);
             foreach ($tmpDeps as $dep) {
                 $deps[$dep[0]] = $dep[1];
             }
 
         } else {
-            list($lastVersion, $tmpDeps) = LpiHelper::getLatestLpiDependenciesByPlanetDir($planetDir);
+            list($lastVersion, $tmpDeps) = LpiDepsFileHelper::getLatestLpiDependenciesByPlanetDir($planetDir);
             foreach ($tmpDeps as $line) {
                 $p = explode(":", $line);
                 $version = array_pop($p);
@@ -97,7 +97,7 @@ class LpiDependenciesHelper
     /**
      * Returns all the lpi dependencies for the given planet dir, or false if no lpi-deps.byml file was found.
      * The returned array is an array of version => item.
-     * Each item is an rray with the following structure:
+     * Each item is an array with the following structure:
      *
      * - 0: planetDotName
      * - 1: versionExpr
@@ -111,7 +111,7 @@ class LpiDependenciesHelper
     public function getLpiDepsFileDependenciesByPlanetDir(string $planetDir): array|false
     {
         $ret = [];
-        $lpiDepsFile = LpiHelper::getLpiDepsFilePathByPlanetDir($planetDir);
+        $lpiDepsFile = LpiDepsFileHelper::getLpiDepsFilePathByPlanetDir($planetDir);
         if (false === file_exists($lpiDepsFile)) {
             return false;
         }
@@ -121,6 +121,8 @@ class LpiDependenciesHelper
         }
         $deps = BabyYamlUtil::readBabyYamlString($content);
         foreach ($deps as $version => $items) {
+            $ret[$version] = [];
+
             foreach ($items as $item) {
                 $p = explode(":", $item);
                 $vExpr = array_pop($p);
@@ -157,8 +159,8 @@ class LpiDependenciesHelper
 
             $realVersion = LpiVersionHelper::getRealVersionByVersionExpression($planetDotName, $versionExpr);
             if (null !== ($planetDir = LpiLocalUniverseHelper::getPlanetPath($planetDotName))) {
-                $lpiDepsFile = LpiHelper::getLpiDepsFilePathByPlanetDir($planetDir);
-                $subDeps = LpiHelper::getLpiDepsByLocation($lpiDepsFile, $realVersion);
+                $lpiDepsFile = LpiDepsFileHelper::getLpiDepsFilePathByPlanetDir($planetDir);
+                $subDeps = LpiDepsFileHelper::getLpiDepsByLocation($lpiDepsFile, $realVersion);
             } else {
                 $subDeps = $this->getWebRepository()->getDependencies($planetDotName, $realVersion);
             }

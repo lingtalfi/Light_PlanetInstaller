@@ -62,7 +62,7 @@ Exceptions thrown
 
 Source Code
 ===========
-See the source code for method [LpiDependenciesHelper::collectLpiDependenciesRecursive](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Helper/LpiDependenciesHelper.php#L152-L169)
+See the source code for method [LpiDependenciesHelper::collectLpiDependenciesRecursive](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Helper/LpiDependenciesHelper.php#L154-L171)
 
 
 See Also

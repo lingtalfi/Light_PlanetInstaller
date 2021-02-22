@@ -396,6 +396,8 @@ and the app is a Light app.
             - r: recursive, shows the uni dependencies recursively (only works when the "u" flag is raised)
             - i: invert, gives an overview of all the planets that have a dependency to the given planet.
                 Note: when this flag is on, the "version" option and the "r" and "u" flags are ignored.
+        - aliases:
+            - deps              
 
 
 - **help**: displays the help 
@@ -420,7 +422,10 @@ and the app is a Light app.
             - d: if set, enables the debug mode, in which all log levels messages are displayed
             - n: if set, doesn't update the **lpi file** when the **planetDefinition** parameter is defined
             - f: if set, forces the reimporting of the planet, even if it's already in your app
-
+      - aliases:
+          - import
+  
+    Same as import, but does a few extra steps:
 - **install**:
   
     Same as import, but does a few extra steps:
@@ -428,23 +433,25 @@ and the app is a Light app.
     - triggers post assets/map hooks if any
     - [logic installs](https://github.com/lingtalfi/TheBar/blob/master/discussions/import-install.md#summary) the [Light](https://github.com/lingtalfi/Light) plugin if it's [installable](#the-difference-between-install-and-import).
 
-  - Arguments:
-      - parameters:
-          - planetDefinition: if the **planetDefinition** argument is defined, it will [install](https://github.com/lingtalfi/TheBar/blob/master/discussions/import-install.md#summary)
-            the given planet (and its dependencies recursively), with the **assets/map**, and update the **lpi.byml** file accordingly, using a plus symbol at the end of every newly imported planet's version number.
+    - Arguments:
+        - parameters:
+            - planetDefinition: if the **planetDefinition** argument is defined, it will [install](https://github.com/lingtalfi/TheBar/blob/master/discussions/import-install.md#summary)
+                the given planet (and its dependencies recursively), with the **assets/map**, and update the **lpi.byml** file accordingly, using a plus symbol at the end of every newly imported planet's version number.
 
-            The **$planetDefinition** stands for: $planetDotName(:$versionExpression)?
+                The **$planetDefinition** stands for: $planetDotName(:$versionExpression)?
 
-            With:
-              - planetDotName: the [planetDotName](https://github.com/karayabin/universe-snapshot#the-planet-dot-name)
-              - versionExpression: the [versionExpression](#version-expression), defaults to last if not defined
-      - options:
-          - bernoni: string (auto|manual) = auto. The mode to use when a [bernoni conflict](#the-bernoni-problem-what-happens-in-case-of-conflict) occurs.
-      - flags:
-          - keep-build: if set, the [build dir](#importing-to-the-build-dir) will not be automatically removed after a successful operation.
-          - d: if set, enables the debug mode, in which all log levels messages are displayed
-          - n: if set, doesn't update the **lpi file** when the **planetDefinition** parameter is defined
-        - f: if set, forces the reimporting and reinstalling of the planet, even if it's already in your app and already installed
+                With:
+                - planetDotName: the [planetDotName](https://github.com/karayabin/universe-snapshot#the-planet-dot-name)
+                - versionExpression: the [versionExpression](#version-expression), defaults to last if not defined
+        - options:
+            - bernoni: string (auto|manual) = auto. The mode to use when a [bernoni conflict](#the-bernoni-problem-what-happens-in-case-of-conflict) occurs.
+        - flags:
+            - keep-build: if set, the [build dir](#importing-to-the-build-dir) will not be automatically removed after a successful operation.
+            - d: if set, enables the debug mode, in which all log levels messages are displayed
+            - n: if set, doesn't update the **lpi file** when the **planetDefinition** parameter is defined
+            - f: if set, forces the reimporting and reinstalling of the planet, even if it's already in your app and already installed
+        - aliases:
+            - install    
         
 - **logic_install**: [logic installs](https://github.com/lingtalfi/TheBar/blob/master/discussions/import-install.md#summary) the given planet. This command is used internally by the **install** command.
     This command assumes that the planet you want to **logic install** is already imported with assets/map.
@@ -470,13 +477,31 @@ and the app is a Light app.
             - planetDotName: the [planetDotName](https://github.com/karayabin/universe-snapshot#the-planet-dot-name) of the planet to remove 
         - flags:
             - n: if set, will not update the lpi file 
-          
+      - aliases:
+          - remove          
 
 - **uninstall**: [logic uninstalls](https://github.com/lingtalfi/Light_PluginInstaller/blob/master/doc/pages/conception-notes.md#the-logic-uninstall-procedure) the plugin (if it's [uninstallable](#the-difference-between-install-and-import))
     - Arguments:
         - parameters:
             - planetDotName: the [planetDotName](https://github.com/karayabin/universe-snapshot#the-planet-dot-name) of the planet to **logic uninstall**
+    
+- **upgrade**: imports the latest version of the given planet, or all planets by default (if no parameter is passed).
+    This command basically upgrades the [lpi file](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/pages/conception-notes.md#the-lpibyml-file) first, 
+    then call the [import command](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/pages/conception-notes.md#usage-the-commands) without parameter.
+    - Arguments:
+        - parameters:
+            - ?planetDotName: a specific [planetDotName](https://github.com/karayabin/universe-snapshot#the-planet-dot-name) to upgrade
+        - aliases:
+            - upgrade
 
+
+- **version**: lists the available versions for the given planet.
+    The information is first fetched from the [local universe](https://github.com/lingtalfi/UniverseTools/blob/master/doc/pages/conception-notes.md#local-universe) if available, and then from the web if not.
+    - Arguments:
+        - parameters:
+            - planetDotName: the [planetDotName](https://github.com/karayabin/universe-snapshot#the-planet-dot-name) to get the versions for.
+        - aliases:
+            - version
 
 
 

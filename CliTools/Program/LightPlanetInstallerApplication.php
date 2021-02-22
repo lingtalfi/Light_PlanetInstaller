@@ -89,16 +89,18 @@ class LightPlanetInstallerApplication extends LightCliBaseApplication
 
         $this->devMode = false;
 
+        $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\BuildCommand", "build");
+        $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\OpenConfCommand", "conf");
+        $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\DependencyCommand", "deps");
         $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\HelpCommand", "help");
         $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\ImportCommand", "import");
         $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\InstallCommand", "install");
-        $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\OpenConfCommand", "conf");
-        $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\BuildCommand", "build");
+        $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\LogicInstallCommand", "logic_install");
         $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\ReImportAppPlanetsCommand", "reimport");
         $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\RemoveCommand", "remove");
         $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\UninstallCommand", "uninstall");
-        $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\LogicInstallCommand", "logic_install");
-        $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\DependencyCommand", "deps");
+        $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\UpgradeCommand", "upgrade");
+        $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\VersionCommand", "version");
 
 
         $this->notFoundPlanets = [];
@@ -178,9 +180,6 @@ class LightPlanetInstallerApplication extends LightCliBaseApplication
     {
         return $this->currentOutput;
     }
-
-
-
 
 
     /**

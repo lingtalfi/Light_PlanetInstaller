@@ -4,7 +4,7 @@
 
 The LpiDependenciesHelper class
 ================
-2020-12-08 --> 2021-02-19
+2020-12-08 --> 2021-02-22
 
 
 
@@ -72,4 +72,4 @@ See the source code of [Ling\Light_PlanetInstaller\Helper\LpiDependenciesHelper]
 
 SeeAlso
 ==============
-Previous class: [LpiConfHelper](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiConfHelper.md)<br>Next class: [LpiFormatHelper](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiFormatHelper.md)<br>
+Previous class: [LpiConfHelper](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiConfHelper.md)<br>Next class: [LpiDepsFileHelper](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiDepsFileHelper.md)<br>

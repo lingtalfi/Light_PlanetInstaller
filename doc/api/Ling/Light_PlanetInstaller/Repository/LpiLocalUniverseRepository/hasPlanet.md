@@ -53,7 +53,7 @@ Returns bool.
 
 Source Code
 ===========
-See the source code for method [LpiLocalUniverseRepository::hasPlanet](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Repository/LpiLocalUniverseRepository.php#L26-L33)
+See the source code for method [LpiLocalUniverseRepository::hasPlanet](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Repository/LpiLocalUniverseRepository.php#L27-L34)
 
 
 See Also

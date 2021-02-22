@@ -23,7 +23,7 @@ public [LpiDependenciesHelper::getLpiDepsFileDependenciesByPlanetDir](https://gi
 
 Returns all the lpi dependencies for the given planet dir, or false if no lpi-deps.byml file was found.
 The returned array is an array of version => item.
-Each item is an rray with the following structure:
+Each item is an array with the following structure:
 
 - 0: planetDotName
 - 1: versionExpr
@@ -59,7 +59,7 @@ Exceptions thrown
 
 Source Code
 ===========
-See the source code for method [LpiDependenciesHelper::getLpiDepsFileDependenciesByPlanetDir](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Helper/LpiDependenciesHelper.php#L111-L136)
+See the source code for method [LpiDependenciesHelper::getLpiDepsFileDependenciesByPlanetDir](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Helper/LpiDependenciesHelper.php#L111-L138)
 
 
 See Also

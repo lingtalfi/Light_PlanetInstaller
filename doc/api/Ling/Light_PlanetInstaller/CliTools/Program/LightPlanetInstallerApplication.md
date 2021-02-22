@@ -4,7 +4,7 @@
 
 The LightPlanetInstallerApplication class
 ================
-2020-12-08 --> 2021-02-19
+2020-12-08 --> 2021-02-22
 
 
 
@@ -242,4 +242,4 @@ See the source code of [Ling\Light_PlanetInstaller\CliTools\Program\LightPlanetI
 
 SeeAlso
 ==============
-Previous class: [UninstallCommand](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/UninstallCommand.md)<br>Next class: [LightPlanetInstallerException](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Exception/LightPlanetInstallerException.md)<br>
+Previous class: [VersionCommand](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/VersionCommand.md)<br>Next class: [LightPlanetInstallerException](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Exception/LightPlanetInstallerException.md)<br>
