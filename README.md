@@ -66,6 +66,10 @@ planet_installer:
 History Log
 =============
 
+- 1.0.15 -- 2021-02-23
+
+    - checkpoint commit
+  
 - 1.0.14 -- 2021-02-23
 
     - Update dependencies (pushed by SubscribersUtil)
