@@ -46,7 +46,7 @@ Returns [OutputInterface](https://github.com/lingtalfi/CliTools/blob/master/doc/
 
 Source Code
 ===========
-See the source code for method [LightPlanetInstallerApplication::getCurrentOutput](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Program/LightPlanetInstallerApplication.php#L179-L182)
+See the source code for method [LightPlanetInstallerApplication::getCurrentOutput](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Program/LightPlanetInstallerApplication.php#L182-L185)
 
 
 See Also

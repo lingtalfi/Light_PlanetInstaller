@@ -82,4 +82,4 @@ See the source code of [Ling\Light_PlanetInstaller\CliTools\Command\OpenConfComm
 
 SeeAlso
 ==============
-Previous class: [LogicInstallCommand](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LogicInstallCommand.md)<br>Next class: [ReImportAppPlanetsCommand](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/ReImportAppPlanetsCommand.md)<br>
+Previous class: [LogicInstallCommand](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/LogicInstallCommand.md)<br>Next class: [PostMapCommand](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/PostMapCommand.md)<br>

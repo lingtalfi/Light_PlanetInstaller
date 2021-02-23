@@ -66,6 +66,10 @@ planet_installer:
 History Log
 =============
 
+- 1.0.11 -- 2021-02-23
+
+    - add tolink, todir and post_map commands
+  
 - 1.0.10 -- 2021-02-23
 
     - add "The Light_PlanetInstaller hooks" section in the conception notes

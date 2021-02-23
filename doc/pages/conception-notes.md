@@ -461,7 +461,15 @@ and the app is a Light app.
       - flags:
           - d: whether to use debug mode
           - f: if set, forces the logic reinstalling of the planet, even if it's already logic installed
-    
+            
+- **post_map**: Executes the **post assets/map** step of the **install** command for all the planets in the app,
+    or a specific planet if specified.
+    This command is usually just for me, I used it while building the tools, to update an existing app.
+    - Arguments:
+        - parameters:
+            - ?planetDotName: the [planetDotName](https://github.com/karayabin/universe-snapshot#the-planet-dot-name) of the planet to execute the post map phase for.
+        - aliases:
+            - post_map
 
 
 - **reimport**: launch the **import** command for every planet found in the app.
@@ -494,6 +502,27 @@ and the app is a Light app.
         - aliases:
             - upgrade
 
+    
+- **todir**: converts all the symlinks of the current app to real dirs.
+    It does so by copying the real dirs from the [local universe](https://github.com/lingtalfi/UniverseTools/blob/master/doc/pages/conception-notes.md#local-universe),
+    and pasting them into the app.
+    This command does the opposite of the **tolink** command. 
+    - Arguments:
+        - flags:
+            - v: verbose, whether to use verbose mode
+        - aliases:
+            - todir
+  
+- **tolink**: converts all the planets of the current app to symlinks to the [local universe](https://github.com/lingtalfi/UniverseTools/blob/master/doc/pages/conception-notes.md#local-universe).
+    Beware, this command actually removes the existing planets before creating the symlinks.
+    Note: if there is not corresponding planet in the **local universe**, the conversion is not done (and the planet not removed). 
+    This command does the opposite of the **todir** command.
+    - Arguments:
+        - flags:
+            - v: verbose, whether to use verbose mode
+        - aliases:
+            - tolink
+  
 
 - **version**: lists the available versions for the given planet.
     The information is first fetched from the [local universe](https://github.com/lingtalfi/UniverseTools/blob/master/doc/pages/conception-notes.md#local-universe) if available, and then from the web if not.

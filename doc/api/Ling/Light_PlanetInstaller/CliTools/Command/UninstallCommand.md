@@ -82,4 +82,4 @@ See the source code of [Ling\Light_PlanetInstaller\CliTools\Command\UninstallCom
 
 SeeAlso
 ==============
-Previous class: [RemoveCommand](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/RemoveCommand.md)<br>Next class: [UpgradeCommand](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/UpgradeCommand.md)<br>
+Previous class: [ToLinkCommand](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/ToLinkCommand.md)<br>Next class: [UpgradeCommand](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/UpgradeCommand.md)<br>

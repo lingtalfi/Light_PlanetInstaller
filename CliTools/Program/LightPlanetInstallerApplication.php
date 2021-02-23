@@ -96,8 +96,11 @@ class LightPlanetInstallerApplication extends LightCliBaseApplication
         $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\ImportCommand", "import");
         $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\InstallCommand", "install");
         $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\LogicInstallCommand", "logic_install");
+        $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\PostMapCommand", "post_map");
         $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\ReImportAppPlanetsCommand", "reimport");
         $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\RemoveCommand", "remove");
+        $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\ToDirCommand", "todir");
+        $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\ToLinkCommand", "tolink");
         $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\UninstallCommand", "uninstall");
         $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\UpgradeCommand", "upgrade");
         $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\VersionCommand", "version");

@@ -82,4 +82,4 @@ See the source code of [Ling\Light_PlanetInstaller\CliTools\Command\RemoveComman
 
 SeeAlso
 ==============
-Previous class: [ReImportAppPlanetsCommand](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/ReImportAppPlanetsCommand.md)<br>Next class: [UninstallCommand](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/UninstallCommand.md)<br>
+Previous class: [ReImportAppPlanetsCommand](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/ReImportAppPlanetsCommand.md)<br>Next class: [ToDirCommand](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/ToDirCommand.md)<br>
