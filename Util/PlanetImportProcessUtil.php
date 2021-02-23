@@ -330,7 +330,7 @@ class PlanetImportProcessUtil
             $errors = $this->getSessionErrors();
 
 
-            az($buildDir);
+
 
             $importToApp = true;
             if ($errors) {
@@ -377,6 +377,8 @@ class PlanetImportProcessUtil
                 $planetDotNames = $this->importBuildDirToApp($errors, [
                     "install" => $install,
                 ]);
+
+
 
                 if ($errors) {
                     $this->info("<error>Oops, the process failed. You should find the error messages above</error>." . PHP_EOL);
