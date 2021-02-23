@@ -66,6 +66,10 @@ planet_installer:
 History Log
 =============
 
+- 1.0.16 -- 2021-02-23
+
+    - update import/install command, add -l flag
+  
 - 1.0.15 -- 2021-02-23
 
     - checkpoint commit
