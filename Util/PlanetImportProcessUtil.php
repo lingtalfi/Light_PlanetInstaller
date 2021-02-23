@@ -177,6 +177,13 @@ class PlanetImportProcessUtil
      */
     private $force;
 
+
+    /**
+     * This property holds the symlinks for this instance.
+     * @var bool = false
+     */
+    private bool $symlinks;
+
     /**
      * Builds the PlanetInstallerUtil instance.
      */
@@ -198,6 +205,7 @@ class PlanetImportProcessUtil
         $this->buildDir = null;
         $this->keepBuild = false;
         $this->force = false;
+        $this->symlinks = false;
         $this->wishList = [];
     }
 
@@ -242,6 +250,7 @@ class PlanetImportProcessUtil
      * - keepBuild: bool=false, whether to keep the buildDir. If false, it's removed after the execution in case of success.
      * - operationMode: string (import|install) = import. The operation mode.
      * - force: bool=false, whether to force the reimport/reinstall, even if the planet is already imported/installed.
+     * - symlinks: bool=false, whether to use symlinks to the local universe when available, instead of copying planet dirs.
      *
      *
      * @param string $appDir
@@ -255,6 +264,7 @@ class PlanetImportProcessUtil
         $this->bernoniMode = $options['bernoniMode'] ?? 'auto';
         $this->keepBuild = $options['keepBuild'] ?? false;
         $this->force = $options['force'] ?? false;
+        $this->symlinks = $options['symlinks'] ?? false;
 
         if (false === in_array($this->bernoniMode, ['auto', 'manual'], true)) {
             $this->error("Unknown bernoni mode: \"$this->bernoniMode\".");
@@ -318,6 +328,9 @@ class PlanetImportProcessUtil
             $this->info("Importing virtual bin into build directory (<blue>$buildDir</blue>)..." . PHP_EOL);
             $this->moveVirtualBinToBuildDir();
             $errors = $this->getSessionErrors();
+
+
+            az($buildDir);
 
             $importToApp = true;
             if ($errors) {
@@ -397,8 +410,6 @@ class PlanetImportProcessUtil
                     }
 
                 }
-
-
 
 
                 if (true === $install) {
@@ -540,29 +551,48 @@ class PlanetImportProcessUtil
                 $this->trace("Processing item <blue>$planetDot:$version</blue>" . PHP_EOL);
 
 
-                //--------------------------------------------
-                // FIRST TRY FROM APP
-                //--------------------------------------------
                 $planetFound = false;
-                if (false === $this->force && null !== $appRepo && false === $forceWeb) {
-                    if (true === $appRepo->hasPlanet($planetDot, $version)) {
-                        $this->trace("Found in app, skipping." . PHP_EOL);
-                        $planetFound = true;
-                    }
-                }
 
 
                 //--------------------------------------------
-                // IF NOT FOUND TRY FROM LOCAL UNIVERSE
+                // FIRST TRY FROM LOCAL UNIVERSE
                 //--------------------------------------------
                 if (false === $planetFound) {
                     if (true === $localUniRepo->hasPlanet($planetDot, $version)) {
-                        $this->trace("Found in local universe, importing from local universe." . PHP_EOL);
-                        $localUniRepo->copy($planetDot, $version, $dstDir, $warnings);
-                        $this->handleCopyWarnings($warnings);
+
+
+                        $localPlanetDir = $localUniRepo->getPlanetPath($planetDot);
+                        if (false === $localPlanetDir) {
+                            $this->error("PlanetImportUtilProcess: planet not found in local universe: $planetDot." . PHP_EOL);
+                        }
+
+                        if (true === $this->symlinks) {
+                            $this->trace("Found in local universe, creating symlink." . PHP_EOL);
+                            FileSystemTool::mkdir(dirname($dstDir));
+                            symlink($localPlanetDir, $dstDir);
+
+                        } else {
+                            $this->trace("Found in local universe, importing from local universe." . PHP_EOL);
+                            $localUniRepo->copy($planetDot, $version, $dstDir, $warnings);
+                            $this->handleCopyWarnings($warnings);
+                        }
                         $planetFound = true;
                     }
                 }
+
+
+                //--------------------------------------------
+                // THEN TRY FROM APP
+                //--------------------------------------------
+                if (false === $planetFound) {
+                    if (false === $this->force && null !== $appRepo && false === $forceWeb) {
+                        if (true === $appRepo->hasPlanet($planetDot, $version)) {
+                            $this->trace("Found in app, skipping." . PHP_EOL);
+                            $planetFound = true;
+                        }
+                    }
+                }
+
 
                 //--------------------------------------------
                 // IF NOT FOUND TRY FROM WEB
@@ -665,10 +695,17 @@ class PlanetImportProcessUtil
                     $s .= " assets/map";
 
                     try {
+
+
                         $this->trace("Importing from build to app, $s." . PHP_EOL);
+
+
                         PlanetTool::importPlanetByExternalDir($planetDotName, $planetDir, $appDir, [
                             "assets" => $install,
+                            "symlinks" => $this->symlinks,
                         ]);
+
+
                         $ret[] = $planetDotName;
                     } catch (\Exception $e) {
                         $err = $e->getMessage();

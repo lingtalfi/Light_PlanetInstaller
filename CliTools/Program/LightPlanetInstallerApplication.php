@@ -476,6 +476,7 @@ class LightPlanetInstallerApplication extends LightCliBaseApplication
      * - source: mixed. The source to use as the wishlist. Can be either the keyword "lpi", or a string representing the planetDefinition.
      *      The planetDefinition is: $planetDotName(:$versionExpr=last)?
      * - force: bool=false. Whether to force the reimport/reinstall
+     * - symlinks: bool=false, whether to use symlinks to the local universe when available, instead of copying planet dirs.
      *
      *
      * @param array $options
@@ -489,6 +490,7 @@ class LightPlanetInstallerApplication extends LightCliBaseApplication
         $bernoni = $options['bernoni'] ?? 'auto';
         $keepBuild = $options['keepBuild'] ?? false;
         $useDebug = $options['useDebug'] ?? false;
+        $useSymlinks = $options['symlinks'] ?? false;
         $force = $options['force'] ?? false;
 
 
@@ -537,6 +539,7 @@ class LightPlanetInstallerApplication extends LightCliBaseApplication
             'bernoniMode' => $bernoni,
             'keepBuild' => $keepBuild,
             'operationMode' => $mode,
+            'symlinks' => $useSymlinks,
         ]);
         $virtualBin = $u->getVirtualBin();
 

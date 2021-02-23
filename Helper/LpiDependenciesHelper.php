@@ -6,6 +6,7 @@ namespace Ling\Light_PlanetInstaller\Helper;
 use Ling\BabyYaml\BabyYamlUtil;
 use Ling\Light_PlanetInstaller\Exception\LpiIncompatibleException;
 use Ling\Light_PlanetInstaller\Repository\LpiWebRepository;
+use Ling\UniverseTools\PlanetTool;
 
 /**
  * The LpiDependenciesHelper class.
@@ -91,6 +92,87 @@ class LpiDependenciesHelper
 
         ksort($ret);
         return $ret;
+    }
+
+
+    /**
+     * Returns an array listing the planets that depend on the given planet, along with the version numbers.
+     *
+     * It's an array of planetDotName => versionInfo.
+     *
+     * With:
+     * - planetDotName: the planet that "subscribes"/depends on the given planet
+     * - versionInfo: an array of versionInfo items, each of which:
+     *      - 0: the subscriber's version
+     *      - 1: the given planet's version the subscribers depends on
+     *
+     *
+     * The versionInfo items are sorted by ascending subscriber's version.
+     *
+     *
+     * Available options are:
+     *
+     * - lastOnly: bool=false. If true, we only look at the latest subscriber's version.
+     *      The returned array is instead an array of planetDotName => lastVersionInfo,
+     *      with lastVersionInfo:
+     *          - 0: the last subscriber's version
+     *          - 1: the given planet's version the subscribers depends on
+     *
+     *
+     * @param string $planetDotName
+     * @param string $uniDir
+     * @param array $noLpiFiles
+     * @param array $options
+     * @return array
+     * @throws \Exception
+     */
+    public function getSubscribersList(string $planetDotName, string $uniDir, array &$noLpiFiles = [], array $options = []): array
+    {
+
+        $lastOnly = $options['lastOnly'] ?? false;
+        $matches = [];
+        $depHelper = new LpiDependenciesHelper();
+        $planetDirs = PlanetTool::getPlanetDirs($uniDir);
+
+        foreach ($planetDirs as $planetDir) {
+            $pDotName = PlanetTool::getPlanetDotNameByPlanetDir($planetDir);
+            $deps = $depHelper->getLpiDepsFileDependenciesByPlanetDir($planetDir);
+
+
+            if (true === is_array($deps)) {
+
+                if (true === $lastOnly) {
+                    reset($deps);
+
+                    $deps = [
+                        array_key_last($deps) => array_pop($deps),
+                    ];
+                }
+                foreach ($deps as $version => $items) {
+                    foreach ($items as $item) {
+                        list($dotName, $versionExpr) = $item;
+                        if ($planetDotName === $dotName) {
+                            if (true === $lastOnly) {
+                                $matches[$pDotName] = [$version, $versionExpr];
+                            } else {
+                                if (false === array_key_exists($pDotName, $matches)) {
+                                    $matches[$pDotName] = [];
+                                }
+                                $matches[$pDotName][] = [$version, $versionExpr];
+                            }
+                        }
+                    }
+                }
+
+            } else {
+//                                a("no lpi-deps.byml file for planet $pDotName.");
+                /**
+                 * Note: we could go with uni style deps here, but for now I didn't need it personally...
+                 */
+                $noLpiFiles[] = $pDotName;
+            }
+        }
+        return $matches;
     }
 
 

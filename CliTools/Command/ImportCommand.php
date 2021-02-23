@@ -50,6 +50,7 @@ class ImportCommand extends LightPlanetInstallerBaseCommand
         $useDebug = $input->hasFlag("d");
         $doNotUpdateLpiFile = $input->hasFlag("n");
         $force = $input->hasFlag("f");
+        $useSymlinks = $input->hasFlag("l");
 
 
         $updateLpiFile = false;
@@ -70,6 +71,7 @@ class ImportCommand extends LightPlanetInstallerBaseCommand
             'keepBuild' => $keepBuild,
             'useDebug' => $useDebug,
             'bernoni' => $bernoni,
+            'symlinks' => $useSymlinks,
         ], $virtualBin);
 
 
@@ -175,6 +177,7 @@ EEE;
             "n" => "if set, doesn't update the <$concept>lpi file</$concept> when the <$pmt>planetDefinition</$pmt> parameter is defined",
             "f" => "if set, forces the reimporting of the planet, even if it's already in your app",
             "keep-build" => "if set, the <$concept>build directory</$concept> will not be automatically removed after a successful operation.",
+            "l" => "local, if set create symlinks to the local universe (when available) instead of copying the planet dir. This can save a lot of time.",
         ];
     }
 

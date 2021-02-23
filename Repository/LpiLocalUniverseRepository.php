@@ -18,6 +18,21 @@ class LpiLocalUniverseRepository implements LpiRepositoryInterface
 {
 
 
+    /**
+     * Returns the planet path in the local universe that matches the given planet dot name, or false otherwise.
+     * @param string $planetDot
+     * @return string|false
+     */
+    public function getPlanetPath(string $planetDot): string|false
+    {
+        $ret = LpiLocalUniverseHelper::getPlanetPath($planetDot);
+        if (null === $ret) {
+            return false;
+        }
+        return $ret;
+    }
+
+
     //--------------------------------------------
     // LpiRepositoryInterface
     //--------------------------------------------

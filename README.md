@@ -66,6 +66,10 @@ planet_installer:
 History Log
 =============
 
+- 1.0.12 -- 2021-02-23
+
+    - Update dependencies
+
 - 1.0.11 -- 2021-02-23
 
     - add tolink, todir and post_map commands

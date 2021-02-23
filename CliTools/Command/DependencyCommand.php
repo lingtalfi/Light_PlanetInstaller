@@ -81,37 +81,11 @@ class DependencyCommand extends LightPlanetInstallerSimpleCommand
                     }
                 } else {
                     $uniDir = $appDir . "/universe";
-                    $matches = [];
                     $noLpiFiles = [];
                     if (true === is_dir($uniDir)) {
                         $depHelper = new LpiDependenciesHelper();
-                        $planetDirs = PlanetTool::getPlanetDirs($uniDir);
+                        $matches = $depHelper->getSubscribersList($planetDotName, $uniDir, $noLpiFiles);
 
-                        foreach ($planetDirs as $planetDir) {
-                            $pDotName = PlanetTool::getPlanetDotNameByPlanetDir($planetDir);
-                            $deps = $depHelper->getLpiDepsFileDependenciesByPlanetDir($planetDir);
-
-
-                            if (true === is_array($deps)) {
-                                foreach ($deps as $version => $items) {
-                                    foreach ($items as $item) {
-                                        list($dotName, $versionExpr) = $item;
-                                        if ($planetDotName === $dotName) {
-                                            if (false === array_key_exists($pDotName, $matches)) {
-                                                $matches[$pDotName] = [];
-                                            }
-                                            $matches[$pDotName][] = [$version, $versionExpr];
-                                        }
-                                    }
-                                }
-                            } else {
-//                                a("no lpi-deps.byml file for planet $pDotName.");
-                                /**
-                                 * Note: we could go with uni style deps here, but for now I didn't need it personally...
-                                 */
-                                $noLpiFiles[] = $pDotName;
-                            }
-                        }
 
 
                         //--------------------------------------------
