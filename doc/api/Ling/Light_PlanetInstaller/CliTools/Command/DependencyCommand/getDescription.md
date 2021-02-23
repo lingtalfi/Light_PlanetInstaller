@@ -46,7 +46,7 @@ Returns string.
 
 Source Code
 ===========
-See the source code for method [DependencyCommand::getDescription](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Command/DependencyCommand.php#L171-L176)
+See the source code for method [DependencyCommand::getDescription](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Command/DependencyCommand.php#L145-L150)
 
 
 See Also

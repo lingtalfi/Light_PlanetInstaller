@@ -47,7 +47,7 @@ Returns array.
 
 Source Code
 ===========
-See the source code for method [DependencyCommand::getFlags](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Command/DependencyCommand.php#L213-L224)
+See the source code for method [DependencyCommand::getFlags](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Command/DependencyCommand.php#L187-L198)
 
 
 See Also

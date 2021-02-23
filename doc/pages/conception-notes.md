@@ -422,6 +422,7 @@ and the app is a Light app.
             - d: if set, enables the debug mode, in which all log levels messages are displayed
             - n: if set, doesn't update the **lpi file** when the **planetDefinition** parameter is defined
             - f: if set, forces the reimporting of the planet, even if it's already in your app
+            - l: local, if set create symlinks to the local universe (when available) instead of copying the planet dir. This can save a lot of time.          
       - aliases:
           - import
   
@@ -450,6 +451,7 @@ and the app is a Light app.
             - d: if set, enables the debug mode, in which all log levels messages are displayed
             - n: if set, doesn't update the **lpi file** when the **planetDefinition** parameter is defined
             - f: if set, forces the reimporting and reinstalling of the planet, even if it's already in your app and already installed
+            - l: local, if set create symlinks to the local universe (when available) instead of copying the planet dir. This can save a lot of time.
         - aliases:
             - install    
         

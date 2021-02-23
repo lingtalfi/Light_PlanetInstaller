@@ -62,7 +62,7 @@ Returns false | string.
 
 Source Code
 ===========
-See the source code for method [PlanetImportProcessUtil::adaptToWishlist](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/PlanetImportProcessUtil.php#L1027-L1107)
+See the source code for method [PlanetImportProcessUtil::adaptToWishlist](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/PlanetImportProcessUtil.php#L1064-L1144)
 
 
 See Also

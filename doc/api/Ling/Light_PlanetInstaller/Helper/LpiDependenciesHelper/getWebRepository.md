@@ -46,7 +46,7 @@ Returns [LpiWebRepository](https://github.com/lingtalfi/Light_PlanetInstaller/bl
 
 Source Code
 ===========
-See the source code for method [LpiDependenciesHelper::getWebRepository](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Helper/LpiDependenciesHelper.php#L178-L184)
+See the source code for method [LpiDependenciesHelper::getWebRepository](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Helper/LpiDependenciesHelper.php#L260-L266)
 
 
 See Also

@@ -53,7 +53,7 @@ Returns array.
 
 Source Code
 ===========
-See the source code for method [LightPlanetInstallerApplication::getPlanetsInfo](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Program/LightPlanetInstallerApplication.php#L629-L664)
+See the source code for method [LightPlanetInstallerApplication::getPlanetsInfo](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Program/LightPlanetInstallerApplication.php#L632-L667)
 
 
 See Also

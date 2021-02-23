@@ -47,7 +47,7 @@ Returns array.
 
 Source Code
 ===========
-See the source code for method [DependencyCommand::getParameters](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Command/DependencyCommand.php#L182-L193)
+See the source code for method [DependencyCommand::getParameters](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Command/DependencyCommand.php#L156-L167)
 
 
 See Also

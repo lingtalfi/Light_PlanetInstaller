@@ -66,6 +66,14 @@ planet_installer:
 History Log
 =============
 
+- 1.0.13 -- 2021-02-23
+
+    - Update dependencies (pushed by SubscribersUtil)
+
+- 1.0.12 -- 2021-02-23
+
+    - Update dependencies (pushed by SubscribersUtil)
+
 - 1.0.12 -- 2021-02-23
 
     - Update dependencies

@@ -53,7 +53,7 @@ Returns string | false.
 
 Source Code
 ===========
-See the source code for method [LpiLocalUniverseRepository::getFirstVersionWithMinimumNumber](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Repository/LpiLocalUniverseRepository.php#L40-L43)
+See the source code for method [LpiLocalUniverseRepository::getFirstVersionWithMinimumNumber](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Repository/LpiLocalUniverseRepository.php#L55-L58)
 
 
 See Also
