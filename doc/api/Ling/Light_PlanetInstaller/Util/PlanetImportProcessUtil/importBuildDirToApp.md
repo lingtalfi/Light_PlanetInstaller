@@ -63,7 +63,7 @@ Exceptions thrown
 
 Source Code
 ===========
-See the source code for method [PlanetImportProcessUtil::importBuildDirToApp](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/PlanetImportProcessUtil.php#L607-L698)
+See the source code for method [PlanetImportProcessUtil::importBuildDirToApp](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/PlanetImportProcessUtil.php#L606-L697)
 
 
 See Also

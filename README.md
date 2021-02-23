@@ -1,6 +1,6 @@
 Light_PlanetInstaller
 ===========
-2020-12-08 -> 2021-02-22
+2020-12-08 -> 2021-02-23
 
 
 
@@ -66,6 +66,10 @@ planet_installer:
 History Log
 =============
 
+- 1.0.10 -- 2021-02-23
+
+    - add "The Light_PlanetInstaller hooks" section in the conception notes
+  
 - 1.0.9 -- 2021-02-22
 
     - add "version" and "upgrade" commands

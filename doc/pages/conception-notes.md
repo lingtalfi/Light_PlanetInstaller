@@ -1,6 +1,6 @@
 Light_PlanetInstaller, conception notes
 ================
-2020-12-03 -> 2021-02-19
+2020-12-03 -> 2021-02-23
 
 This is a variation of the [uni tool](https://github.com/lingtalfi/universe-naive-importer), which I found too
 complicated.
@@ -35,8 +35,8 @@ Table of Contents
     * [Creating the virtual bin](#creating-the-virtual-bin)
     * [Importing to the build dir](#importing-to-the-build-dir)
     * [Copying to the target application](#copying-to-the-target-application)
+* [The Light_PlanetInstaller hooks](#the-light_planetinstaller-hooks)
 * [Related](#related)
-
 
 
 
@@ -430,7 +430,7 @@ and the app is a Light app.
   
     Same as import, but does a few extra steps:
     - copy the [assets/map](https://github.com/lingtalfi/UniverseTools/blob/master/doc/pages/conception-notes.md#the-planets-and-assetsmap) if any 
-    - triggers post assets/map hooks if any
+    - triggers post assets/map hooks (aka [Light_PlanetInstaller hooks](#the-light_planetinstaller-hooks)) if any
     - [logic installs](https://github.com/lingtalfi/TheBar/blob/master/discussions/import-install.md#summary) the [Light](https://github.com/lingtalfi/Light) plugin if it's [installable](#the-difference-between-install-and-import).
 
     - Arguments:
@@ -638,6 +638,33 @@ This is about copying files from a directory to another.
 
 However, since we are importing planets, we actually execute the [import procedure](https://github.com/lingtalfi/UniverseTools/blob/master/doc/pages/conception-notes.md#the-import-procedure),
 which is also just about copying files.
+
+
+
+
+
+The Light_PlanetInstaller hooks
+-----------
+2021-02-23
+
+
+During the [install command](#usage-the-commands) execution, once the
+[assets/map files](https://github.com/lingtalfi/UniverseTools/blob/master/doc/pages/conception-notes.md#the-planets-and-assetsmap)
+have been copied to the application, we have the **post asset/map** hook phase, where plugins can execute further actions based on their assets.
+
+For now, the **post asset/map hook** is the only **Light_PlanetInstaller hook** available, but it's possible that there will be more hooks in the future.
+
+
+To create a hook from your plugin **Light_Abc**, you need to:
+
+- create a **Light_PlanetInstaller/LightAbcPlanetInstaller.php** file at the root of your plugin's directory
+- this file's class must implement the **LightPlanetInstallerInterface** interface
+    - if your class needs a container, simply implement the [LightServiceContainerAwareInterface](https://github.com/lingtalfi/Light/blob/master/doc/api/Ling/Light/ServiceContainer/LightServiceContainerAwareInterface.md) interface.
+    - we provide a [LightBasePlanetInstaller](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/PlanetInstaller/LightBasePlanetInstaller.md) class (that you can extend) for your convenience
+- then we will call the **onMapCopyAfter** method of your class automatically during the **post asset/map hook** phase of the **install** procedure
+
+
+
 
 
 

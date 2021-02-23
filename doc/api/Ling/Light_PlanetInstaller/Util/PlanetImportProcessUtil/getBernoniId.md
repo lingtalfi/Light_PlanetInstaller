@@ -57,7 +57,7 @@ Returns string.
 
 Source Code
 ===========
-See the source code for method [PlanetImportProcessUtil::getBernoniId](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/PlanetImportProcessUtil.php#L1208-L1213)
+See the source code for method [PlanetImportProcessUtil::getBernoniId](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/PlanetImportProcessUtil.php#L1207-L1212)
 
 
 See Also

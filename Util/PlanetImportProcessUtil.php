@@ -375,7 +375,6 @@ class PlanetImportProcessUtil
                 //--------------------------------------------
                 // POST ASSETS/MAP HOOKS
                 //--------------------------------------------
-
                 if (true === $install) {
                     if ($planetDotNames) {
 

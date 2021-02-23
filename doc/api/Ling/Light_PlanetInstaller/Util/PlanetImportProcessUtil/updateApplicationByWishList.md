@@ -64,7 +64,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [PlanetImportProcessUtil::updateApplicationByWishList](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/PlanetImportProcessUtil.php#L251-L460)
+See the source code for method [PlanetImportProcessUtil::updateApplicationByWishList](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/PlanetImportProcessUtil.php#L251-L459)
 
 
 See Also
