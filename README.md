@@ -1,6 +1,6 @@
 Light_PlanetInstaller
 ===========
-2020-12-08 -> 2021-02-23
+2020-12-08 -> 2021-02-25
 
 
 
@@ -66,6 +66,10 @@ planet_installer:
 History Log
 =============
 
+- 1.0.17 -- 2021-02-25
+
+    - update import command, now aborts if not in an app dir
+  
 - 1.0.16 -- 2021-02-23
 
     - update import/install command, add -l flag
