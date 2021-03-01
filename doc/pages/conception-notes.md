@@ -456,13 +456,14 @@ and the app is a Light app.
             - install    
         
 - **logic_install**: [logic installs](https://github.com/lingtalfi/TheBar/blob/master/discussions/import-install.md#summary) the given planet. This command is used internally by the **install** command.
-    This command assumes that the planet you want to **logic install** is already imported with assets/map.
+    This command assumes that the planet you want to **logic install** is already imported.
     - Arguments:
         - parameters:
             - planetDotName: the [planetDotName](https://github.com/karayabin/universe-snapshot#the-planet-dot-name) of the planet to logic install
       - flags:
           - d: whether to use debug mode
           - f: if set, forces the logic reinstalling of the planet, even if it's already logic installed
+          - m: if set, will execute the **post assets/map** step (of the **install** command) before doing the **logic install**
             
 - **post_map**: Executes the **post assets/map** step of the **install** command for all the planets in the app,
     or a specific planet if specified.
@@ -472,7 +473,7 @@ and the app is a Light app.
             - ?planetDotName: the [planetDotName](https://github.com/karayabin/universe-snapshot#the-planet-dot-name) of the planet to execute the post map phase for.
         - aliases:
             - post_map
-
+    
 
 - **reimport**: launch the **import** command for every planet found in the app.
 - **remove**: 

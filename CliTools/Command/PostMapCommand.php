@@ -15,7 +15,7 @@ use Ling\UniverseTools\PlanetTool;
  * The PostMapCommand class.
  *
  */
-class PostMapCommand extends LightPlanetInstallerBaseCommand
+class PostMapCommand extends LightPlanetInstallerProprietaryCommand
 {
 
 
@@ -43,21 +43,6 @@ class PostMapCommand extends LightPlanetInstallerBaseCommand
     }
 
 
-    /**
-     * Executes the post assets/map phase for the given planet dir.
-     * @param string $planetDotName
-     * @param LightPlanetInstallerService $pis
-     * @param OutputInterface $output
-     */
-    protected function postMapByPlanetDotName(string $planetDotName, LightPlanetInstallerService $pis, OutputInterface $output)
-    {
-        $planetInstaller = $pis->getInstallerInstance($planetDotName);
-        if (null !== $planetInstaller) {
-            $appDir = $this->application->getApplicationDirectory();
-            $output->write("$planetDotName: executing post assets/map hook..." . PHP_EOL);
-            $planetInstaller->onMapCopyAfter($appDir, $output);
-        }
-    }
 
 
     //--------------------------------------------

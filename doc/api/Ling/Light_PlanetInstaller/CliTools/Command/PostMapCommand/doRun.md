@@ -61,5 +61,5 @@ See Also
 
 The [PostMapCommand](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/PostMapCommand.md) class.
 
-Next method: [postMapByPlanetDotName](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/PostMapCommand/postMapByPlanetDotName.md)<br>
+Next method: [getDescription](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/CliTools/Command/PostMapCommand/getDescription.md)<br>
 
