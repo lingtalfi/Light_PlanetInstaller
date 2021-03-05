@@ -1,6 +1,6 @@
 Light_PlanetInstaller, conception notes
 ================
-2020-12-03 -> 2021-02-23
+2020-12-03 -> 2021-03-01
 
 This is a variation of the [uni tool](https://github.com/lingtalfi/universe-naive-importer), which I found too
 complicated.
@@ -372,7 +372,7 @@ It refers to the [version expression](#version-expression), but with the "last" 
 
 Usage: the commands
 -----------
-2020-12-03 -> 2021-02-19
+2020-12-03 -> 2021-03-01
 
 
 All commands described below assume that you're at the root directory of your app (i.e. **cd /my_app**),
