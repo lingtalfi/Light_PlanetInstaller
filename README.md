@@ -1,6 +1,6 @@
 Light_PlanetInstaller
 ===========
-2020-12-08 -> 2021-03-05
+2020-12-08 -> 2021-03-15
 
 
 
@@ -70,6 +70,10 @@ planet_installer:
 
 History Log
 =============
+
+- 1.0.20 -- 2021-03-15
+
+    - update planet to adapt Ling.Light:0.70.0
 
 - 1.0.19 -- 2021-03-05
 
