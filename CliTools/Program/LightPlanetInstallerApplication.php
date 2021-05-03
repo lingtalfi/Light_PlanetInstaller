@@ -91,7 +91,7 @@ class LightPlanetInstallerApplication extends LightCliBaseApplication
 
         $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\BuildCommand", "build");
         $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\OpenConfCommand", "conf");
-        $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\DependencyCommand", "deps");
+        $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\DependencyCommand", "dependency");
         $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\HelpCommand", "help");
         $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\ImportCommand", "import");
         $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\InstallCommand", "install");
@@ -99,8 +99,8 @@ class LightPlanetInstallerApplication extends LightCliBaseApplication
         $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\PostMapCommand", "post_map");
         $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\ReImportAppPlanetsCommand", "reimport");
         $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\RemoveCommand", "remove");
-        $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\ToDirCommand", "todir");
-        $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\ToLinkCommand", "tolink");
+        $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\ToDirCommand", "to_dir");
+        $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\ToLinkCommand", "to_link");
         $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\UninstallCommand", "uninstall");
         $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\UpgradeCommand", "upgrade");
         $this->registerCommand("Ling\Light_PlanetInstaller\CliTools\Command\VersionCommand", "version");

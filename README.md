@@ -71,6 +71,10 @@ planet_installer:
 History Log
 =============
 
+- 1.0.26 -- 2021-05-03
+
+    - fix command names not matching those written in documentation (deps -> dependency, tolink -> to_link, todir -> to_dir)  
+  
 - 1.0.25 -- 2021-05-03
 
     - fix PlanetImportProcessUtil->updateApplicationByWishList typo
