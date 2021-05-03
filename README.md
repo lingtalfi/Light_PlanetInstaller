@@ -71,6 +71,10 @@ planet_installer:
 History Log
 =============
 
+- 1.0.24 -- 2021-05-03
+
+    - fix PlanetImportProcessUtil->updateApplicationByWishList trying to logic install even if the light-cli script is not present
+  
 - 1.0.23 -- 2021-05-03
 
     - fix LightPlanetInstallerBaseCommand->checkInsideAppDir not creating bigbang script (functional typo)

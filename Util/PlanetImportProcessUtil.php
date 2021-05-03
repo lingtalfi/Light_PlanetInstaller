@@ -330,8 +330,6 @@ class PlanetImportProcessUtil
             $errors = $this->getSessionErrors();
 
 
-
-
             $importToApp = true;
             if ($errors) {
 
@@ -379,7 +377,6 @@ class PlanetImportProcessUtil
                 ]);
 
 
-
                 if ($errors) {
                     $this->info("<error>Oops, the process failed. You should find the error messages above</error>." . PHP_EOL);
                 } else {
@@ -417,48 +414,53 @@ class PlanetImportProcessUtil
                 if (true === $install) {
 
                     $lightScript = $this->applicationDir . "/scripts/Ling/Light_Cli/light-cli.php";
+                    if (true === file_exists($lightScript)) {
 
-                    if ($planetDotNames) {
-                        $this->info("Logic installing imported planets..." . PHP_EOL);
-                        $sOptions = "";
-                        if (
-                            true === in_array("debug", $this->logLevels) ||
-                            true === in_array("trace", $this->logLevels)
-                        ) {
-                            $sOptions = ' -d';
+
+                        if ($planetDotNames) {
+                            $this->info("Logic installing imported planets..." . PHP_EOL);
+                            $sOptions = "";
+                            if (
+                                true === in_array("debug", $this->logLevels) ||
+                                true === in_array("trace", $this->logLevels)
+                            ) {
+                                $sOptions = ' -d';
+                            }
+
+                            foreach ($planetDotNames as $planetDotName) {
+
+
+                                $cmdOutput = [];
+                                $cmdBuffer = '';
+                                $resultCode = null;
+
+                                if (true === $this->force) {
+                                    $sOptions .= ' -f';
+                                }
+
+                                $cmd = 'php -f "' . $lightScript . '" -- lpi logic_install "' . $planetDotName . '" ' . $sOptions;
+                                $this->trace("Executing command: " . $cmd);
+                                exec($cmd, $cmdOutput, $resultCode);
+                                if ($cmdOutput) {
+                                    $cmdBuffer = implode(PHP_EOL, $cmdOutput) . PHP_EOL;
+                                }
+
+
+                                if (0 !== $resultCode) {
+                                    $this->error("The logic install of planet $planetDotName failed: $cmdBuffer.");
+                                }
+
+                                if ($cmdOutput) {
+                                    $this->output->write($cmdBuffer);
+                                }
+                            }
+
+
+                        } else {
+                            $this->info("0 imported planets, nothing to logic install..." . PHP_EOL);
                         }
-
-                        foreach ($planetDotNames as $planetDotName) {
-
-
-                            $cmdOutput = [];
-                            $cmdBuffer = '';
-                            $resultCode = null;
-
-                            if (true === $this->force) {
-                                $sOptions .= ' -f';
-                            }
-
-                            $cmd = 'php -f "' . $lightScript . '" -- lpi logic_install "' . $planetDotName . '" ' . $sOptions;
-                            $this->trace("Executing command: " . $cmd);
-                            exec($cmd, $cmdOutput, $resultCode);
-                            if ($cmdOutput) {
-                                $cmdBuffer = implode(PHP_EOL, $cmdOutput) . PHP_EOL;
-                            }
-
-
-                            if (0 !== $resultCode) {
-                                $this->error("The logic install of planet $planetDotName failed: $cmdBuffer.");
-                            }
-
-                            if ($cmdOutput) {
-                                $this->output->write($cmdBuffer);
-                            }
-                        }
-
-
                     } else {
-                        $this->info("0 imported planets, nothing to logic install..." . PHP_EOL);
+                        $this->info("No light script found ($lightScript), skipping logic install.");
                     }
                 }
 
