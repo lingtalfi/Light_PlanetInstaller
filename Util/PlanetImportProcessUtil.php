@@ -460,7 +460,7 @@ class PlanetImportProcessUtil
                             $this->info("0 imported planets, nothing to logic install..." . PHP_EOL);
                         }
                     } else {
-                        $this->info("No light script found ($lightScript), skipping logic install.");
+                        $this->info("No light script found ($lightScript), skipping logic install." . PHP_EOL);
                     }
                 }
 
