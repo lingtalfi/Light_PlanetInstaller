@@ -71,6 +71,10 @@ planet_installer:
 History Log
 =============
 
+- 1.0.29 -- 2021-05-03
+
+    - Update dependencies to Ling.Light_Logger (pushed by SubscribersUtil)
+
 - 1.0.28 -- 2021-05-03
 
     - fix PlanetImportProcessUtil->updateApplicationByWishList post assets/map process not allowing handlers to ask questions to user
