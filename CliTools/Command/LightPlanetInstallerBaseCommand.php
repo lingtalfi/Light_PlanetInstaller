@@ -181,19 +181,20 @@ abstract class LightPlanetInstallerBaseCommand implements CommandInterface, Ligh
             $output->write("<warning>Warning: no universe directory found, you're probably not inside a light app directory. Aborting (this is a safety measure).</warning>." . PHP_EOL);
             return false;
         }
-        $bigBang = __DIR__ . '/../../assets/universe-basic-2021-05-03/bigbang.php';
-        $bumbleBeeDir = $uniDir . '/Ling/BumbleBee';
-        $bumbleBee = __DIR__ . '/../../assets/universe-basic-2021-05-03/BumbleBee';
+        $bigBangSrc = __DIR__ . '/../../assets/universe-basic-2021-05-03/bigbang.php';
+        $bigBangDst = $uniDir . "/bigbang.php";
+        $bumbleBeeSrc = __DIR__ . '/../../assets/universe-basic-2021-05-03/BumbleBee';
+        $bumbleBeeDst = $uniDir . '/Ling/BumbleBee';
 
-        if (false === is_file($bigBang)) {
-            $content = file_get_contents($bigBang);
-            $output->write("<info>Creating bigbang.php file in $bigBang.</info>." . PHP_EOL);
-            FileSystemTool::mkfile($bigBang, $content);
+        if (false === is_file($bigBangDst)) {
+            $content = file_get_contents($bigBangSrc);
+            $output->write("<info>Creating bigbang.php file in $bigBangDst.</info>." . PHP_EOL);
+            FileSystemTool::mkfile($bigBangDst, $content);
         }
 
-        if (false === is_dir($bumbleBeeDir)) {
-            $output->write("<info>Creating BumbleBee class in $bumbleBee.</info>." . PHP_EOL);
-            FileSystemTool::copyDir($bumbleBee, $bumbleBeeDir);
+        if (false === is_dir($bumbleBeeDst)) {
+            $output->write("<info>Creating BumbleBee class in $bumbleBeeDst.</info>." . PHP_EOL);
+            FileSystemTool::copyDir($bumbleBeeSrc, $bumbleBeeDst);
         }
         return true;
     }

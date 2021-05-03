@@ -71,6 +71,10 @@ planet_installer:
 History Log
 =============
 
+- 1.0.23 -- 2021-05-03
+
+    - fix LightPlanetInstallerBaseCommand->checkInsideAppDir not creating bigbang script (functional typo)
+  
 - 1.0.22 -- 2021-05-03
 
     - update LightPlanetInstallerBaseCommand->checkInsideAppDir, now also creates the BumbleBee planet (required by bigbang) if not found already
