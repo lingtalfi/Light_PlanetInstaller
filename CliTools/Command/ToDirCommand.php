@@ -105,7 +105,7 @@ class ToDirCommand extends LightPlanetInstallerBaseCommand
         $url = LightCliFormatHelper::getUrlFmt();
 
         return [
-            "todir" => "lpi todir",
+            "to_dir" => "lpi to_dir",
         ];
     }
 

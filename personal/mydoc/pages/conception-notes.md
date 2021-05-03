@@ -1,6 +1,6 @@
 Light_PlanetInstaller, conception notes
 ================
-2020-12-03 -> 2021-03-01
+2020-12-03 -> 2021-05-03
 
 This is a variation of the [uni tool](https://github.com/lingtalfi/universe-naive-importer), which I found too
 complicated.
@@ -37,6 +37,9 @@ Table of Contents
     * [Copying to the target application](#copying-to-the-target-application)
 * [The Light_PlanetInstaller hooks](#the-light_planetinstaller-hooks)
 * [Related](#related)
+
+
+
 
 
 
@@ -372,7 +375,7 @@ It refers to the [version expression](#version-expression), but with the "last" 
 
 Usage: the commands
 -----------
-2020-12-03 -> 2021-03-01
+2020-12-03 -> 2021-05-03
 
 
 All commands described below assume that you're at the root directory of your app (i.e. **cd /my_app**),
@@ -384,8 +387,9 @@ and the app is a Light app.
     - Arguments:
         - flags:
             - n: if set, will only create the file if it doesn't exist already
+    
 - **conf**: opens the [global configuration file](#the-global-configuration) using macos "open" command
-- **deps**: displays the dependencies of the given planet. By default, the [lpi-dependencies](#the-lpi-depsbyml-file) for the latest version of the planet is displayed.
+- **dependency**: displays the dependencies of the given planet. By default, the [lpi-dependencies](#the-lpi-depsbyml-file) for the latest version of the planet is displayed.
     - Arguments:
         - parameters:
             - planetDotName: the [planetDotName](https://github.com/karayabin/universe-snapshot#the-planet-dot-name)
@@ -397,7 +401,7 @@ and the app is a Light app.
             - i: invert, gives an overview of all the planets that have a dependency to the given planet.
                 Note: when this flag is on, the "version" option and the "r" and "u" flags are ignored.
         - aliases:
-            - deps              
+            - dependency              
 
 
 - **help**: displays the help 
@@ -506,25 +510,25 @@ and the app is a Light app.
             - upgrade
 
     
-- **todir**: converts all the symlinks of the current app to real dirs.
+- **to_dir**: converts all the symlinks of the current app to real dirs.
     It does so by copying the real dirs from the [local universe](https://github.com/lingtalfi/UniverseTools/blob/master/doc/pages/conception-notes.md#local-universe),
     and pasting them into the app.
-    This command does the opposite of the **tolink** command. 
+    This command does the opposite of the **to_link** command. 
     - Arguments:
         - flags:
             - v: verbose, whether to use verbose mode
         - aliases:
-            - todir
+            - to_dir
   
-- **tolink**: converts all the planets of the current app to symlinks to the [local universe](https://github.com/lingtalfi/UniverseTools/blob/master/doc/pages/conception-notes.md#local-universe).
+- **to_link**: converts all the planets of the current app to symlinks to the [local universe](https://github.com/lingtalfi/UniverseTools/blob/master/doc/pages/conception-notes.md#local-universe).
     Beware, this command actually removes the existing planets before creating the symlinks.
     Note: if there is not corresponding planet in the **local universe**, the conversion is not done (and the planet not removed). 
-    This command does the opposite of the **todir** command.
+    This command does the opposite of the **to_dir** command.
     - Arguments:
         - flags:
             - v: verbose, whether to use verbose mode
         - aliases:
-            - tolink
+            - to_link
   
 
 - **version**: lists the available versions for the given planet.
@@ -694,6 +698,11 @@ To create a hook from your plugin **Light_Abc**, you need to:
     - if your class needs a container, simply implement the [LightServiceContainerAwareInterface](https://github.com/lingtalfi/Light/blob/master/doc/api/Ling/Light/ServiceContainer/LightServiceContainerAwareInterface.md) interface.
     - we provide a [LightBasePlanetInstaller](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/PlanetInstaller/LightBasePlanetInstaller.md) class (that you can extend) for your convenience
 - then we will call the **onMapCopyAfter** method of your class automatically during the **post asset/map hook** phase of the **install** procedure
+
+
+
+
+
 
 
 

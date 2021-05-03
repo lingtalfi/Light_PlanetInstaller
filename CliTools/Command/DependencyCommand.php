@@ -204,7 +204,7 @@ class DependencyCommand extends LightPlanetInstallerSimpleCommand
     public function getAliases(): array
     {
         return [
-            "deps" => "lpi deps",
+            "dependency" => "lpi dependency",
         ];
     }
 

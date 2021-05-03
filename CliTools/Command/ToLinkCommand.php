@@ -101,7 +101,7 @@ class ToLinkCommand extends LightPlanetInstallerBaseCommand
         $url = LightCliFormatHelper::getUrlFmt();
 
         return [
-            "tolink" => "lpi tolink",
+            "to_link" => "lpi to_link",
         ];
     }
 
