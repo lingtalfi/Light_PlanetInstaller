@@ -71,6 +71,10 @@ planet_installer:
 History Log
 =============
 
+- 1.0.28 -- 2021-05-03
+
+    - fix PlanetImportProcessUtil->updateApplicationByWishList post assets/map process not allowing handlers to ask questions to user
+  
 - 1.0.27 -- 2021-05-03
 
     - fix typo in conception notes  

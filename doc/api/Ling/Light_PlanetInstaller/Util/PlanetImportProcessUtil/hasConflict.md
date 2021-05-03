@@ -65,7 +65,7 @@ Returns bool.
 
 Source Code
 ===========
-See the source code for method [PlanetImportProcessUtil::hasConflict](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/PlanetImportProcessUtil.php#L1166-L1237)
+See the source code for method [PlanetImportProcessUtil::hasConflict](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/PlanetImportProcessUtil.php#L1172-L1243)
 
 
 See Also

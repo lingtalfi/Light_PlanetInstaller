@@ -428,6 +428,7 @@ Dependencies
 ============
 - [BabyYaml](https://github.com/lingtalfi/BabyYaml)
 - [Bat](https://github.com/lingtalfi/Bat)
+- [CheapLogger](https://github.com/lingtalfi/CheapLogger)
 - [CliTools](https://github.com/lingtalfi/CliTools)
 - [CopyDir](https://github.com/lingtalfi/CopyDir)
 - [DirScanner](https://github.com/lingtalfi/DirScanner)

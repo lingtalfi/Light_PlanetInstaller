@@ -46,7 +46,7 @@ Returns string.
 
 Source Code
 ===========
-See the source code for method [PlanetImportProcessUtil::getBuildDir](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/PlanetImportProcessUtil.php#L503-L509)
+See the source code for method [PlanetImportProcessUtil::getBuildDir](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/PlanetImportProcessUtil.php#L509-L515)
 
 
 See Also

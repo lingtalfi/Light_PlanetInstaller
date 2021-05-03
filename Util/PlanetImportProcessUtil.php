@@ -384,31 +384,8 @@ class PlanetImportProcessUtil
                 }
 
 
-                //--------------------------------------------
-                // POST ASSETS/MAP HOOKS
-                //--------------------------------------------
-                if (true === $install) {
-                    if ($planetDotNames) {
 
-                        $this->info("Checking for post assets/map hooks..." . PHP_EOL);
 
-                        /**
-                         * @var $pis LightPlanetInstallerService
-                         */
-                        $pis = $this->container->get("planet_installer");
-                        foreach ($planetDotNames as $planetDotName) {
-                            $this->trace("- $planetDotName...");
-                            $planetInstaller = $pis->getInstallerInstance($planetDotName);
-                            if (null !== $planetInstaller) {
-                                $this->trace(" installer found, executing installer..." . PHP_EOL);
-                                $planetInstaller->onMapCopyAfter($this->applicationDir, $output);
-                            } else {
-                                $this->trace("no installer found, skipping." . PHP_EOL);
-                            }
-                        }
-                    }
-
-                }
 
 
                 if (true === $install) {
@@ -418,6 +395,35 @@ class PlanetImportProcessUtil
 
 
                         if ($planetDotNames) {
+
+
+
+                            //--------------------------------------------
+                            // POST ASSETS/MAP HOOKS
+                            //--------------------------------------------
+                            $this->info("Checking for post assets/map hooks..." . PHP_EOL);
+
+
+                            foreach ($planetDotNames as $planetDotName) {
+
+
+                                $cmd = 'php -f "' . $lightScript . '" -- lpi post_map "' . $planetDotName . '" 2>&1';
+                                $this->trace("Executing command: " . $cmd . PHP_EOL);
+                                $resultCode = 0;
+                                passthru($cmd, $resultCode);
+
+
+                                if (0 !== $resultCode) {
+                                    $this->warning("The post assets/map process of planet $planetDotName failed.");
+                                }
+
+                            }
+
+
+
+                            //--------------------------------------------
+                            // LOGIC INSTALL
+                            //--------------------------------------------
                             $this->info("Logic installing imported planets..." . PHP_EOL);
                             $sOptions = "";
                             if (
@@ -439,7 +445,7 @@ class PlanetImportProcessUtil
                                 }
 
                                 $cmd = 'php -f "' . $lightScript . '" -- lpi logic_install "' . $planetDotName . '" ' . $sOptions;
-                                $this->trace("Executing command: " . $cmd);
+                                $this->trace("Executing command: " . $cmd . PHP_EOL);
                                 exec($cmd, $cmdOutput, $resultCode);
                                 if ($cmdOutput) {
                                     $cmdBuffer = implode(PHP_EOL, $cmdOutput) . PHP_EOL;
