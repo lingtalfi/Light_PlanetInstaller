@@ -162,7 +162,15 @@ abstract class LightPlanetInstallerBaseCommand implements CommandInterface, Ligh
     //
     //--------------------------------------------
     /**
-     * Returns whether the current dir is an application dir (containing an universe dir).
+     * Returns whether the current dir is correct universe application (i.e. containing an universe dir).
+     *
+     * It will also try to inject the minimum setup for a working universe (if it's not there already), which is:
+     *
+     * - the bigbang.php script
+     * - the BumbleBee planet (autoloader class used by the bigbang script)
+     *
+     *
+     *
      * @param OutputInterface $output
      * @return bool
      */
@@ -173,16 +181,19 @@ abstract class LightPlanetInstallerBaseCommand implements CommandInterface, Ligh
             $output->write("<warning>Warning: no universe directory found, you're probably not inside a light app directory. Aborting (this is a safety measure).</warning>." . PHP_EOL);
             return false;
         }
-        $bigBang = $uniDir . '/bigbang.php';
-        $bigBangUrl = "https://raw.githubusercontent.com/karayabin/universe-snapshot/master/universe/bigbang.php";
+        $bigBang = __DIR__ . '/../../assets/universe-basic-2021-05-03/bigbang.php';
+        $bumbleBeeDir = $uniDir . '/Ling/BumbleBee';
+        $bumbleBee = __DIR__ . '/../../assets/universe-basic-2021-05-03/BumbleBee';
+
         if (false === is_file($bigBang)) {
-            $content = file_get_contents($bigBangUrl);
-            if (false !== $content) {
-                FileSystemTool::mkfile($bigBang, $content);
-            } else {
-                $output->write("<warning>Warning: no bigbang.php script found in the universe directory. Aborting (this is a safety measure). Note: you can find the bigbang.php script in $bigBangUrl.</warning>." . PHP_EOL);
-                return false;
-            }
+            $content = file_get_contents($bigBang);
+            $output->write("<info>Creating bigbang.php file in $bigBang.</info>." . PHP_EOL);
+            FileSystemTool::mkfile($bigBang, $content);
+        }
+
+        if (false === is_dir($bumbleBeeDir)) {
+            $output->write("<info>Creating BumbleBee class in $bumbleBee.</info>." . PHP_EOL);
+            FileSystemTool::copyDir($bumbleBee, $bumbleBeeDir);
         }
         return true;
     }

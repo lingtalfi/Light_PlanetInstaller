@@ -7,7 +7,7 @@ LightPlanetInstallerBaseCommand::checkInsideAppDir
 
 
 
-LightPlanetInstallerBaseCommand::checkInsideAppDir — Returns whether the current dir is an application dir (containing an universe dir).
+LightPlanetInstallerBaseCommand::checkInsideAppDir — Returns whether the current dir is correct universe application (i.e.
 
 
 
@@ -21,7 +21,12 @@ protected [LightPlanetInstallerBaseCommand::checkInsideAppDir](https://github.co
 
 
 
-Returns whether the current dir is an application dir (containing an universe dir).
+Returns whether the current dir is correct universe application (i.e. containing an universe dir).
+
+It will also try to inject the minimum setup for a working universe (if it's not there already), which is:
+
+- the bigbang.php script
+- the BumbleBee planet (autoloader class used by the bigbang script)
 
 
 
@@ -49,7 +54,7 @@ Returns bool.
 
 Source Code
 ===========
-See the source code for method [LightPlanetInstallerBaseCommand::checkInsideAppDir](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Command/LightPlanetInstallerBaseCommand.php#L169-L188)
+See the source code for method [LightPlanetInstallerBaseCommand::checkInsideAppDir](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Command/LightPlanetInstallerBaseCommand.php#L177-L199)
 
 
 See Also
