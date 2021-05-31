@@ -115,4 +115,14 @@ class InstallInit2Command extends InstallCommand
         ];
     }
 
+
+    /**
+     * @overrides
+     */
+    public function getAliases(): array
+    {
+        return [];
+    }
+
+
 }

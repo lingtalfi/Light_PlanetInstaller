@@ -118,4 +118,15 @@ class InstallInit3Command extends InstallCommand
     }
 
 
+
+    /**
+     * @overrides
+     */
+    public function getAliases(): array
+    {
+        return [];
+    }
+
+
+
 }
