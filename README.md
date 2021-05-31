@@ -1,6 +1,6 @@
 Light_PlanetInstaller
 ===========
-2020-12-08 -> 2021-05-03
+2020-12-08 -> 2021-05-31
 
 
 
@@ -71,6 +71,10 @@ planet_installer:
 History Log
 =============
 
+- 2.0.0 -- 2021-05-31
+
+    - new api
+  
 - 1.0.30 -- 2021-05-03
 
     - Update dependencies to Ling.Light_PluginInstaller (pushed by SubscribersUtil)

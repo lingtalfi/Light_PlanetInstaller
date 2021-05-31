@@ -4,12 +4,11 @@ dependencies:
         - Bat
         - CheapLogger
         - CliTools
-        - CopyDir
         - DirScanner
         - Light
         - Light_Cli
         - Light_Logger
-        - Light_PluginInstaller
+        - Uni2
         - UniverseTools
     
 
