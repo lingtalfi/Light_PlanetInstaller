@@ -1,6 +1,6 @@
 Light_PlanetInstaller, conception notes
 ================
-2020-12-03 -> 2021-06-01
+2020-12-03 -> 2021-06-03
 
 This is a variation of the [uni tool](https://github.com/lingtalfi/universe-naive-importer), which I found too
 complicated.
@@ -718,17 +718,30 @@ planet is actually installed or not.
 
 upgrade algorithm
 --------
-2021-05-27
+2021-05-27 -> 2021-06-03
+
 
 The upgrade algorithm is composed of the following parts:
 
-- the [uninstall](#uninstall-algorithm)
+- the [uninstall](#uninstall-algorithm) with the isUpgrade flag
 - the physical removal of the old planet (deleting the dir/symlink from the hard drive)
 - the [import](#import-algorithm) of the new planet
 - optionally the [install](#install-algorithm) of the new planet (only if you pass the **--install** option)
 
-By default, it will upgrade every planet in the given app directory, or you can specify a particular planet to upgrade,
+By default, this command will upgrade every planet in the current application directory, or you can specify a particular planet to upgrade,
 or even a list of planets to upgrade.
+
+
+
+For the **uninstall** phase, we pass the **isUpgrade** flag to the uninstaller, to differentiate the standalone **uninstall** process from the **uninstall** process used
+within the **upgrade** algorithm.
+
+
+The expected behaviour of a planet when uninstalling is:
+
+- if the **isUpgrade** flag is set, it should not drop its tables from the database
+- if the **isUpgrade** flag is not set, it should drop its tables from the database
+
 
 
 

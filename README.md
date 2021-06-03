@@ -71,6 +71,10 @@ planet_installer:
 History Log
 =============
 
+- 2.0.4 -- 2021-06-03
+
+    - add isUpgrade flag for uninstall util
+  
 - 2.0.3 -- 2021-06-03
 
     - update import command, add sort-cim flag
