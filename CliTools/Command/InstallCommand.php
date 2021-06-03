@@ -205,7 +205,6 @@ class InstallCommand extends ImportCommand
         $debug = $input->hasFlag("d");
         $methodName = "init" . $initNumber;
 
-
         try {
 
             //--------------------------------------------

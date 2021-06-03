@@ -75,7 +75,7 @@ Exceptions thrown
 
 Source Code
 ===========
-See the source code for method [ImportUtil::importPlanetsToDir](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/ImportUtil.php#L662-L792)
+See the source code for method [ImportUtil::importPlanetsToDir](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/ImportUtil.php#L668-L798)
 
 
 See Also

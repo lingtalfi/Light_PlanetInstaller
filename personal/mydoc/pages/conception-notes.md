@@ -1,6 +1,6 @@
 Light_PlanetInstaller, conception notes
 ================
-2020-12-03 -> 2021-05-31
+2020-12-03 -> 2021-06-01
 
 This is a variation of the [uni tool](https://github.com/lingtalfi/universe-naive-importer), which I found too
 complicated.
@@ -141,6 +141,7 @@ The following commands are described using [kwin notation](https://github.com/li
             - f: if set, forces the reimporting of the planet, even if it's already in your app
             - test-build-dir: if set, the import command will stop after creating the build dir. In other words, nothing will be actually imported, but you will not only have the [concrete import map](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/pages/conception-notes.md#import-map) created,
                 but also the **build dir**. See the [import algorithm](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/pages/conception-notes.md#import-algorithm) section for more info about the **build dir**.
+            - sort-cim: if set, the display of the [concrete import map](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/pages/conception-notes.md#import-map) will be sorted alphabetically (instead of children first parents last). 
         - aliases:
             - import
                      

@@ -1,6 +1,6 @@
 Light_PlanetInstaller
 ===========
-2020-12-08 -> 2021-05-31
+2020-12-08 -> 2021-06-03
 
 
 
@@ -71,6 +71,11 @@ planet_installer:
 History Log
 =============
 
+- 2.0.3 -- 2021-06-03
+
+    - update import command, add sort-cim flag
+    - update init hook interfaces (LightPlanetInstallerInit1HookInterface, 2 and 3), add options argument to their methods 
+  
 - 2.0.2 -- 2021-05-31
 
     - fix Install command having 3 extra aliases

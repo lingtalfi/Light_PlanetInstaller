@@ -176,6 +176,7 @@ class UpgradeUtil
                     $uninstallUtil->setContainer($this->container);
                     $uninstallUtil->uninstall($planetDotName, [
                         'app' => $appDir,
+                        'isUpgrade' => true,
                     ]);
 
 

@@ -57,6 +57,7 @@ class ImportCommand extends LightPlanetInstallerBaseCommand
             $tim = $input->getOption("tim");
 
             $useDebug = $input->hasFlag("d");
+            $sortCim = $input->hasFlag("sort-cim");
             $noSymlinks = $input->hasFlag("no-symlinks");
             $noDeps = $input->hasFlag("no-deps");
             $test = $input->hasFlag("test");
@@ -97,6 +98,7 @@ class ImportCommand extends LightPlanetInstallerBaseCommand
                 "test" => $test,
                 "testBuildDir" => $testBuildDir,
                 "force" => $force,
+                "sortCim" => $sortCim,
             ]);
 
         } else {
@@ -157,20 +159,19 @@ class ImportCommand extends LightPlanetInstallerBaseCommand
             ],
             "crm" => [
                 'desc' => " string=latest. The <$co>application conflict resolution mode</$co>(<$url>application-conflict-resolution-mode</$url>). The possible values are:
- ",
+ - ask
+ - abort
+ - keep
+ - replace
+ - latest
+ - earliest",
                 'values' => [
-                    'ask' => " ask the user what to do",
-                    'abort' => " abort",
-                    'keep' => " keep the planet already existing in the app",
-                    'replace' => " replace the planet existing in the app with the upcoming planet",
-                    'latest' => " imports the planet only if its version number is higher than the version number of the planet existing in the app ",
-                    'earliest' => " imports the planet only if its version number is lower than the version number of the planet existing in the app",
                 ],
             ],
             "tim" => [
                 'desc' => " string. The path to a file containing the <$co>theoretical import map</$co>(<$url>https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/pages/conception-notes.md#import-map</$url>) to use. If set, this will bypass the planetDotName argument passed to this command,
  and the planets imported will be the ones defined in the <b>theoretical import map</b>. 
-",
+ ",
                 'values' => [
                 ],
             ],
@@ -194,6 +195,7 @@ class ImportCommand extends LightPlanetInstallerBaseCommand
             "f" => " if set, forces the reimporting of the planet, even if it's already in your app",
             "test-build-dir" => " if set, the import command will stop after creating the build dir. In other words, nothing will be actually imported, but you will not only have the <$co>concrete import map</$co>(<$url>https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/pages/conception-notes.md#import-map</$url>) created,
  but also the <b>build dir</b>. See the <$co>import algorithm</$co>(<$url>https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/pages/conception-notes.md#import-algorithm</$url>) section for more info about the <b>build dir</b>.",
+            "sort-cim" => " if set, the display of the <$co>concrete import map</$co>(<$url>https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/pages/conception-notes.md#import-map</$url>) will be sorted alphabetically (instead of children first parents last). ",
         ];
     }
 

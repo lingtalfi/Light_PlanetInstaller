@@ -94,6 +94,8 @@ Available options are:
 - testBuild: bool=false. if true, will import planets into the build dir and stop after that: and the planets won't be imported into the target app.
      This mode can be useful to consult the concrete import map, the theoretical import map, and/or the conflicts, and examine the content of the build dir.
 - showEndTip: bool=true. Whether to display an end tip at the end of the process.
+- sortCim: bool=false. Whether to sort the display of the **concrete import map** alphabetically. By default (false), the **concrete import map**
+     is displayed naturally (i.e. dependencies first, parents last).
 
 
 
@@ -135,7 +137,7 @@ Returns string | false.
 
 Source Code
 ===========
-See the source code for method [ImportUtil::import](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/ImportUtil.php#L220-L483)
+See the source code for method [ImportUtil::import](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/ImportUtil.php#L222-L492)
 
 
 See Also

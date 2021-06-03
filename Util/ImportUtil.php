@@ -197,6 +197,8 @@ class ImportUtil
      * - testBuild: bool=false. if true, will import planets into the build dir and stop after that: and the planets won't be imported into the target app.
      *      This mode can be useful to consult the concrete import map, the theoretical import map, and/or the conflicts, and examine the content of the build dir.
      * - showEndTip: bool=true. Whether to display an end tip at the end of the process.
+     * - sortCim: bool=false. Whether to sort the display of the **concrete import map** alphabetically. By default (false), the **concrete import map**
+     *      is displayed naturally (i.e. dependencies first, parents last).
      *
      *
      *
@@ -230,6 +232,7 @@ class ImportUtil
         $testBuildDir = $options['testBuildDir'] ?? false;
         $force = $options['force'] ?? false;
         $showEndTip = $options['showEndTip'] ?? true;
+        $sortCim = $options['sortCim'] ?? false;
 
 
         if (null === $appDir) {
@@ -323,9 +326,15 @@ class ImportUtil
             // SHOWING THE CONCRETE IMPORT MAP
             //--------------------------------------------
             if ($concreteMap) {
+
+                $_concreteMap = $concreteMap;
+                if (true === $sortCim) {
+                    ksort($_concreteMap);
+                }
+
                 $this->write("The <b>concrete import map</b> looks like this: " . PHP_EOL);
                 $s = '';
-                foreach ($concreteMap as $_planetDotName => $_item) {
+                foreach ($_concreteMap as $_planetDotName => $_item) {
                     list($_wishVersion, $_appVersion) = $_item;
                     if (null === $_appVersion) {
                         if (false === $force) {
@@ -558,7 +567,6 @@ class ImportUtil
     }
 
 
-
     /**
      * Returns the warnings of this instance.
      *
@@ -634,8 +642,6 @@ class ImportUtil
         }
         return $ret;
     }
-
-
 
 
     /**
