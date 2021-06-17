@@ -58,7 +58,7 @@ Returns array.
 
 Source Code
 ===========
-See the source code for method [ImportUtil::getUniStyleImportMap](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/ImportUtil.php#L1425-L1457)
+See the source code for method [ImportUtil::getUniStyleImportMap](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/ImportUtil.php#L1468-L1501)
 
 
 See Also

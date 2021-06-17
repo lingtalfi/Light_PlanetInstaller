@@ -1,6 +1,6 @@
 Light_PlanetInstaller, conception notes
 ================
-2020-12-03 -> 2021-06-03
+2020-12-03 -> 2021-06-17
 
 This is a variation of the [uni tool](https://github.com/lingtalfi/universe-naive-importer), which I found too
 complicated.
@@ -60,7 +60,7 @@ In the rest of this document, we assume that **Light_Cli** is installed.
 
 Commands usage
 ---------
-2021-05-27 -> 2021-05-31
+2021-05-27 -> 2021-06-17
 
 
 
@@ -142,6 +142,13 @@ The following commands are described using [kwin notation](https://github.com/li
             - test-build-dir: if set, the import command will stop after creating the build dir. In other words, nothing will be actually imported, but you will not only have the [concrete import map](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/pages/conception-notes.md#import-map) created,
                 but also the **build dir**. See the [import algorithm](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/pages/conception-notes.md#import-algorithm) section for more info about the **build dir**.
             - sort-cim: if set, the display of the [concrete import map](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/pages/conception-notes.md#import-map) will be sorted alphabetically (instead of children first parents last). 
+            - babyInit: bool=false. Whether to trigger the baby init planet mode.
+                In this mode, the planet is not imported, but only the init phases are triggered.
+                A baby planet is a planet which is not yet formed. It's not committed. The version is not available, the dependencies are not created yet.
+                Using the baby init mode, we can still trigger the init phases of the planet at an early stage.
+                This option is mainly useful while you're developing a planet and you still want to test its init phases it.
+                Dependencies are always ignored (even if the planet happens to have some).
+      
         - aliases:
             - import
                      
@@ -192,6 +199,13 @@ The following commands are described using [kwin notation](https://github.com/li
             - f: if set, forces the reimporting of the planet, even if it's already in your app
             - test-build-dir: if set, the install command will stop after creating the build dir. In other words, nothing will be actually imported, but you will not only have the [concrete import map](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/pages/conception-notes.md#import-map) created,
                 but also the **build dir**. See the [import algorithm](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/pages/conception-notes.md#import-algorithm) section for more info about the **build dir**.
+            - babyInit: bool=false. Whether to trigger the baby init planet mode.
+                In this mode, the planet is not imported, but only the init phases are triggered.
+                A baby planet is a planet which is not yet formed. It's not committed. The version is not available, the dependencies are not created yet.
+                Using the baby init mode, we can still trigger the init phases of the planet at an early stage.
+                This option is mainly useful while you're developing a planet and you still want to test its init phases it.
+                Dependencies are always ignored (even if the planet happens to have some).
+                      
         - aliases:
             - install
             

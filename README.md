@@ -1,6 +1,6 @@
 Light_PlanetInstaller
 ===========
-2020-12-08 -> 2021-06-03
+2020-12-08 -> 2021-06-17
 
 
 
@@ -71,6 +71,10 @@ planet_installer:
 History Log
 =============
 
+- 2.0.5 -- 2021-06-17
+
+    - add --baby-init flag for import and install commands
+  
 - 2.0.4 -- 2021-06-03
 
     - add isUpgrade flag for uninstall util

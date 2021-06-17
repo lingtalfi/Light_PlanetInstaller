@@ -46,7 +46,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [ImportUtil::init](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/ImportUtil.php#L600-L605)
+See the source code for method [ImportUtil::init](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/ImportUtil.php#L640-L645)
 
 
 See Also

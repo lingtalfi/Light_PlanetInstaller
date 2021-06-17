@@ -57,7 +57,7 @@ Returns int.
 
 Source Code
 ===========
-See the source code for method [InstallCommand::processInitPhase](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Command/InstallCommand.php#L198-L321)
+See the source code for method [InstallCommand::processInitPhase](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/CliTools/Command/InstallCommand.php#L204-L327)
 
 
 See Also

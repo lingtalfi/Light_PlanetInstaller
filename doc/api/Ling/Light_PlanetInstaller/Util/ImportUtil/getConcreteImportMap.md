@@ -65,7 +65,7 @@ Returns array.
 
 Source Code
 ===========
-See the source code for method [ImportUtil::getConcreteImportMap](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/ImportUtil.php#L1142-L1150)
+See the source code for method [ImportUtil::getConcreteImportMap](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/ImportUtil.php#L1184-L1192)
 
 
 See Also

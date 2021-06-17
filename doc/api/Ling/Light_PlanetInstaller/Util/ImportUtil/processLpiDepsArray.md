@@ -79,7 +79,7 @@ Exceptions thrown
 
 Source Code
 ===========
-See the source code for method [ImportUtil::processLpiDepsArray](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/ImportUtil.php#L1332-L1361)
+See the source code for method [ImportUtil::processLpiDepsArray](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/ImportUtil.php#L1375-L1404)
 
 
 See Also

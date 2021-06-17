@@ -96,6 +96,7 @@ class ImportUtil
             "altHasLast" => true,
             "deps" => true,
             "sym" => true,
+            "babyInit" => false,
         ];
         $this->output = null;
         $this->useDebug = false;
@@ -199,6 +200,16 @@ class ImportUtil
      * - showEndTip: bool=true. Whether to display an end tip at the end of the process.
      * - sortCim: bool=false. Whether to sort the display of the **concrete import map** alphabetically. By default (false), the **concrete import map**
      *      is displayed naturally (i.e. dependencies first, parents last).
+     * - babyInit: bool=false. Whether to trigger the baby init planet mode.
+     *
+     *      In this mode, the planet is not imported, but only the init phases are triggered.
+     *
+     *      A baby planet is a planet which is not yet formed. It's not committed. The version is not available, the dependencies are not created yet.
+     *      Using the baby init mode, we can still trigger the init phases of the planet at an early stage.
+     *      This option is mainly useful while you're developing a planet and you still want to test its init phases it.
+     *      Dependencies are always ignored (even if the planet happens to have some).
+     *
+     *
      *
      *
      *
@@ -233,6 +244,7 @@ class ImportUtil
         $force = $options['force'] ?? false;
         $showEndTip = $options['showEndTip'] ?? true;
         $sortCim = $options['sortCim'] ?? false;
+        $babyPlanetMode = $options['babyInit'] ?? false;
 
 
         if (null === $appDir) {
@@ -277,14 +289,21 @@ class ImportUtil
                 }
             } else {
                 // get the list of planets to install
-                if (true === $this->useDebug) {
-                    $humanVersion = $version;
-                    if (null === $humanVersion) {
-                        $humanVersion = "(last version)";
+
+                if (true === $babyPlanetMode) {
+                    $theoreticalMap = [
+                        $planetDotName => "0.0.1 (babyMode)", // this is not the real version number, but we need to keep the format of the tim
+                    ];
+                } else {
+                    if (true === $this->useDebug) {
+                        $humanVersion = $version;
+                        if (null === $humanVersion) {
+                            $humanVersion = "(last version)";
+                        }
+                        $this->debug("Creating the <b>theoretical import map</b> for <red:bold>$planetDotName:$humanVersion</red:bold>:" . PHP_EOL);
                     }
-                    $this->debug("Creating the <b>theoretical import map</b> for <red:bold>$planetDotName:$humanVersion</red:bold>:" . PHP_EOL);
+                    $theoreticalMap = $this->getTheoreticalImportMap($planetDotName, $version, $options);
                 }
-                $theoreticalMap = $this->getTheoreticalImportMap($planetDotName, $version, $options);
             }
 
             if (true === $this->useDebug) {
@@ -312,13 +331,23 @@ class ImportUtil
             //--------------------------------------------
             // CONCRETE IMPORT MAP
             //--------------------------------------------
-            if (true === $force) {
-                $this->debug("Preparing the <b>concrete import map</b> (force option was used)." . PHP_EOL);
-                $concreteMap = $this->translateTheoreticalToConcrete($theoreticalMap);
+            if (true === $babyPlanetMode) {
+                $concreteMap = [
+                    $planetDotName => [
+                        "0.0.1 (babyMode)",  // this is not the real version number, but we need to keep the format of the tim
+                        null,
+                    ],
+                ];
             } else {
 
-                $this->debug("Preparing the <b>concrete import map</b>." . PHP_EOL);
-                $concreteMap = $this->getConcreteImportMap($appDir, $theoreticalMap, $options);
+                if (true === $force) {
+                    $this->debug("Preparing the <b>concrete import map</b> (force option was used)." . PHP_EOL);
+                    $concreteMap = $this->translateTheoreticalToConcrete($theoreticalMap);
+                } else {
+
+                    $this->debug("Preparing the <b>concrete import map</b>." . PHP_EOL);
+                    $concreteMap = $this->getConcreteImportMap($appDir, $theoreticalMap, $options);
+                }
             }
 
 
@@ -352,9 +381,10 @@ class ImportUtil
             }
 
 
+
+
+
             $strippedConcreteMap = $this->stripConcreteImportMap($concreteMap);
-
-
             //--------------------------------------------
             // CONCRETE IMPORT MAP - BACKUP
             //--------------------------------------------
@@ -375,6 +405,16 @@ class ImportUtil
             if (true === $test) {
                 goto end;
             }
+
+
+            if(true === $babyPlanetMode){
+                $this->write("babyInitMode: skipping the import phase." . PHP_EOL);
+                goto end;
+            }
+
+
+
+
 
             //--------------------------------------------
             // CREATING THE BUILD DIR AND IMPORTING PLANETS
@@ -659,6 +699,7 @@ class ImportUtil
      * - lo
      * - altHasLast
      * - useUniStyle: bool=false. Whether to use uni style import (i.e. always use latest versions)
+     * - baby
      *
      * @param array $planets
      * @param string $dstDir
@@ -673,6 +714,7 @@ class ImportUtil
         $locationOrder = $options['lo'] ?? $this->defaultOptions['lo'];
         $useUniStyle = $options['useUniStyle'] ?? false;
         $sym = $options['sym'] ?? $this->defaultOptions['sym'];
+        $baby = $options['baby'] ?? $this->defaultOptions['baby'];
 
 
         if ($planets) {
@@ -1187,6 +1229,7 @@ class ImportUtil
         $altHasLast = $options['altHasLast'] ?? $this->defaultOptions['altHasLast'];
         $locationOrder = $options['lo'] ?? $this->defaultOptions['lo'];
 
+
         if (false === $deps) {
             if (null === $version) {
                 $letters = str_split($locationOrder);
@@ -1427,6 +1470,7 @@ class ImportUtil
         $alt = $options['alt'] ?? $this->defaultOptions['alt'];
         $locationOrder = $options['lo'] ?? $this->defaultOptions['lo'];
 
+
         $letters = str_split($locationOrder);
         foreach ($letters as $letter) {
             switch ($letter) {
@@ -1460,12 +1504,16 @@ class ImportUtil
     /**
      * Returns the @page(import map) from the given uni dependency master content, for the given planet.
      *
+     *
+     *
      * @param string $planetDotName
      * @param array $conf
      * @return array
      */
     private function getTheoreticalImportMapFromUniDependencyMaster(string $planetDotName, array $conf): array
     {
+
+
         $ret = [];
         $galaxies = $conf["galaxies"];
         $this->collectUniDependencies($planetDotName, $galaxies, $ret);
@@ -1475,6 +1523,11 @@ class ImportUtil
 
     /**
      * Collects the uni dependencies for the given planet, recursively.
+     *
+     * Available options come from the import method of the same class:
+     * - baby
+     *
+     *
      *
      * @param string $planetDotName
      * @param array $planets
@@ -1510,9 +1563,17 @@ class ImportUtil
                 }
                 $ret[$planetDotName] = (string)$planetInfo['version'];
             } else {
+                if (true === $babyPlanetMode) {
+                    $ret = [];
+                    return;
+                }
                 $this->error("collectUniDependencies: planet <b>$galaxy.$planet</b> not defined in <b>uni master dependency file</b>." . PHP_EOL);
             }
         } else {
+            if (true === $babyPlanetMode) {
+                $ret = [];
+                return;
+            }
             $this->error("collectUniDependencies: galaxy <b>$galaxy</b> not defined in <b>uni master dependency file</b>." . PHP_EOL);
         }
     }
