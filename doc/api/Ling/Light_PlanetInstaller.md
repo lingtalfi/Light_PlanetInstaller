@@ -1,6 +1,6 @@
 Ling/Light_PlanetInstaller
 ================
-2020-12-08 --> 2021-06-17
+2020-12-08 --> 2021-06-21
 
 
 
@@ -261,6 +261,7 @@ Table of contents
     - [LpiGlobalDirHelper::globalDirHasPlanet](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiGlobalDirHelper/globalDirHasPlanet.md) &ndash; Returns whether the global directory contains the planet identified by the given $planetDot, in the specified $realVersion.
     - [LpiGlobalDirHelper::getPlanetPath](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiGlobalDirHelper/getPlanetPath.md) &ndash; Returns the path to the planet in the global directory.
 - [LpiHelper](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiHelper.md) &ndash; The LpiHelper class.
+    - [LpiHelper::getAppId](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiHelper/getAppId.md) &ndash; Returns the app id used by this planet.
     - [LpiHelper::getSelfTmpDir](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiHelper/getSelfTmpDir.md) &ndash; Returns a temporary directory used internally by this planet.
     - [LpiHelper::getSessionDirsPath](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiHelper/getSessionDirsPath.md) &ndash; Returns the location of the "session dirs" directory.
     - [LpiHelper::getUniverseMapsDir](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/api/Ling/Light_PlanetInstaller/Helper/LpiHelper/getUniverseMapsDir.md) &ndash; Returns the path to the universe maps directory.

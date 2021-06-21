@@ -10,6 +10,7 @@ use Ling\Light\ServiceContainer\LightServiceContainerAwareInterface;
 use Ling\Light_Cli\CliTools\Program\LightCliBaseApplication;
 use Ling\Light_PlanetInstaller\CliTools\Command\LightPlanetInstallerBaseCommand;
 use Ling\Light_PlanetInstaller\Exception\LightPlanetInstallerException;
+use Ling\Light_PlanetInstaller\Helper\LpiHelper;
 
 /**
  * The LightPlanetInstallerApplication class.
@@ -78,7 +79,7 @@ class LightPlanetInstallerApplication extends LightCliBaseApplication
      */
     public function getAppId(): string
     {
-        return 'lpi';
+        return LpiHelper::getAppId();
     }
 
 

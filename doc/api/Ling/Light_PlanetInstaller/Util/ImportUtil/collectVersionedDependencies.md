@@ -74,7 +74,7 @@ Exceptions thrown
 
 Source Code
 ===========
-See the source code for method [ImportUtil::collectVersionedDependencies](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/ImportUtil.php#L1312-L1358)
+See the source code for method [ImportUtil::collectVersionedDependencies](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/ImportUtil.php#L1311-L1357)
 
 
 See Also

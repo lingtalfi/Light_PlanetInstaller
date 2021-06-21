@@ -14,6 +14,7 @@ use Ling\Light_Cli\CliTools\Program\LightCliCommandInterface;
 use Ling\Light_Logger\LightLoggerService;
 use Ling\Light_PlanetInstaller\CliTools\Program\LightPlanetInstallerApplication;
 use Ling\Light_PlanetInstaller\Exception\LightPlanetInstallerException;
+use Ling\Light_PlanetInstaller\Helper\LpiHelper;
 
 /**
  * The LightPlanetInstallerBaseCommand class.
@@ -98,7 +99,7 @@ abstract class LightPlanetInstallerBaseCommand implements CommandInterface, Ligh
                  * @var $lg LightLoggerService
                  */
                 $lg = $this->container->get("logger");
-                $lg->log($errorMsg, "lpi_error");
+                $lg->log($errorMsg, LpiHelper::getAppId() . "_error");
             }
 
             $output->write(PHP_EOL . '<error>' . $errorMsg . '</error>' . PHP_EOL);

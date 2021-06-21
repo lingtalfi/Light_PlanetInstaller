@@ -714,7 +714,6 @@ class ImportUtil
         $locationOrder = $options['lo'] ?? $this->defaultOptions['lo'];
         $useUniStyle = $options['useUniStyle'] ?? false;
         $sym = $options['sym'] ?? $this->defaultOptions['sym'];
-        $baby = $options['baby'] ?? $this->defaultOptions['baby'];
 
 
         if ($planets) {

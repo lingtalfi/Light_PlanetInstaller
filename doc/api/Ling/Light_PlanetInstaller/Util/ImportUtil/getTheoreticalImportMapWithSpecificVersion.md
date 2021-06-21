@@ -62,7 +62,7 @@ Exceptions thrown
 
 Source Code
 ===========
-See the source code for method [ImportUtil::getTheoreticalImportMapWithSpecificVersion](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/ImportUtil.php#L1286-L1298)
+See the source code for method [ImportUtil::getTheoreticalImportMapWithSpecificVersion](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/ImportUtil.php#L1285-L1297)
 
 
 See Also

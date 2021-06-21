@@ -53,7 +53,7 @@ Returns [LoaderUtil](https://github.com/lingtalfi/CliTools/blob/master/doc/api/L
 
 Source Code
 ===========
-See the source code for method [ImportUtil::getLoader](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/ImportUtil.php#L869-L879)
+See the source code for method [ImportUtil::getLoader](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/ImportUtil.php#L868-L878)
 
 
 See Also

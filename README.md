@@ -1,6 +1,6 @@
 Light_PlanetInstaller
 ===========
-2020-12-08 -> 2021-06-17
+2020-12-08 -> 2021-06-21
 
 
 
@@ -71,6 +71,11 @@ planet_installer:
 History Log
 =============
 
+- 2.0.6 -- 2021-06-18
+
+    - fix ImportUtil containing deprecated code
+    - add LpiHelper::getAppId
+  
 - 2.0.5 -- 2021-06-17
 
     - add --baby-init flag for import and install commands
