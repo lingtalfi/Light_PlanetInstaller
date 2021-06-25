@@ -1,6 +1,6 @@
 Light_PlanetInstaller
 ===========
-2020-12-08 -> 2021-06-21
+2020-12-08 -> 2021-06-25
 
 
 
@@ -71,6 +71,10 @@ planet_installer:
 History Log
 =============
 
+- 2.0.7 -- 2021-06-21
+
+    - remove unnecessary LightPlanetInstallerApplication->runProgram method 
+  
 - 2.0.6 -- 2021-06-18
 
     - fix ImportUtil containing deprecated code

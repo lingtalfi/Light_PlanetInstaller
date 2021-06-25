@@ -85,24 +85,6 @@ class LightPlanetInstallerApplication extends LightCliBaseApplication
 
 
 
-
-    //--------------------------------------------
-    //
-    //--------------------------------------------
-    /**
-     * @overrides
-     */
-    protected function runProgram(InputInterface $input, OutputInterface $output): int|null
-    {
-        if (true === $input->hasFlag('dev')) {
-            $this->devMode = true;
-        }
-        return parent::runProgram($input, $output);
-    }
-
-
-
-
     //--------------------------------------------
     //
     //--------------------------------------------
