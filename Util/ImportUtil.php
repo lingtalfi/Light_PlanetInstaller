@@ -381,9 +381,6 @@ class ImportUtil
             }
 
 
-
-
-
             $strippedConcreteMap = $this->stripConcreteImportMap($concreteMap);
             //--------------------------------------------
             // CONCRETE IMPORT MAP - BACKUP
@@ -407,13 +404,10 @@ class ImportUtil
             }
 
 
-            if(true === $babyPlanetMode){
+            if (true === $babyPlanetMode) {
                 $this->write("babyInitMode: skipping the import phase." . PHP_EOL);
                 goto end;
             }
-
-
-
 
 
             //--------------------------------------------

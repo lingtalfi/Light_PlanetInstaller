@@ -57,7 +57,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [ImportUtil::smartCopy](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/ImportUtil.php#L848-L858)
+See the source code for method [ImportUtil::smartCopy](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/ImportUtil.php#L842-L852)
 
 
 See Also

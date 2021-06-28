@@ -147,7 +147,7 @@ Returns string | false.
 
 Source Code
 ===========
-See the source code for method [ImportUtil::import](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/ImportUtil.php#L233-L532)
+See the source code for method [ImportUtil::import](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/ImportUtil.php#L233-L526)
 
 
 See Also

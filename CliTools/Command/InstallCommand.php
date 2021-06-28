@@ -296,7 +296,7 @@ class InstallCommand extends ImportCommand
                     }
                     if (false === $hookFound) {
                         if (true === $debug) {
-                            $output->write("no <b>init $initNumber</b> hook found...". PHP_EOL);
+                            $output->write("no <b>init $initNumber</b> hook found..." . PHP_EOL);
                         }
                     }
 

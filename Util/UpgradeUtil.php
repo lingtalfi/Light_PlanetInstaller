@@ -32,8 +32,6 @@ class UpgradeUtil
     private LightServiceContainerInterface $container;
 
 
-
-
     /**
      * This property holds the errorMessages for this instance.
      * It's an array of items, each of which:

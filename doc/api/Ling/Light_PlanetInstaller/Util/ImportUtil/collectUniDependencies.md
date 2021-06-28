@@ -69,7 +69,7 @@ Exceptions thrown
 
 Source Code
 ===========
-See the source code for method [ImportUtil::collectUniDependencies](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/ImportUtil.php#L1537-L1578)
+See the source code for method [ImportUtil::collectUniDependencies](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/ImportUtil.php#L1531-L1572)
 
 
 See Also

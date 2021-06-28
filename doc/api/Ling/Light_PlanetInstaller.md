@@ -1,6 +1,6 @@
 Ling/Light_PlanetInstaller
 ================
-2020-12-08 --> 2021-06-25
+2020-12-08 --> 2021-06-28
 
 
 
@@ -361,7 +361,6 @@ Dependencies
 ============
 - [BabyYaml](https://github.com/lingtalfi/BabyYaml)
 - [Bat](https://github.com/lingtalfi/Bat)
-- [CheapLogger](https://github.com/lingtalfi/CheapLogger)
 - [CliTools](https://github.com/lingtalfi/CliTools)
 - [DirScanner](https://github.com/lingtalfi/DirScanner)
 - [Light](https://github.com/lingtalfi/Light)

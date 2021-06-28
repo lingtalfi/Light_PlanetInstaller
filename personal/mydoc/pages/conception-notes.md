@@ -14,15 +14,15 @@ Table of Contents
 - [Commands usage](#commands-usage)
 - [import map](#import-map)
 - [The two types of conflicts](#the-two-types-of-conflicts)
-  - [application conflicts](#application-conflicts)
-  - [inter-planet conflicts](#inter-planet-conflicts)
-  - [application conflict resolution mode](#application-conflict-resolution-mode)
+    - [application conflicts](#application-conflicts)
+    - [inter-planet conflicts](#inter-planet-conflicts)
+    - [application conflict resolution mode](#application-conflict-resolution-mode)
 
 - [import algorithm](#import-algorithm)
 - [install algorithm](#install-algorithm)
-  - [init 1](#init-1)
-  - [init 2](#init-2)
-  - [init 3](#init-3)
+    - [init 1](#init-1)
+    - [init 2](#init-2)
+    - [init 3](#init-3)
 
 - [uninstall algorithm](#uninstall-algorithm)
 - [upgrade algorithm](#upgrade-algorithm)
@@ -30,18 +30,15 @@ Table of Contents
 - [session dir](#session-dir)
 - [the lpi deps file](#the-lpi-deps-file)
 - [uni style vs versioned style](#uni-style-vs-versioned-style)
-  - [My personal opinion about it](#my-personal-opinion-about-it)
+    - [My personal opinion about it](#my-personal-opinion-about-it)
 - [Versioned style mess](#versioned-style-mess)
 - [Universe maps](#universe-maps)
 - [alternate universe and symlink, speed up your workflow](#alternate-universe-and-symlink-speed-up-your-workflow)
 - [todir and tolink](#todir-and-tolink)
 
-
-
 Overview
 -------
 2021-05-27
-
 
 The **Light_PlanetInstaller** planet provides command to install/uninstall planets in your apps.
 
@@ -49,10 +46,11 @@ It supersedes the [Light_PluginInstaller](https://github.com/lingtalfi/Light_Plu
 
 The api is designed to work with the [uni style](#uni-style-vs-versioned-style) installing by default.
 
-Although we provide tools to work with [versioned style](#versioned-style-mess) installing, we don't recommend it, unless you have no other choice.
+Although we provide tools to work with [versioned style](#versioned-style-mess) installing, we don't recommend it,
+unless you have no other choice.
 
-
-You should first install the [Light_Cli](https://github.com/lingtalfi/Light_Cli/) tool on your machine, in order to use our planet.
+You should first install the [Light_Cli](https://github.com/lingtalfi/Light_Cli/) tool on your machine, in order to use
+our planet.
 
 In the rest of this document, we assume that **Light_Cli** is installed.
 
@@ -62,12 +60,8 @@ Commands usage
 ---------
 2021-05-27 -> 2021-06-17
 
-
-
-
-The following commands are described using [kwin notation](https://github.com/lingtalfi/TheBar/blob/master/discussions/kwin-notation.md).
-
-
+The following commands are described
+using [kwin notation](https://github.com/lingtalfi/TheBar/blob/master/discussions/kwin-notation.md).
 
 ```kwin
 - **clean_session_dirs**:
@@ -329,8 +323,6 @@ The following commands are described using [kwin notation](https://github.com/li
             
                                     
 ```
-
-
 
 import map
 -----------
@@ -734,7 +726,6 @@ upgrade algorithm
 --------
 2021-05-27 -> 2021-06-03
 
-
 The upgrade algorithm is composed of the following parts:
 
 - the [uninstall](#uninstall-algorithm) with the isUpgrade flag
@@ -742,26 +733,16 @@ The upgrade algorithm is composed of the following parts:
 - the [import](#import-algorithm) of the new planet
 - optionally the [install](#install-algorithm) of the new planet (only if you pass the **--install** option)
 
-By default, this command will upgrade every planet in the current application directory, or you can specify a particular planet to upgrade,
-or even a list of planets to upgrade.
+By default, this command will upgrade every planet in the current application directory, or you can specify a particular
+planet to upgrade, or even a list of planets to upgrade.
 
-
-
-For the **uninstall** phase, we pass the **isUpgrade** flag to the uninstaller, to differentiate the standalone **uninstall** process from the **uninstall** process used
-within the **upgrade** algorithm.
-
+For the **uninstall** phase, we pass the **isUpgrade** flag to the uninstaller, to differentiate the standalone **
+uninstall** process from the **uninstall** process used within the **upgrade** algorithm.
 
 The expected behaviour of a planet when uninstalling is:
 
 - if the **isUpgrade** flag is set, it should not drop its tables from the database
 - if the **isUpgrade** flag is not set, it should drop its tables from the database
-
-
-
-
-
-
-
 
 delete concept
 ------------
@@ -1059,22 +1040,18 @@ Then, from time to time, we do an upgrade:
 lt upgrade_universe /myphp/universe 
 ```
 
-
-
-
-
 todir and tolink
 -----------
 2021-05-31
 
-
-**todir** and **tolink** are two complementary comments that might be useful if you are using a [local universe](https://github.com/lingtalfi/UniverseTools/blob/master/doc/pages/conception-notes.md#local-universe).
+**todir** and **tolink** are two complementary comments that might be useful if you are using
+a [local universe](https://github.com/lingtalfi/UniverseTools/blob/master/doc/pages/conception-notes.md#local-universe).
 
 Basically, they convert the planets of your app in either real directories or symlinks.
 
-
 - todir: convert all the planets of your app (that are links) to real directories
-- tolink: convert all the planets of your app (that are real directories) to links (symlinks) to their local universe correspondent if any
+- tolink: convert all the planets of your app (that are real directories) to links (symlinks) to their local universe
+  correspondent if any
                 
 
 

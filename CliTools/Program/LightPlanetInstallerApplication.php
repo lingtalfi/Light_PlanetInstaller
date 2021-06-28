@@ -4,8 +4,6 @@
 namespace Ling\Light_PlanetInstaller\CliTools\Program;
 
 use Ling\CliTools\Command\CommandInterface;
-use Ling\CliTools\Input\InputInterface;
-use Ling\CliTools\Output\OutputInterface;
 use Ling\Light\ServiceContainer\LightServiceContainerAwareInterface;
 use Ling\Light_Cli\CliTools\Program\LightCliBaseApplication;
 use Ling\Light_PlanetInstaller\CliTools\Command\LightPlanetInstallerBaseCommand;
