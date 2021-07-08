@@ -83,6 +83,12 @@ class ImportUtil
      */
     private string $debugFmt;
 
+    /**
+     * This property holds the whoCalls for this instance.
+     * @var string|null
+     */
+    private ?string $whoCalls;
+
 
     /**
      * Builds the ImportUtil instance.
@@ -101,6 +107,7 @@ class ImportUtil
         $this->output = null;
         $this->useDebug = false;
         $this->debugFmt = "yellow:bold";
+        $this->whoCalls = null;
     }
 
     /**
@@ -245,6 +252,14 @@ class ImportUtil
         $showEndTip = $options['showEndTip'] ?? true;
         $sortCim = $options['sortCim'] ?? false;
         $babyPlanetMode = $options['babyInit'] ?? false;
+        $whoCalls = $options['whoCalls'] ?? null;
+
+
+
+        if (null !== $whoCalls) {
+            $test = true;
+            $this->whoCalls = $whoCalls;
+        }
 
 
         if (null === $appDir) {
@@ -340,16 +355,15 @@ class ImportUtil
                 ];
             } else {
 
+
                 if (true === $force) {
                     $this->debug("Preparing the <b>concrete import map</b> (force option was used)." . PHP_EOL);
                     $concreteMap = $this->translateTheoreticalToConcrete($theoreticalMap);
                 } else {
-
                     $this->debug("Preparing the <b>concrete import map</b>." . PHP_EOL);
                     $concreteMap = $this->getConcreteImportMap($appDir, $theoreticalMap, $options);
                 }
             }
-
 
             //--------------------------------------------
             // SHOWING THE CONCRETE IMPORT MAP
@@ -1539,6 +1553,11 @@ class ImportUtil
                 foreach ($deps as $_galaxy => $_planets) {
                     foreach ($_planets as $_planet) {
                         $_planetDotName = $_galaxy . "." . $_planet;
+
+                        if($_planetDotName === $this->whoCalls){
+                            $this->write("- WhoCalls: <red>$planetDotName -> $this->whoCalls</red>" . PHP_EOL);
+                        }
+
                         if (false === array_key_exists($_planetDotName, $ret)) {
 
 
@@ -1556,17 +1575,17 @@ class ImportUtil
                 }
                 $ret[$planetDotName] = (string)$planetInfo['version'];
             } else {
-                if (true === $babyPlanetMode) {
-                    $ret = [];
-                    return;
-                }
+//                if (true === $babyPlanetMode) {
+//                    $ret = [];
+//                    return;
+//                }
                 $this->error("collectUniDependencies: planet <b>$galaxy.$planet</b> not defined in <b>uni master dependency file</b>." . PHP_EOL);
             }
         } else {
-            if (true === $babyPlanetMode) {
-                $ret = [];
-                return;
-            }
+//            if (true === $babyPlanetMode) {
+//                $ret = [];
+//                return;
+//            }
             $this->error("collectUniDependencies: galaxy <b>$galaxy</b> not defined in <b>uni master dependency file</b>." . PHP_EOL);
         }
     }

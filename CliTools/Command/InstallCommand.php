@@ -129,6 +129,16 @@ class InstallCommand extends ImportCommand
                 'values' => [
                 ],
             ],
+            "who-calls" => [
+                'desc' => " string=planetDotName. When this option is set, if acts as if the test flag was raised, and it displays the list of the planetDotNames from the theoretical import map which
+ depend on the planetDotName defined by this option.
+ So for instance if you call this command: 
+ lt import Ling.Light_Kit_JimToolbox_PhpstormWidgetLinks --who-calls=Ling.Light_Kit_Admin
+ It then returns the list of the planetDotNames from the tim of Ling.Light_Kit_JimToolbox_PhpstormWidgetLinks which depend on Ling.Light_Kit_Admin.
+ This option currently only works in uni style (i.e., not with version numbers). ",
+                'values' => [
+                ],
+            ],
         ];
     }
 

@@ -55,6 +55,11 @@ class ImportCommand extends LightPlanetInstallerBaseCommand
             $appPath = $input->getOption("app");
             $crm = $input->getOption("crm");
             $tim = $input->getOption("tim");
+            $whoCalls = $input->getOption("who-calls");
+
+
+
+
 
 
             $useDebug = $input->hasFlag("d");
@@ -102,6 +107,7 @@ class ImportCommand extends LightPlanetInstallerBaseCommand
                 "force" => $force,
                 "sortCim" => $sortCim,
                 "babyInit" => $babyPlanetMode,
+                "whoCalls" => $whoCalls,
             ]);
 
         } else {
@@ -175,6 +181,16 @@ class ImportCommand extends LightPlanetInstallerBaseCommand
                 'desc' => " string. The path to a file containing the <$co>theoretical import map</$co>(<$url>https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/pages/conception-notes.md#import-map</$url>) to use. If set, this will bypass the planetDotName argument passed to this command,
  and the planets imported will be the ones defined in the <b>theoretical import map</b>. 
  ",
+                'values' => [
+                ],
+            ],
+            "who-calls" => [
+                'desc' => " string=planetDotName. When this option is set, if acts as if the test flag was raised, and it displays the list of the planetDotNames from the theoretical import map which
+ depend on the planetDotName defined by this option.
+ So for instance if you call this command: 
+ lt import Ling.Light_Kit_JimToolbox_PhpstormWidgetLinks --who-calls=Ling.Light_Kit_Admin
+ It then returns the list of the planetDotNames from the tim of Ling.Light_Kit_JimToolbox_PhpstormWidgetLinks which depend on Ling.Light_Kit_Admin.
+ This option currently only works in uni style (i.e., not with version numbers). ",
                 'values' => [
                 ],
             ],

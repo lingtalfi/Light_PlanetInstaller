@@ -46,7 +46,7 @@ Returns array.
 
 Source Code
 ===========
-See the source code for method [ImportUtil::getConflicts](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/ImportUtil.php#L619-L622)
+See the source code for method [ImportUtil::getConflicts](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/Util/ImportUtil.php#L633-L636)
 
 
 See Also

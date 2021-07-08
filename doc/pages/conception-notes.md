@@ -125,6 +125,13 @@ using [kwin notation](https://github.com/lingtalfi/TheBar/blob/master/discussion
                 - earliest
             - tim: string. The path to a file containing the [theoretical import map](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/pages/conception-notes.md#import-map) to use. If set, this will bypass the planetDotName argument passed to this command,
               and the planets imported will be the ones defined in the **theoretical import map**. 
+            - who-calls: string=planetDotName. When this option is set, if acts as if the test flag was raised, and it displays the list of the planetDotNames from the theoretical import map which
+                  depend on the planetDotName defined by this option.
+                  So for instance if you call this command: 
+                    lt import Ling.Light_Kit_JimToolbox_PhpstormWidgetLinks --who-calls=Ling.Light_Kit_Admin
+                   It then returns the list of the planetDotNames from the tim of Ling.Light_Kit_JimToolbox_PhpstormWidgetLinks which depend on Ling.Light_Kit_Admin.
+                   This option currently only works in uni style (i.e., not with version numbers). 
+                     
             
         - flags: 
             - d: if set, enables the debug mode, in which output is a bit more verbose
@@ -182,7 +189,13 @@ using [kwin notation](https://github.com/lingtalfi/TheBar/blob/master/discussion
                 - latest
                 - earliest
             - tim: string. The path to a file containing the [theoretical import map](https://github.com/lingtalfi/Light_PlanetInstaller/blob/master/doc/pages/conception-notes.md#import-map) to use. If set, this will bypass the planetDotName argument passed to this command,
-              and the planets imported will be the ones defined in the **theoretical import map**. 
+              and the planets imported will be the ones defined in the **theoretical import map**.
+            - who-calls: string=planetDotName. When this option is set, if acts as if the test flag was raised, and it displays the list of the planetDotNames from the theoretical import map which
+                  depend on the planetDotName defined by this option.
+                  So for instance if you call this command: 
+                    lt import Ling.Light_Kit_JimToolbox_PhpstormWidgetLinks --who-calls=Ling.Light_Kit_Admin
+                   It then returns the list of the planetDotNames from the tim of Ling.Light_Kit_JimToolbox_PhpstormWidgetLinks which depend on Ling.Light_Kit_Admin.
+                   This option currently only works in uni style (i.e., not with version numbers).                
             
         - flags: 
             - d: if set, enables the debug mode, in which output is a bit more verbose

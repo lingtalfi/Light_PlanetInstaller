@@ -1,6 +1,6 @@
 Light_PlanetInstaller
 ===========
-2020-12-08 -> 2021-06-28
+2020-12-08 -> 2021-07-08
 
 An installer plugin for planets in the universe.
 
@@ -62,6 +62,10 @@ planet_installer:
 
 History Log
 =============
+
+- 2.0.9 -- 2021-07-08
+
+    - add who-calls option for install/import commands
 
 - 2.0.8 -- 2021-06-28
 
